@@ -8,11 +8,7 @@
 <title>GOH Ministries | Admin Dashboard</title>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
-:root{
---bg:#091426;--panel:#12233b;--panel2:#172b46;
---gold:#ffd166;--text:#f5f7fb;--muted:#aebbd0;
---line:#30435f;--green:#35c98b;--red:#ff6b6b;--blue:#69a9ff
-}
+:root{--bg:#091426;--panel:#12233b;--panel2:#172b46;--gold:#ffd166;--text:#f5f7fb;--muted:#aebbd0;--line:#30435f;--green:#35c98b;--red:#ff6b6b;--blue:#69a9ff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
 button,input,textarea,select{font:inherit}
@@ -24,11 +20,11 @@ button{cursor:pointer}
 .brand h1{font-size:17px;margin:0}
 .brand small{color:var(--muted)}
 .user-area{display:flex;align-items:center;gap:10px}
-.user-area img{width:34px;height:34px;border-radius:50%}
+.user-area img{width:34px;height:34px;border-radius:50%;object-fit:cover}
 .layout{display:flex;min-height:calc(100vh - 73px)}
-.sidebar{width:245px;flex-shrink:0;background:#0d1c31;border-right:1px solid var(--line);padding:18px 12px}
+.sidebar{width:255px;flex-shrink:0;background:#0d1c31;border-right:1px solid var(--line);padding:18px 12px}
 .nav-title{font-size:11px;color:#8193ad;padding:14px 12px 7px;text-transform:uppercase;letter-spacing:1px}
-.nav-btn{display:flex;width:100%;gap:11px;align-items:center;text-align:left;padding:12px;border:0;border-radius:9px;color:var(--muted);background:transparent;margin:3px 0;font-weight:600}
+.nav-btn{display:flex;width:100%;gap:11px;align-items:center;text-align:left;padding:11px 12px;border:0;border-radius:9px;color:var(--muted);background:transparent;margin:3px 0;font-weight:600}
 .nav-btn:hover,.nav-btn.active{background:#203957;color:var(--gold)}
 .main{flex:1;padding:25px;min-width:0}
 .page-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
@@ -48,12 +44,12 @@ h2{margin:0 0 7px;font-size:24px}
 .btn.small{padding:7px 10px;font-size:12px}
 input,textarea,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#0b192c;color:white;outline:none;margin:6px 0 13px}
 input:focus,textarea:focus,select:focus{border-color:var(--gold)}
-textarea{min-height:110px;resize:vertical}
+textarea{min-height:100px;resize:vertical}
 label{font-size:13px;color:#cbd5e1}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-grid .full{grid-column:1/-1}
 .table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:600px}
+table{width:100%;border-collapse:collapse;min-width:650px}
 th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
 th{color:var(--gold);font-weight:600}
 .thumb{width:65px;height:48px;object-fit:cover;border-radius:6px;background:#263a54}
@@ -75,13 +71,18 @@ th{color:var(--gold);font-weight:600}
 .mobile-menu{display:none}
 .empty{text-align:center;color:var(--muted);padding:25px}
 .preview{max-width:180px;max-height:110px;border-radius:8px;display:block;margin:8px 0}
-@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.sidebar{width:205px}}
-@media(max-width:650px){
-.layout{display:block}.sidebar{width:100%;display:none;border-right:0;border-bottom:1px solid var(--line);padding:8px 12px}
-.sidebar.open{display:block}.main{padding:17px}.topbar{padding:12px}.mobile-menu{display:inline-block}
-.cards{grid-template-columns:1fr 1fr;gap:9px}.card{padding:13px}.card .number{font-size:22px}
-.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.brand h1{font-size:14px}
-}
+.image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px;margin:12px 0}
+.image-card{background:#0b192c;border:1px solid var(--line);border-radius:9px;padding:7px;min-width:0}
+.image-card img{width:100%;height:90px;object-fit:cover;border-radius:6px}
+.image-card button{width:100%;margin-top:6px}
+.inline-check{display:flex;align-items:center;gap:9px;margin:10px 0}
+.inline-check input{width:auto;margin:0}
+.small-note{font-size:12px;color:var(--muted);line-height:1.5}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{border:1px solid var(--line);background:#172b46;color:white;border-radius:8px;padding:9px 12px}
+.tabs button.active{background:var(--gold);color:#101d30}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.sidebar{width:215px}}
+@media(max-width:650px){.layout{display:block}.sidebar{width:100%;display:none;border-right:0;border-bottom:1px solid var(--line);padding:8px 12px}.sidebar.open{display:block}.main{padding:17px}.topbar{padding:12px}.mobile-menu{display:inline-block}.cards{grid-template-columns:1fr 1fr;gap:9px}.card{padding:13px}.card .number{font-size:22px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.brand h1{font-size:14px}.user-area{gap:5px}.user-area span{max-width:100px;overflow:hidden;text-overflow:ellipsis}}
 </style>
 </head>
 <body>
@@ -116,21 +117,30 @@ th{color:var(--gold);font-weight:600}
 <aside class="sidebar" id="sidebar">
 <div class="nav-title">Overview</div>
 <button class="nav-btn active" onclick="showPage('dashboard',this)">📊 Dashboard</button>
-<div class="nav-title">Website content</div>
-<button class="nav-btn" onclick="showPage('children',this)">👧 Children's Ministry</button>
-<button class="nav-btn" onclick="showPage('assistance',this)">❤️ Family Assistance</button>
-<button class="nav-btn" onclick="showPage('construction',this)">🏗️ Church Construction</button>
-<button class="nav-btn" onclick="showPage('projects',this)">🌍 Projects</button>
-<button class="nav-btn" onclick="showPage('news',this)">📰 News & Announcements</button>
-<button class="nav-btn" onclick="showPage('gallery',this)">📸 Photo Gallery</button>
-<button class="nav-btn" onclick="showPage('testimonies',this)">🙏 Testimonies</button>
-<button class="nav-btn" onclick="showPage('events',this)">📅 Events</button>
+
+<div class="nav-title">Ministries & Content</div>
+<div id="ministryNav">
+<button class="nav-btn" onclick="showContentType('children')">👧 Children's Ministry</button>
+<button class="nav-btn" onclick="showContentType('assistance')">❤️ Family Assistance</button>
+<button class="nav-btn" onclick="showContentType('construction')">🏗️ Church Construction</button>
+<button class="nav-btn" onclick="showContentType('projects')">🌍 Projects</button>
+<button class="nav-btn" onclick="showContentType('news')">📰 News & Announcements</button>
+<button class="nav-btn" onclick="showContentType('gallery')">📸 Photo Gallery</button>
+<button class="nav-btn" onclick="showContentType('testimonies')">🙏 Testimonies</button>
+<button class="nav-btn" onclick="showContentType('events')">📅 Events</button>
+</div>
+
+<div class="nav-title">GOH Samaritan Club</div>
+<button class="nav-btn" onclick="showPage('beneficiaries',this)">🤝 Beneficiary Families</button>
+<button class="nav-btn" onclick="showPage('assistanceRecords',this)">🎁 Assistance Records</button>
+
 <div class="nav-title">Management</div>
 <button class="nav-btn" onclick="showPage('donations',this)">💛 Donations</button>
 <button class="nav-btn" onclick="showPage('messages',this)">✉️ Messages</button>
 <button class="nav-btn" onclick="showPage('settings',this)">⚙️ Website Settings</button>
+<button class="nav-btn" onclick="showPage('payments',this)">🏦 Payment Settings</button>
 <div class="nav-title">Website</div>
-<a href="https://gohministries.org/" target="_blank" style="display:block;padding:12px;color:var(--muted);text-decoration:none">↗ View Website</a>
+<a href="https://gohministries.org/" target="_blank" rel="noopener" style="display:block;padding:12px;color:var(--muted);text-decoration:none">↗ View Website</a>
 </aside>
 
 <main class="main">
@@ -145,17 +155,19 @@ th{color:var(--gold);font-weight:600}
 <div class="card"><div class="symbol">💛</div><div class="label">Donation Records</div><div class="number" id="statDonations">0</div></div>
 <div class="card"><div class="symbol">💰</div><div class="label">Total Donations (LKR)</div><div class="number" id="statAmount">0</div></div>
 <div class="card"><div class="symbol">✉️</div><div class="label">Unread Messages</div><div class="number" id="statMessages">0</div></div>
+<div class="card"><div class="symbol">🤝</div><div class="label">Beneficiary Families</div><div class="number" id="statBeneficiaries">—</div></div>
+<div class="card"><div class="symbol">🎁</div><div class="label">Assistance Records</div><div class="number" id="statAssistance">—</div></div>
 </div>
 <div class="panel">
 <h3>Welcome to GOH Ministries Admin</h3>
-<p class="sub">Manage ministry activities, church construction updates, family assistance, projects, photos, news, donations and messages.</p>
-<div class="notice">Remember to publish your content after saving it. Draft content will not appear on the public website.</div>
+<p class="sub">Manage ministries, church construction, Samaritan Club beneficiaries, assistance, photos, donations and messages.</p>
+<div class="notice">Publish content to make it visible on the public website. Draft content should remain unpublished.</div>
 </div>
 </section>
 
 <section id="page-content" class="page hidden">
 <div class="page-head">
-<div><h2 id="contentHeading">Content Management</h2><div class="sub">Create, edit and publish website content</div></div>
+<div><h2 id="contentHeading">Content Management</h2><div class="sub">Create, edit and publish ministry content</div></div>
 <button class="btn" onclick="newItem()">＋ Add New</button>
 </div>
 <div id="itemEditor" class="panel hidden">
@@ -167,13 +179,17 @@ th{color:var(--gold);font-weight:600}
 <div><label>Display order</label><input id="itemOrder" type="number" value="0"></div>
 <div class="full"><label>Short description</label><textarea id="itemDescription"></textarea></div>
 <div class="full"><label>Full content</label><textarea id="itemContent" style="min-height:160px"></textarea></div>
+
 <div class="full">
-<label>Image URL</label><input id="itemImage" placeholder="Image URL">
-<label>Or upload image (maximum 8 MB)</label>
-<input type="file" id="itemFile" accept="image/jpeg,image/png,image/webp,image/gif">
-<button class="btn secondary small" onclick="uploadImage()">Upload Image</button>
-<img id="imagePreview" class="preview hidden" alt="Image preview">
+<label>Upload multiple images (maximum 8 MB each)</label>
+<input type="file" id="itemFiles" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+<button class="btn secondary small" onclick="uploadImages()">Upload Selected Images</button>
+<div class="small-note">Upload several photos under this one content title. Uploaded photos are saved with the content when you save.</div>
+<div id="imageGallery" class="image-grid"></div>
+<label>Primary image URL</label>
+<input id="itemImage" placeholder="Primary image URL">
 </div>
+
 <div><label>Publication status</label><select id="itemStatus"><option value="published">Published</option><option value="draft">Draft</option></select></div>
 </div>
 <div class="actions">
@@ -185,8 +201,82 @@ th{color:var(--gold);font-weight:600}
 <div class="panel">
 <div class="page-head"><h3>Saved Content</h3><button class="btn secondary small" onclick="loadItems()">↻ Refresh</button></div>
 <div class="table-wrap"><table>
-<thead><tr><th>Image</th><th>Title</th><th>Status</th><th>Order</th><th>Actions</th></tr></thead>
+<thead><tr><th>Images</th><th>Title</th><th>Status</th><th>Order</th><th>Actions</th></tr></thead>
 <tbody id="itemsTable"></tbody>
+</table></div>
+</div>
+</section>
+
+<section id="page-beneficiaries" class="page hidden">
+<div class="page-head">
+<div><h2>GOH Samaritan Club</h2><div class="sub">Beneficiary family registration and management</div></div>
+<button class="btn" onclick="newBeneficiary()">＋ Register Family</button>
+</div>
+<div class="notice">Biblical foundation: Matthew 25:35–40 — serving people in need with compassion and dignity.</div>
+<div id="beneficiaryEditor" class="panel hidden">
+<h3 id="beneficiaryEditorTitle">Register Beneficiary Family</h3>
+<input type="hidden" id="beneficiaryId">
+<div class="form-grid">
+<div><label>Family / Beneficiary name *</label><input id="benName"></div>
+<div><label>Primary contact person</label><input id="benContactPerson"></div>
+<div><label>Phone number</label><input id="benPhone"></div>
+<div><label>Email</label><input id="benEmail" type="email"></div>
+<div class="full"><label>Address</label><textarea id="benAddress"></textarea></div>
+<div><label>District</label><input id="benDistrict"></div>
+<div><label>Number of family members</label><input id="benMembers" type="number" min="1" value="1"></div>
+<div class="full"><label>Family members and ages</label><textarea id="benFamilyDetails" placeholder="Name, age, relationship..."></textarea></div>
+<div class="full"><label>Living conditions / Needs</label><textarea id="benLiving" placeholder="Describe the family's living situation and needs"></textarea></div>
+<div><label>Beneficiary status</label><select id="benStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
+<div><label>Registration date</label><input id="benDate" type="date"></div>
+<div class="full"><label>Internal notes</label><textarea id="benNotes"></textarea></div>
+</div>
+<div class="actions">
+<button class="btn" onclick="saveBeneficiary()">Save Family</button>
+<button class="btn secondary" onclick="closeBeneficiaryEditor()">Cancel</button>
+</div>
+<div id="beneficiaryStatus" class="status"></div>
+</div>
+<div class="panel">
+<h3>Registered Families</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Family</th><th>Contact</th><th>District</th><th>Members</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="beneficiariesTable"></tbody>
+</table></div>
+</div>
+</section>
+
+<section id="page-assistanceRecords" class="page hidden">
+<div class="page-head">
+<div><h2>Assistance Distribution</h2><div class="sub">Record support provided to beneficiary families</div></div>
+<button class="btn" onclick="newAssistance()">＋ Record Assistance</button>
+</div>
+<div id="assistanceEditor" class="panel hidden">
+<h3>New Assistance Record</h3>
+<div class="form-grid">
+<div class="full"><label>Beneficiary family *</label><select id="assistBeneficiary"><option value="">Select family</option></select></div>
+<div><label>Assistance type *</label>
+<select id="assistType">
+<option value="food">Food</option><option value="clothing">Clothing</option>
+<option value="education">Education</option><option value="medical">Medical</option>
+<option value="housing">Housing</option><option value="emergency">Emergency</option>
+<option value="financial">Financial</option><option value="other">Other</option>
+</select></div>
+<div><label>Assistance date</label><input id="assistDate" type="date"></div>
+<div><label>Quantity / Value</label><input id="assistQuantity" placeholder="e.g. 2 food packs / LKR 5000"></div>
+<div><label>Cash amount (LKR)</label><input id="assistAmount" type="number" min="0" step="0.01"></div>
+<div class="full"><label>Description</label><textarea id="assistDescription"></textarea></div>
+<div><label>Provided by</label><input id="assistProvider"></div>
+<div><label>Reference</label><input id="assistReference"></div>
+</div>
+<button class="btn" onclick="saveAssistance()">Save Assistance Record</button>
+<button class="btn secondary" onclick="closeAssistanceEditor()">Cancel</button>
+<div id="assistanceStatus" class="status"></div>
+</div>
+<div class="panel">
+<h3>Assistance History</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Date</th><th>Beneficiary</th><th>Type</th><th>Details</th><th>Amount</th></tr></thead>
+<tbody id="assistanceTable"></tbody>
 </table></div>
 </div>
 </section>
@@ -204,6 +294,7 @@ th{color:var(--gold);font-weight:600}
 <div><label>Donor email</label><input id="donorEmail" type="email"></div>
 <div><label>Amount (LKR) *</label><input id="donorAmount" type="number" min="1" step="0.01"></div>
 <div><label>Project / Purpose</label><input id="donorProject" placeholder="Church construction"></div>
+<div><label>Payment method</label><select id="donorMethod"><option>Bank Transfer</option><option>Cash</option><option>Online Payment</option><option>Goods</option><option>Other</option></select></div>
 <div><label>Reference</label><input id="donorReference" placeholder="Bank reference"></div>
 <div><label>Donation date</label><input id="donorDate" type="date"></div>
 <div class="full"><label>Notes</label><textarea id="donorNotes"></textarea></div>
@@ -252,19 +343,60 @@ th{color:var(--gold);font-weight:600}
 </div>
 </section>
 
+<section id="page-payments" class="page hidden">
+<div class="page-head"><div><h2>Payment & Donation Settings</h2><div class="sub">Manage public donation instructions and payment methods</div></div></div>
+<div class="notice">Security: never enter your PayHere secret in this page. Configure PAYHERE_SECRET in Cloudflare Worker Secrets. This dashboard stores only public payment settings.</div>
+<div class="panel">
+<h3>Bank Transfer Details</h3>
+<div class="inline-check"><input type="checkbox" id="bankEnabled"><label for="bankEnabled">Enable bank transfer donations</label></div>
+<div class="form-grid">
+<div><label>Bank name</label><input id="payBankName"></div>
+<div><label>Account holder name</label><input id="payAccountHolder"></div>
+<div><label>Account number</label><input id="payAccountNumber"></div>
+<div><label>Branch</label><input id="payBranch"></div>
+<div><label>SWIFT / Bank code</label><input id="paySwift"></div>
+<div><label>Currency</label><input id="payCurrency" value="LKR"></div>
+</div>
+</div>
+<div class="panel">
+<h3>Online Donation Link</h3>
+<div class="inline-check"><input type="checkbox" id="linkEnabled"><label for="linkEnabled">Enable online donation link</label></div>
+<label>Donation / payment URL</label><input id="payDonationUrl" type="url" placeholder="https://...">
+</div>
+<div class="panel">
+<h3>PayHere Settings</h3>
+<div class="inline-check"><input type="checkbox" id="payhereEnabled"><label for="payhereEnabled">Enable PayHere option on public website</label></div>
+<div class="form-grid">
+<div><label>PayHere Merchant ID</label><input id="payhereMerchant"></div>
+<div><label>Mode</label><select id="payhereMode"><option value="sandbox">Sandbox</option><option value="live">Live</option></select></div>
+</div>
+<p class="small-note">The merchant ID and mode are public configuration values. A secure server-side checkout, signature/hash generation and payment notification verification must also be implemented in the Worker before accepting live payments.</p>
+<button class="btn" onclick="savePaymentSettings()">Save Payment Settings</button>
+<div id="paymentStatus" class="status"></div>
+</div>
+</section>
+
 </main>
 </div>
 </div>
 
 <script>
-/* GOH MINISTRIES CONFIGURATION */
-const API = "https://gohm.createlk.workers.dev";
+const API="https://gohm.createlk.workers.dev";
+const GOOGLE_CLIENT_ID="865065943863-fqu3k2n85n6jc81p0ift4ueor7hobj1n.apps.googleusercontent.com";
 
-const GOOGLE_CLIENT_ID =
-"865065943863-fqu3k2n85n6jc81p0ift4ueor7hobj1n.apps.googleusercontent.com";
-
-const CONTENT_TYPES = {
+const DEFAULT_TYPES={
 children:"Children's Ministry",
+youth:"Youth Ministry",
+women:"Women's Ministry",
+men:"Men's Ministry",
+worship:"Worship Ministry",
+prayer:"Prayer Ministry",
+evangelism:"Evangelism Ministry",
+missionary:"Missionary Ministry",
+pastoral:"Pastoral Ministry",
+bible-study:"Bible Study Ministry",
+sunday-school:"Sunday School Ministry",
+community-outreach:"Community Outreach",
 assistance:"Family Assistance",
 construction:"Church Construction",
 projects:"Projects",
@@ -274,18 +406,19 @@ testimonies:"Testimonies",
 events:"Events"
 };
 
+let CONTENT_TYPES={...DEFAULT_TYPES};
 let currentType="children";
 let currentItems=[];
+let currentImages=[];
 let currentUser=null;
+let beneficiaries=[];
 
 async function api(path,options={}){
 const headers={...(options.headers||{})};
-if(!(options.body instanceof FormData)) headers["Content-Type"]="application/json";
-const response=await fetch(API+path,{
-...options,credentials:"include",headers
-});
+if(!(options.body instanceof FormData))headers["Content-Type"]="application/json";
+const response=await fetch(API+path,{...options,credentials:"include",headers});
 let data;
-try{data=await response.json()}catch{throw new Error("Server returned an invalid response")}
+try{data=await response.json()}catch{throw new Error("Server returned an invalid response")};
 if(!response.ok||data.success===false)throw new Error(data.error||"Request failed ("+response.status+")");
 return data;
 }
@@ -296,52 +429,27 @@ if(!el)return;
 el.textContent=text;
 el.className="status show "+type;
 }
-
 function escapeHTML(value){
-return String(value??"").replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-})[c]);
+return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 }
-
 function formatMoney(value){
-return Number(value||0).toLocaleString("en-LK",{
-minimumFractionDigits:2,maximumFractionDigits:2
-});
+return Number(value||0).toLocaleString("en-LK",{minimumFractionDigits:2,maximumFractionDigits:2});
 }
+function dateToday(){return new Date().toISOString().slice(0,10)}
+function safeImage(url){return /^https?:\/\//i.test(String(url||""))?url:""}
 
-/* GOOGLE SIGN-IN */
+/* GOOGLE LOGIN */
 function showLoginError(text){message("loginStatus",text,"error")}
-
 function googleLogin(response){
-if(!response||!response.credential){
-showLoginError("Google did not return a login credential.");
-return;
+if(!response?.credential){showLoginError("Google did not return a login credential.");return}
+api("/api/auth/google",{method:"POST",body:JSON.stringify({credential:response.credential})})
+.then(()=>checkSession()).catch(e=>showLoginError(e.message));
 }
-api("/api/auth/google",{
-method:"POST",
-body:JSON.stringify({credential:response.credential})
-}).then(async result=>{
-currentUser=result.user;
-await checkSession();
-}).catch(error=>showLoginError(error.message));
-}
-
 function initializeGoogle(){
-if(!window.google?.accounts?.id){
-setTimeout(initializeGoogle,300);
-return;
+if(!window.google?.accounts?.id){setTimeout(initializeGoogle,300);return}
+google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:googleLogin,auto_select:false});
+google.accounts.id.renderButton(document.getElementById("googleButton"),{theme:"filled_blue",size:"large",shape:"rectangular",text:"signin_with",width:260});
 }
-google.accounts.id.initialize({
-client_id:GOOGLE_CLIENT_ID,
-callback:googleLogin,
-auto_select:false
-});
-google.accounts.id.renderButton(
-document.getElementById("googleButton"),
-{theme:"filled_blue",size:"large",shape:"rectangular",text:"signin_with",width:260}
-);
-}
-
 async function checkSession(){
 try{
 const result=await api("/api/auth/me");
@@ -351,165 +459,353 @@ document.getElementById("loginScreen").classList.add("hidden");
 document.getElementById("adminApp").classList.remove("hidden");
 document.getElementById("userEmail").textContent=currentUser.email||"";
 const photo=document.getElementById("userPhoto");
-if(currentUser.picture)photo.src=currentUser.picture;
-else photo.style.display="none";
+if(currentUser.picture){photo.src=currentUser.picture;photo.style.display="block"}else photo.style.display="none";
+await loadMinistryTypes();
 showPage("dashboard");
-loadDashboard();
-}catch(error){
+}catch(e){
 document.getElementById("loginScreen").classList.remove("hidden");
 document.getElementById("adminApp").classList.add("hidden");
 }
 }
-
 async function logout(){
 try{await api("/api/auth/logout",{method:"POST",body:"{}"})}catch(e){}
-currentUser=null;
-location.reload();
+currentUser=null;location.reload();
 }
 
 /* NAVIGATION */
 function toggleMenu(){document.getElementById("sidebar").classList.toggle("open")}
-
+function activateNav(button){
+document.querySelectorAll(".nav-btn").forEach(el=>el.classList.remove("active"));
+if(button)button.classList.add("active");
+}
 function showPage(page,button){
 document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
-document.querySelectorAll(".nav-btn").forEach(el=>el.classList.remove("active"));
-
-if(CONTENT_TYPES[page]){
-currentType=page;
-document.getElementById("contentHeading").textContent=CONTENT_TYPES[page];
-closeEditor();
-document.getElementById("page-content").classList.remove("hidden");
-loadItems();
-}else{
+activateNav(button);
 document.getElementById("page-"+page)?.classList.remove("hidden");
-}
-if(button)button.classList.add("active");
 if(page==="dashboard")loadDashboard();
 if(page==="donations")loadDonations();
 if(page==="messages")loadMessages();
 if(page==="settings")loadSettings();
+if(page==="payments")loadPaymentSettings();
+if(page==="beneficiaries")loadBeneficiaries();
+if(page==="assistanceRecords"){loadBeneficiaries();loadAssistanceRecords()}
 document.getElementById("sidebar").classList.remove("open");
+}
+function showContentType(type){
+currentType=type;
+document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
+document.getElementById("page-content").classList.remove("hidden");
+document.getElementById("contentHeading").textContent=CONTENT_TYPES[type]||type;
+activateNav([...document.querySelectorAll(".nav-btn")].find(b=>b.getAttribute("onclick")?.includes("'"+type+"'")));
+closeEditor();
+loadItems();
+document.getElementById("sidebar").classList.remove("open");
+}
+
+/* MINISTRY TYPES */
+async function loadMinistryTypes(){
+try{
+const result=await api("/api/ministry-types");
+const types=result.types||result.ministryTypes||[];
+if(types.length){
+CONTENT_TYPES={};
+types.forEach(t=>{
+if(t.enabled===0||t.enabled===false)return;
+const slug=t.slug||t.type;
+if(slug)CONTENT_TYPES[slug]=t.name||t.title||slug;
+});
+}
+renderMinistryNav();
+}catch(e){console.warn("Ministry types endpoint unavailable; using built-in categories.",e)}
+}
+function renderMinistryNav(){
+const nav=document.getElementById("ministryNav");
+nav.innerHTML=Object.entries(CONTENT_TYPES).map(([slug,name])=>
+`<button class="nav-btn" onclick="showContentType('${escapeHTML(slug)}')">${iconForType(slug)} ${escapeHTML(name)}</button>`
+).join("");
+}
+function iconForType(type){
+const icons={children:"👧",youth:"🧑",women:"🌸",men:"👨",worship:"🎵",prayer:"🙏",evangelism:"📖",missionary:"🌍",pastoral:"⛪","bible-study":"📚","sunday-school":"🧒","community-outreach":"🤝",assistance:"❤️",construction:"🏗️",projects:"🌱",news:"📰",gallery:"📸",testimonies:"✨",events:"📅"};
+return icons[type]||"✝️";
 }
 
 /* DASHBOARD */
 async function loadDashboard(){
 try{
-const result=await api("/api/admin/stats");
-const s=result.stats||{};
+const result=await api("/api/admin/stats"),s=result.stats||{};
 document.getElementById("statContent").textContent=s.content||0;
 document.getElementById("statDonations").textContent=s.donations||0;
 document.getElementById("statAmount").textContent=formatMoney(s.donationAmount);
 document.getElementById("statMessages").textContent=s.unreadMessages||0;
 }catch(e){console.error(e)}
+try{
+const b=await api("/api/admin/beneficiaries");
+document.getElementById("statBeneficiaries").textContent=(b.beneficiaries||[]).length;
+}catch(e){document.getElementById("statBeneficiaries").textContent="—"}
+try{
+const a=await api("/api/admin/assistance-records");
+document.getElementById("statAssistance").textContent=(a.records||a.assistance||[]).length;
+}catch(e){document.getElementById("statAssistance").textContent="—"}
 }
 
-/* CONTENT */
+/* CONTENT MANAGEMENT AND MULTIPLE PHOTOS */
 async function loadItems(){
 const table=document.getElementById("itemsTable");
 table.innerHTML='<tr><td colspan="5">Loading...</td></tr>';
 try{
 const result=await api("/api/items?admin=1&type="+encodeURIComponent(currentType));
 currentItems=result.items||[];
-if(!currentItems.length){
-table.innerHTML='<tr><td colspan="5" class="empty">No content added yet.</td></tr>';
-return;
-}
-table.innerHTML=currentItems.map(item=>`
-<tr>
-<td>${item.image?`<img class="thumb" src="${escapeHTML(item.image)}" alt="">`:"—"}</td>
+if(!currentItems.length){table.innerHTML='<tr><td colspan="5" class="empty">No content added yet.</td></tr>';return}
+table.innerHTML=currentItems.map(item=>{
+const images=getItemImages(item);
+return `<tr>
+<td>${images.length?`<img class="thumb" src="${escapeHTML(safeImage(images[0]))}" alt="">${images.length>1?`<div class="sub">+${images.length-1} more</div>`:""}`:"—"}</td>
 <td><strong>${escapeHTML(item.title)}</strong><div class="sub">${escapeHTML(item.description||"")}</div></td>
 <td><span class="badge ${item.status==="published"?"green":"red"}">${escapeHTML(item.status)}</span></td>
 <td>${Number(item.sort_order||0)}</td>
-<td><div class="actions">
-<button class="btn secondary small" onclick="editItem(${Number(item.id)})">Edit</button>
-<button class="btn danger small" onclick="deleteItem(${Number(item.id)})">Delete</button>
-</div></td>
-</tr>`).join("");
-}catch(error){
-table.innerHTML=`<tr><td colspan="5">${escapeHTML(error.message)}</td></tr>`;
+<td><div class="actions"><button class="btn secondary small" onclick="editItem(${Number(item.id)})">Edit</button><button class="btn danger small" onclick="deleteItem(${Number(item.id)})">Delete</button></div></td>
+</tr>`;
+}).join("");
+}catch(e){table.innerHTML=`<tr><td colspan="5">${escapeHTML(e.message)}</td></tr>`}
 }
+function parseMetadata(item){
+let m=item.metadata||{};
+if(typeof m==="string"){try{m=JSON.parse(m)}catch{m={}}}
+return m&&typeof m==="object"?m:{};
 }
-
+function getItemImages(item){
+const m=parseMetadata(item);
+const arr=Array.isArray(m.images)?m.images:[];
+const all=[item.image,...arr].filter(Boolean);
+return [...new Set(all)];
+}
+function renderImageGallery(){
+const box=document.getElementById("imageGallery");
+box.innerHTML=currentImages.length?currentImages.map((url,i)=>`
+<div class="image-card">
+<img src="${escapeHTML(safeImage(url))}" alt="Content image ${i+1}">
+<div class="small-note">${i===0?"Primary image":"Image "+(i+1)}</div>
+<div class="actions">
+<button class="btn secondary small" onclick="setPrimaryImage(${i})">Set primary</button>
+<button class="btn danger small" onclick="removeContentImage(${i})">Remove</button>
+</div>
+</div>`).join(""):'<div class="small-note">No images uploaded yet.</div>';
+document.getElementById("itemImage").value=currentImages[0]||"";
+}
+function setPrimaryImage(index){
+if(index<0||index>=currentImages.length)return;
+const chosen=currentImages.splice(index,1)[0];
+currentImages.unshift(chosen);renderImageGallery();
+}
+function removeContentImage(index){
+currentImages.splice(index,1);renderImageGallery();
+}
 function newItem(){
-["itemId","itemTitle","itemSlug","itemDescription","itemContent","itemImage","itemFile"].forEach(id=>document.getElementById(id).value="");
+["itemId","itemTitle","itemSlug","itemDescription","itemContent","itemImage"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("itemFiles").value="";
 document.getElementById("itemOrder").value="0";
 document.getElementById("itemStatus").value="published";
-document.getElementById("imagePreview").classList.add("hidden");
-document.getElementById("editorHeading").textContent="Add New Content";
+currentImages=[];
+renderImageGallery();
+document.getElementById("editorHeading").textContent="Add New "+(CONTENT_TYPES[currentType]||"Content");
+document.getElementById("editorStatus").className="status";
 document.getElementById("itemEditor").classList.remove("hidden");
 document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
 }
-
 function closeEditor(){document.getElementById("itemEditor").classList.add("hidden")}
-
 function editItem(id){
-const item=currentItems.find(x=>Number(x.id)===Number(id));
-if(!item)return;
+const item=currentItems.find(x=>Number(x.id)===Number(id));if(!item)return;
 document.getElementById("itemId").value=item.id;
 document.getElementById("itemTitle").value=item.title||"";
 document.getElementById("itemSlug").value=item.slug||"";
 document.getElementById("itemOrder").value=item.sort_order||0;
 document.getElementById("itemDescription").value=item.description||"";
 document.getElementById("itemContent").value=item.content||"";
-document.getElementById("itemImage").value=item.image||"";
 document.getElementById("itemStatus").value=item.status||"published";
-const preview=document.getElementById("imagePreview");
-if(item.image){preview.src=item.image;preview.classList.remove("hidden")}
-else preview.classList.add("hidden");
+currentImages=getItemImages(item);
+renderImageGallery();
+document.getElementById("itemFiles").value="";
 document.getElementById("editorHeading").textContent="Edit Content";
+document.getElementById("editorStatus").className="status";
 document.getElementById("itemEditor").classList.remove("hidden");
 document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
 }
-
+async function uploadImages(){
+const files=[...document.getElementById("itemFiles").files];
+if(!files.length){message("editorStatus","Please select one or more images.","error");return}
+const allowed=["image/jpeg","image/png","image/webp","image/gif"];
+for(const file of files){
+if(file.size>8*1024*1024){message("editorStatus",file.name+" exceeds 8 MB.","error");return}
+if(!allowed.includes(file.type)){message("editorStatus",file.name+" has an unsupported image type.","error");return}
+}
+let uploaded=0;
+try{
+message("editorStatus","Uploading "+files.length+" image(s)...");
+for(const file of files){
+const form=new FormData();form.append("file",file);
+const result=await api("/api/admin/upload",{method:"POST",body:form});
+if(!result.url)throw new Error("Upload response did not include an image URL.");
+currentImages.push(result.url);uploaded++;
+renderImageGallery();
+}
+document.getElementById("itemFiles").value="";
+message("editorStatus",uploaded+" image(s) uploaded. Save the content to keep the image list.");
+}catch(e){message("editorStatus","Uploaded "+uploaded+" image(s). "+e.message,"error")}
+}
 async function saveItem(){
 const id=document.getElementById("itemId").value;
+const title=document.getElementById("itemTitle").value.trim();
+if(!title){message("editorStatus","Please enter a title.","error");return}
+const images=[...new Set(currentImages.filter(Boolean))];
 const body={
-type:currentType,
-title:document.getElementById("itemTitle").value.trim(),
+type:currentType,title,
 slug:document.getElementById("itemSlug").value.trim(),
 sort_order:Number(document.getElementById("itemOrder").value||0),
 description:document.getElementById("itemDescription").value,
 content:document.getElementById("itemContent").value,
-image:document.getElementById("itemImage").value.trim(),
+image:images[0]||"",
 status:document.getElementById("itemStatus").value,
-metadata:{}
+metadata:{images}
 };
-if(!body.title){message("editorStatus","Please enter a title.","error");return}
 try{
-await api(id?"/api/items/"+id:"/api/items",{
-method:id?"PUT":"POST",body:JSON.stringify(body)
-});
+await api(id?"/api/items/"+id:"/api/items",{method:id?"PUT":"POST",body:JSON.stringify(body)});
 message("editorStatus","Content saved successfully.");
 closeEditor();await loadItems();await loadDashboard();
 }catch(e){message("editorStatus",e.message,"error")}
 }
-
 async function deleteItem(id){
 if(!confirm("Delete this content permanently?"))return;
-try{
-await api("/api/items/"+id,{method:"DELETE"});
-await loadItems();await loadDashboard();
-}catch(e){alert(e.message)}
+try{await api("/api/items/"+id,{method:"DELETE"});await loadItems();await loadDashboard()}
+catch(e){alert(e.message)}
 }
 
-/* IMAGE UPLOAD */
-async function uploadImage(){
-const file=document.getElementById("itemFile").files[0];
-if(!file){message("editorStatus","Please select an image first.","error");return}
-if(file.size>8*1024*1024){message("editorStatus","Image must be 8 MB or smaller.","error");return}
-if(!["image/jpeg","image/png","image/webp","image/gif"].includes(file.type)){
-message("editorStatus","Unsupported image type.","error");return;
+/* BENEFICIARY MANAGEMENT */
+function newBeneficiary(){
+clearBeneficiaryForm();
+document.getElementById("beneficiaryEditorTitle").textContent="Register Beneficiary Family";
+document.getElementById("beneficiaryEditor").classList.remove("hidden");
+document.getElementById("beneficiaryEditor").scrollIntoView({behavior:"smooth"});
 }
-const form=new FormData();
-form.append("file",file);
+function clearBeneficiaryForm(){
+["beneficiaryId","benName","benContactPerson","benPhone","benEmail","benAddress","benDistrict","benFamilyDetails","benLiving","benNotes"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("benMembers").value="1";
+document.getElementById("benStatus").value="active";
+document.getElementById("benDate").value=dateToday();
+}
+function closeBeneficiaryEditor(){document.getElementById("beneficiaryEditor").classList.add("hidden")}
+async function loadBeneficiaries(){
+const table=document.getElementById("beneficiariesTable");
+if(!table)return;
+table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
 try{
-message("editorStatus","Uploading image...");
-const result=await api("/api/admin/upload",{method:"POST",body:form});
-document.getElementById("itemImage").value=result.url;
-const preview=document.getElementById("imagePreview");
-preview.src=result.url;preview.classList.remove("hidden");
-message("editorStatus","Image uploaded successfully.");
-}catch(e){message("editorStatus",e.message,"error")}
+const result=await api("/api/admin/beneficiaries");
+beneficiaries=result.beneficiaries||[];
+if(!beneficiaries.length){table.innerHTML='<tr><td colspan="6" class="empty">No beneficiary families registered.</td></tr>'}
+else table.innerHTML=beneficiaries.map(b=>`
+<tr>
+<td><strong>${escapeHTML(b.name||b.family_name||"")}</strong><div class="sub">${escapeHTML(b.address||"")}</div></td>
+<td>${escapeHTML(b.contact_person||"")}<div class="sub">${escapeHTML(b.phone||"")}</div></td>
+<td>${escapeHTML(b.district||"")}</td>
+<td>${Number(b.family_members||b.member_count||1)}</td>
+<td><span class="badge ${b.status==="active"?"green":"red"}">${escapeHTML(b.status||"active")}</span></td>
+<td><div class="actions"><button class="btn secondary small" onclick="editBeneficiary(${Number(b.id)})">Edit</button><button class="btn danger small" onclick="deleteBeneficiary(${Number(b.id)})">Delete</button></div></td>
+</tr>`).join("");
+}catch(e){table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`}
+}
+function editBeneficiary(id){
+const b=beneficiaries.find(x=>Number(x.id)===Number(id));if(!b)return;
+document.getElementById("beneficiaryId").value=b.id;
+document.getElementById("benName").value=b.name||b.family_name||"";
+document.getElementById("benContactPerson").value=b.contact_person||"";
+document.getElementById("benPhone").value=b.phone||"";
+document.getElementById("benEmail").value=b.email||"";
+document.getElementById("benAddress").value=b.address||"";
+document.getElementById("benDistrict").value=b.district||"";
+document.getElementById("benMembers").value=b.family_members||b.member_count||1;
+document.getElementById("benFamilyDetails").value=b.family_details||"";
+document.getElementById("benLiving").value=b.living_conditions||"";
+document.getElementById("benStatus").value=b.status||"active";
+document.getElementById("benDate").value=(b.registration_date||"").slice(0,10);
+document.getElementById("benNotes").value=b.notes||"";
+document.getElementById("beneficiaryEditorTitle").textContent="Edit Beneficiary Family";
+document.getElementById("beneficiaryEditor").classList.remove("hidden");
+}
+async function saveBeneficiary(){
+const id=document.getElementById("beneficiaryId").value;
+const body={
+name:document.getElementById("benName").value.trim(),
+contact_person:document.getElementById("benContactPerson").value,
+phone:document.getElementById("benPhone").value,
+email:document.getElementById("benEmail").value,
+address:document.getElementById("benAddress").value,
+district:document.getElementById("benDistrict").value,
+family_members:Number(document.getElementById("benMembers").value||1),
+family_details:document.getElementById("benFamilyDetails").value,
+living_conditions:document.getElementById("benLiving").value,
+status:document.getElementById("benStatus").value,
+registration_date:document.getElementById("benDate").value,
+notes:document.getElementById("benNotes").value
+};
+if(!body.name){message("beneficiaryStatus","Enter a family or beneficiary name.","error");return}
+try{
+await api(id?"/api/admin/beneficiaries/"+id:"/api/admin/beneficiaries",{method:id?"PUT":"POST",body:JSON.stringify(body)});
+message("beneficiaryStatus","Beneficiary family saved.");
+closeBeneficiaryEditor();await loadBeneficiaries();await loadDashboard();
+}catch(e){message("beneficiaryStatus",e.message,"error")}
+}
+async function deleteBeneficiary(id){
+if(!confirm("Delete this beneficiary and associated assistance records?"))return;
+try{await api("/api/admin/beneficiaries/"+id,{method:"DELETE"});await loadBeneficiaries();await loadDashboard()}
+catch(e){alert(e.message)}
+}
+
+/* ASSISTANCE RECORDS */
+async function newAssistance(){
+await loadBeneficiaries();
+const select=document.getElementById("assistBeneficiary");
+select.innerHTML='<option value="">Select family</option>'+beneficiaries.map(b=>
+`<option value="${Number(b.id)}">${escapeHTML(b.name||b.family_name||"Beneficiary")}</option>`).join("");
+document.getElementById("assistDate").value=dateToday();
+["assistQuantity","assistAmount","assistDescription","assistProvider","assistReference"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("assistanceEditor").classList.remove("hidden");
+document.getElementById("assistanceEditor").scrollIntoView({behavior:"smooth"});
+}
+function closeAssistanceEditor(){document.getElementById("assistanceEditor").classList.add("hidden")}
+async function saveAssistance(){
+const body={
+beneficiary_id:Number(document.getElementById("assistBeneficiary").value),
+assistance_type:document.getElementById("assistType").value,
+assistance_date:document.getElementById("assistDate").value,
+quantity:document.getElementById("assistQuantity").value,
+amount:Number(document.getElementById("assistAmount").value||0),
+description:document.getElementById("assistDescription").value,
+provided_by:document.getElementById("assistProvider").value,
+reference:document.getElementById("assistReference").value
+};
+if(!body.beneficiary_id){message("assistanceStatus","Select a beneficiary family.","error");return}
+try{
+await api("/api/admin/assistance-records",{method:"POST",body:JSON.stringify(body)});
+message("assistanceStatus","Assistance record saved.");
+closeAssistanceEditor();await loadAssistanceRecords();await loadDashboard();
+}catch(e){message("assistanceStatus",e.message,"error")}
+}
+async function loadAssistanceRecords(){
+const table=document.getElementById("assistanceTable");
+if(!table)return;
+table.innerHTML='<tr><td colspan="5">Loading...</td></tr>';
+try{
+const result=await api("/api/admin/assistance-records");
+const records=result.records||result.assistance||[];
+if(!records.length){table.innerHTML='<tr><td colspan="5" class="empty">No assistance records yet.</td></tr>';return}
+table.innerHTML=records.map(r=>{
+const b=beneficiaries.find(x=>Number(x.id)===Number(r.beneficiary_id));
+return `<tr><td>${escapeHTML(r.assistance_date||"")}</td>
+<td>${escapeHTML(r.beneficiary_name||b?.name||b?.family_name||("Family #"+r.beneficiary_id))}</td>
+<td><span class="badge">${escapeHTML(r.assistance_type||"")}</span></td>
+<td>${escapeHTML(r.description||r.quantity||"")}</td>
+<td>${formatMoney(r.amount)} LKR</td></tr>`;
+}).join("");
+}catch(e){table.innerHTML=`<tr><td colspan="5">${escapeHTML(e.message)}</td></tr>`}
 }
 
 /* DONATIONS */
@@ -517,37 +813,29 @@ async function loadDonations(){
 const table=document.getElementById("donationsTable");
 table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
 try{
-const result=await api("/api/admin/donations");
-const donations=result.donations||[];
-const totals=result.totals||{};
+const result=await api("/api/admin/donations"),donations=result.donations||[],totals=result.totals||{};
 document.getElementById("donationCount").textContent=totals.count??donations.length;
 document.getElementById("donationTotal").textContent=formatMoney(totals.total);
-if(!donations.length){
-table.innerHTML='<tr><td colspan="6" class="empty">No donation records.</td></tr>';return;
-}
+if(!donations.length){table.innerHTML='<tr><td colspan="6" class="empty">No donation records.</td></tr>';return}
 table.innerHTML=donations.map(d=>`
-<tr>
-<td>${escapeHTML(d.donation_date)}</td>
-<td>${escapeHTML(d.donor_name)}<div class="sub">${escapeHTML(d.donor_email||"")}</div></td>
+<tr><td>${escapeHTML(d.donation_date)}</td>
+<td><strong>${escapeHTML(d.donor_name)}</strong><div class="sub">${escapeHTML(d.donor_email||"")}</div></td>
 <td><strong>${escapeHTML(d.currency||"LKR")} ${formatMoney(d.amount)}</strong></td>
-<td>${escapeHTML(d.project||"")}</td>
-<td>${escapeHTML(d.reference||"")}</td>
-<td><button class="btn danger small" onclick="deleteDonation(${Number(d.id)})">Delete</button></td>
-</tr>`).join("");
+<td>${escapeHTML(d.project||"")}</td><td>${escapeHTML(d.reference||"")}</td>
+<td><button class="btn danger small" onclick="deleteDonation(${Number(d.id)})">Delete</button></td></tr>`).join("");
 }catch(e){table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`}
 }
-
 async function saveDonation(){
 const amount=Number(document.getElementById("donorAmount").value);
 if(!Number.isFinite(amount)||amount<=0){message("donationStatus","Enter a valid donation amount.","error");return}
 const body={
 donor_name:document.getElementById("donorName").value||"Anonymous",
 donor_email:document.getElementById("donorEmail").value,
-amount,
-project:document.getElementById("donorProject").value,
+amount,project:document.getElementById("donorProject").value,
 reference:document.getElementById("donorReference").value,
 donation_date:document.getElementById("donorDate").value,
-notes:document.getElementById("donorNotes").value
+notes:document.getElementById("donorNotes").value,
+payment_method:document.getElementById("donorMethod").value
 };
 try{
 await api("/api/admin/donations",{method:"POST",body:JSON.stringify(body)});
@@ -556,13 +844,10 @@ message("donationStatus","Donation record saved.");
 await loadDonations();await loadDashboard();
 }catch(e){message("donationStatus",e.message,"error")}
 }
-
 async function deleteDonation(id){
 if(!confirm("Delete this donation record?"))return;
-try{
-await api("/api/admin/donations/"+id,{method:"DELETE"});
-await loadDonations();await loadDashboard();
-}catch(e){alert(e.message)}
+try{await api("/api/admin/donations/"+id,{method:"DELETE"});await loadDonations();await loadDashboard()}
+catch(e){alert(e.message)}
 }
 
 /* MESSAGES */
@@ -570,75 +855,89 @@ async function loadMessages(){
 const table=document.getElementById("messagesTable");
 table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
 try{
-const result=await api("/api/messages");
-const messages=result.messages||[];
-if(!messages.length){
-table.innerHTML='<tr><td colspan="6" class="empty">No messages received.</td></tr>';return;
-}
+const result=await api("/api/messages"),messages=result.messages||[];
+if(!messages.length){table.innerHTML='<tr><td colspan="6" class="empty">No messages received.</td></tr>';return}
 table.innerHTML=messages.map(m=>`
-<tr>
-<td>${escapeHTML(m.created_at||"")}</td>
-<td>${escapeHTML(m.name)}</td>
+<tr><td>${escapeHTML(m.created_at||"")}</td><td>${escapeHTML(m.name)}</td>
 <td><a style="color:var(--blue)" href="mailto:${escapeHTML(m.email)}">${escapeHTML(m.email)}</a></td>
 <td><strong>${escapeHTML(m.subject||"No subject")}</strong><div style="margin-top:6px;white-space:pre-wrap">${escapeHTML(m.message)}</div></td>
 <td><span class="badge ${m.status==="read"?"green":"red"}">${escapeHTML(m.status)}</span></td>
 <td><div class="actions">
 <button class="btn secondary small" onclick="toggleMessage(${Number(m.id)},'${m.status==="read"?"new":"read"}')">${m.status==="read"?"Unread":"Mark read"}</button>
 <button class="btn danger small" onclick="deleteMessage(${Number(m.id)})">Delete</button>
-</div></td>
-</tr>`).join("");
+</div></td></tr>`).join("");
 }catch(e){table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`}
 }
-
 async function toggleMessage(id,status){
-try{
-await api("/api/messages/"+id,{method:"PUT",body:JSON.stringify({id,status})});
-await loadMessages();await loadDashboard();
-}catch(e){alert(e.message)}
+try{await api("/api/messages/"+id,{method:"PUT",body:JSON.stringify({id,status})});await loadMessages();await loadDashboard()}
+catch(e){alert(e.message)}
 }
-
 async function deleteMessage(id){
 if(!confirm("Delete this message permanently?"))return;
-try{
-await api("/api/messages/"+id,{method:"DELETE"});
-await loadMessages();await loadDashboard();
-}catch(e){alert(e.message)}
+try{await api("/api/messages/"+id,{method:"DELETE"});await loadMessages();await loadDashboard()}
+catch(e){alert(e.message)}
 }
 
-/* SETTINGS */
+/* WEBSITE SETTINGS */
 const SETTING_FIELDS={
-ministry_name:"settingName",
-description:"settingDescription",
-contact_email:"settingEmail",
-contact_phone:"settingPhone",
-whatsapp:"settingWhatsapp",
-address:"settingAddress",
-facebook:"settingFacebook",
-youtube:"settingYoutube"
+ministry_name:"settingName",description:"settingDescription",
+contact_email:"settingEmail",contact_phone:"settingPhone",
+whatsapp:"settingWhatsapp",address:"settingAddress",
+facebook:"settingFacebook",youtube:"settingYoutube"
 };
-
 async function loadSettings(){
 try{
-const result=await api("/api/admin/settings");
-const settings=result.settings||{};
-Object.entries(SETTING_FIELDS).forEach(([key,id])=>{
-document.getElementById(id).value=settings[key]||"";
-});
+const result=await api("/api/admin/settings"),settings=result.settings||{};
+Object.entries(SETTING_FIELDS).forEach(([key,id])=>document.getElementById(id).value=settings[key]||"");
 }catch(e){message("settingsStatus",e.message,"error")}
 }
-
 async function saveSettings(){
 try{
 for(const [key,id] of Object.entries(SETTING_FIELDS)){
-await api("/api/admin/settings",{
-method:"POST",
-body:JSON.stringify({key,value:document.getElementById(id).value})
-});
+await api("/api/admin/settings",{method:"POST",body:JSON.stringify({key,value:document.getElementById(id).value})});
 }
 message("settingsStatus","Website settings saved successfully.");
 }catch(e){message("settingsStatus",e.message,"error")}
 }
 
+/* PAYMENT SETTINGS */
+const PAYMENT_FIELDS={
+bank_enabled:"bankEnabled",
+bank_name:"payBankName",
+bank_account_holder:"payAccountHolder",
+bank_account_number:"payAccountNumber",
+bank_branch:"payBranch",
+bank_swift:"paySwift",
+bank_currency:"payCurrency",
+donation_link_enabled:"linkEnabled",
+donation_url:"payDonationUrl",
+payhere_enabled:"payhereEnabled",
+payhere_merchant_id:"payhereMerchant",
+payhere_mode:"payhereMode"
+};
+function setCheck(id,value){document.getElementById(id).checked=value===true||value===1||value==="1"||value==="true"}
+async function loadPaymentSettings(){
+try{
+const result=await api("/api/admin/settings"),s=result.settings||{};
+for(const [key,id] of Object.entries(PAYMENT_FIELDS)){
+const el=document.getElementById(id);
+if(el.type==="checkbox")setCheck(id,s[key]);
+else if(s[key]!==undefined)el.value=s[key];
+}
+}catch(e){message("paymentStatus",e.message,"error")}
+}
+async function savePaymentSettings(){
+try{
+for(const [key,id] of Object.entries(PAYMENT_FIELDS)){
+const el=document.getElementById(id);
+const value=el.type==="checkbox"?(el.checked?"1":"0"):el.value;
+await api("/api/admin/settings",{method:"POST",body:JSON.stringify({key,value})});
+}
+message("paymentStatus","Payment settings saved. Check the public website to confirm the displayed details.");
+}catch(e){message("paymentStatus",e.message,"error")}
+}
+
+/* API TEST */
 async function checkAPI(){
 try{
 const result=await api("/api/health");
@@ -647,7 +946,7 @@ message("apiStatus","Connected: "+(result.service||"GOH Ministries")+" — "+(re
 }
 
 /* STARTUP */
-document.getElementById("donorDate").value=new Date().toISOString().slice(0,10);
+document.getElementById("donorDate").value=dateToday();
 window.addEventListener("load",()=>{
 initializeGoogle();
 checkSession();
