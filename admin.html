@@ -3,563 +3,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#091426">
 <title>GOH Ministries | Admin Dashboard</title>
-
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-
 <style>
 :root{
-  --bg:#091426;
-  --panel:#12233b;
-  --panel2:#172b46;
-  --gold:#ffd166;
-  --text:#f5f7fb;
-  --muted:#aebbd0;
-  --line:#30435f;
-  --green:#35c98b;
-  --red:#ff6b6b;
-  --blue:#69a9ff;
+--bg:#091426;--panel:#12233b;--panel2:#172b46;
+--gold:#ffd166;--text:#f5f7fb;--muted:#aebbd0;
+--line:#30435f;--green:#35c98b;--red:#ff6b6b;--blue:#69a9ff
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-.topbar{
-  background:#0d1c31;
-  border-bottom:1px solid var(--line);
-  padding:15px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
+.topbar{background:#0d1c31;border-bottom:1px solid var(--line);padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px;position:sticky;top:0;z-index:10}
 .brand{display:flex;align-items:center;gap:12px}
-.logo{
-  width:42px;height:42px;border-radius:12px;
-  display:grid;place-items:center;
-  background:var(--gold);color:#101d30;
-  font-size:23px;font-weight:bold;
-}
+.logo{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--gold);color:#101d30;font-size:23px;font-weight:bold}
 .brand h1{font-size:17px;margin:0}
 .brand small{color:var(--muted)}
 .user-area{display:flex;align-items:center;gap:10px}
 .user-area img{width:34px;height:34px;border-radius:50%}
 .layout{display:flex;min-height:calc(100vh - 73px)}
-.sidebar{
-  width:245px;flex-shrink:0;
-  background:#0d1c31;
-  border-right:1px solid var(--line);
-  padding:18px 12px;
-}
-.nav-title{
-  font-size:11px;color:#8193ad;
-  padding:14px 12px 7px;
-  text-transform:uppercase;letter-spacing:1px;
-}
-.nav-btn{
-  display:flex;width:100%;gap:11px;
-  align-items:center;text-align:left;
-  padding:12px;border:0;border-radius:9px;
-  color:var(--muted);background:transparent;
-  margin:3px 0;font-weight:600;
-}
-.nav-btn:hover,.nav-btn.active{
-  background:#203957;color:var(--gold);
-}
+.sidebar{width:245px;flex-shrink:0;background:#0d1c31;border-right:1px solid var(--line);padding:18px 12px}
+.nav-title{font-size:11px;color:#8193ad;padding:14px 12px 7px;text-transform:uppercase;letter-spacing:1px}
+.nav-btn{display:flex;width:100%;gap:11px;align-items:center;text-align:left;padding:12px;border:0;border-radius:9px;color:var(--muted);background:transparent;margin:3px 0;font-weight:600}
+.nav-btn:hover,.nav-btn.active{background:#203957;color:var(--gold)}
 .main{flex:1;padding:25px;min-width:0}
-.page-head{
-  display:flex;justify-content:space-between;
-  align-items:center;gap:12px;flex-wrap:wrap;
-  margin-bottom:22px;
-}
+.page-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 h2{margin:0 0 7px;font-size:24px}
 .sub{color:var(--muted);font-size:13px}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:14px;margin-bottom:22px;
-}
-.card,.panel{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:13px;padding:18px;
-}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px}
 .card .label{color:var(--muted);font-size:13px}
 .card .number{font-size:27px;font-weight:bold;margin-top:10px}
 .card .symbol{font-size:21px;margin-bottom:8px}
 .panel{margin-bottom:18px}
 .panel h3{margin:0 0 15px;font-size:17px}
-.btn{
-  border:0;border-radius:8px;padding:10px 15px;
-  font-weight:bold;background:var(--gold);color:#101d30;
-}
+.btn{border:0;border-radius:8px;padding:10px 15px;font-weight:bold;background:var(--gold);color:#101d30}
 .btn:hover{filter:brightness(1.08)}
 .btn.secondary{background:#29415f;color:white}
 .btn.danger{background:#74333b;color:white}
-.btn.success{background:#176c50;color:white}
 .btn.small{padding:7px 10px;font-size:12px}
-input,textarea,select{
-  width:100%;padding:11px 12px;
-  border:1px solid var(--line);border-radius:8px;
-  background:#0b192c;color:white;
-  outline:none;margin:6px 0 13px;
-}
-input:focus,textarea:focus,select:focus{
-  border-color:var(--gold);
-}
+input,textarea,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#0b192c;color:white;outline:none;margin:6px 0 13px}
+input:focus,textarea:focus,select:focus{border-color:var(--gold)}
 textarea{min-height:110px;resize:vertical}
 label{font-size:13px;color:#cbd5e1}
-.form-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-grid .full{grid-column:1/-1}
 .table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:600px}
-th,td{
-  text-align:left;padding:12px 10px;
-  border-bottom:1px solid var(--line);
-  font-size:13px;vertical-align:top;
-}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
 th{color:var(--gold);font-weight:600}
-td{color:#e1e8f2}
-.thumb{
-  width:65px;height:48px;object-fit:cover;
-  border-radius:6px;background:#263a54;
-}
+.thumb{width:65px;height:48px;object-fit:cover;border-radius:6px;background:#263a54}
 .actions{display:flex;gap:6px;flex-wrap:wrap}
-.badge{
-  display:inline-block;padding:5px 8px;
-  border-radius:20px;font-size:11px;
-  background:#29415f;color:#dce8f8;
-}
+.badge{display:inline-block;padding:5px 8px;border-radius:20px;font-size:11px;background:#29415f;color:#dce8f8}
 .badge.green{background:#174e3d;color:#8ff0c6}
 .badge.red{background:#5a2b34;color:#ffb7b7}
-.notice{
-  padding:12px;border-radius:8px;
-  background:#1a3551;color:#c8ddf8;
-  font-size:13px;margin-bottom:14px;
-}
-.status{
-  padding:11px 13px;border-radius:8px;
-  margin:12px 0;font-size:13px;
-  display:none;white-space:pre-wrap;
-}
+.notice{padding:12px;border-radius:8px;background:#1a3551;color:#c8ddf8;font-size:13px;margin-bottom:14px}
+.status{padding:11px 13px;border-radius:8px;margin:12px 0;font-size:13px;display:none;white-space:pre-wrap}
 .status.show{display:block}
 .status.error{background:#552b34;color:#ffc4c4}
 .status.ok{background:#174b3b;color:#a7f3d0}
-.login-screen{
-  min-height:100vh;display:grid;place-items:center;
-  padding:20px;
-  background:
-    radial-gradient(circle at top,#203d60 0,transparent 50%),
-    var(--bg);
-}
-.login-card{
-  width:min(430px,100%);
-  text-align:center;padding:35px 25px;
-  border:1px solid var(--line);
-  background:var(--panel);
-  border-radius:18px;
-}
-.login-icon{
-  width:70px;height:70px;margin:auto auto 15px;
-  display:grid;place-items:center;
-  background:var(--gold);color:#111c2b;
-  font-size:35px;border-radius:18px;
-}
+.login-screen{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top,#203d60 0,transparent 50%),var(--bg)}
+.login-card{width:min(430px,100%);text-align:center;padding:35px 25px;border:1px solid var(--line);background:var(--panel);border-radius:18px}
+.login-icon{width:70px;height:70px;margin:auto auto 15px;display:grid;place-items:center;background:var(--gold);color:#111c2b;font-size:35px;border-radius:18px}
 .login-card h1{font-size:24px;margin:8px}
 .login-card p{color:var(--muted);line-height:1.6;font-size:14px}
 .google-box{display:flex;justify-content:center;margin:24px 0}
 .mobile-menu{display:none}
 .empty{text-align:center;color:var(--muted);padding:25px}
 .preview{max-width:180px;max-height:110px;border-radius:8px;display:block;margin:8px 0}
-@media(max-width:900px){
-  .cards{grid-template-columns:repeat(2,1fr)}
-  .sidebar{width:205px}
-}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.sidebar{width:205px}}
 @media(max-width:650px){
-  .layout{display:block}
-  .sidebar{
-    width:100%;display:none;border-right:0;
-    border-bottom:1px solid var(--line);
-    padding:8px 12px;
-  }
-  .sidebar.open{display:block}
-  .main{padding:17px}
-  .topbar{padding:12px}
-  .mobile-menu{display:inline-block}
-  .cards{grid-template-columns:1fr 1fr;gap:9px}
-  .card{padding:13px}
-  .card .number{font-size:22px}
-  .form-grid{grid-template-columns:1fr}
-  .form-grid .full{grid-column:auto}
-  .brand h1{font-size:14px}
+.layout{display:block}.sidebar{width:100%;display:none;border-right:0;border-bottom:1px solid var(--line);padding:8px 12px}
+.sidebar.open{display:block}.main{padding:17px}.topbar{padding:12px}.mobile-menu{display:inline-block}
+.cards{grid-template-columns:1fr 1fr;gap:9px}.card{padding:13px}.card .number{font-size:22px}
+.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.brand h1{font-size:14px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- LOGIN -->
 <section id="loginScreen" class="login-screen">
-  <div class="login-card">
-    <div class="login-icon">✝</div>
-    <h1>GOH Ministries</h1>
-    <p>Secure administrator login</p>
-    <p>Sign in with your authorized Google administrator account.</p>
-
-    <div id="googleButton" class="google-box"></div>
-    <div id="loginStatus" class="status"></div>
-
-    <small style="color:#8193ad">
-      Authorized access only
-    </small>
-  </div>
+<div class="login-card">
+<div class="login-icon">✝</div>
+<h1>GOH Ministries</h1>
+<p>Secure administrator login</p>
+<p>Sign in with your authorized Google administrator account.</p>
+<div id="googleButton" class="google-box"></div>
+<div id="loginStatus" class="status"></div>
+<small style="color:#8193ad">Authorized access only</small>
+</div>
 </section>
 
-<!-- ADMIN -->
 <div id="adminApp" class="hidden">
-
 <header class="topbar">
-  <div class="brand">
-    <button class="btn secondary mobile-menu" onclick="toggleMenu()">☰</button>
-    <div class="logo">✝</div>
-    <div>
-      <h1>GOH Ministries</h1>
-      <small>Administration Dashboard</small>
-    </div>
-  </div>
-
-  <div class="user-area">
-    <img id="userPhoto" src="" alt="">
-    <span id="userEmail" style="font-size:12px"></span>
-    <button class="btn secondary small" onclick="logout()">Logout</button>
-  </div>
+<div class="brand">
+<button class="btn secondary mobile-menu" onclick="toggleMenu()">☰</button>
+<div class="logo">✝</div>
+<div><h1>GOH Ministries</h1><small>Administration Dashboard</small></div>
+</div>
+<div class="user-area">
+<img id="userPhoto" src="" alt="">
+<span id="userEmail" style="font-size:12px"></span>
+<button class="btn secondary small" onclick="logout()">Logout</button>
+</div>
 </header>
 
 <div class="layout">
-
 <aside class="sidebar" id="sidebar">
-
-  <div class="nav-title">Overview</div>
-  <button class="nav-btn active" data-page="dashboard" onclick="showPage('dashboard',this)">📊 Dashboard</button>
-
-  <div class="nav-title">Website content</div>
-  <button class="nav-btn" onclick="showPage('children',this)">👧 Children's Ministry</button>
-  <button class="nav-btn" onclick="showPage('assistance',this)">❤️ Family Assistance</button>
-  <button class="nav-btn" onclick="showPage('construction',this)">🏗️ Church Construction</button>
-  <button class="nav-btn" onclick="showPage('projects',this)">🌍 Projects</button>
-  <button class="nav-btn" onclick="showPage('news',this)">📰 News & Announcements</button>
-  <button class="nav-btn" onclick="showPage('gallery',this)">📸 Photo Gallery</button>
-  <button class="nav-btn" onclick="showPage('testimonies',this)">🙏 Testimonies</button>
-  <button class="nav-btn" onclick="showPage('events',this)">📅 Events</button>
-
-  <div class="nav-title">Management</div>
-  <button class="nav-btn" onclick="showPage('donations',this)">💛 Donations</button>
-  <button class="nav-btn" onclick="showPage('messages',this)">✉️ Messages</button>
-  <button class="nav-btn" onclick="showPage('settings',this)">⚙️ Website Settings</button>
-
-  <div class="nav-title">Website</div>
-  <a href="https://gohministries.org/" target="_blank"
-     style="display:block;padding:12px;color:var(--muted);text-decoration:none">
-     ↗ View Website
-  </a>
+<div class="nav-title">Overview</div>
+<button class="nav-btn active" onclick="showPage('dashboard',this)">📊 Dashboard</button>
+<div class="nav-title">Website content</div>
+<button class="nav-btn" onclick="showPage('children',this)">👧 Children's Ministry</button>
+<button class="nav-btn" onclick="showPage('assistance',this)">❤️ Family Assistance</button>
+<button class="nav-btn" onclick="showPage('construction',this)">🏗️ Church Construction</button>
+<button class="nav-btn" onclick="showPage('projects',this)">🌍 Projects</button>
+<button class="nav-btn" onclick="showPage('news',this)">📰 News & Announcements</button>
+<button class="nav-btn" onclick="showPage('gallery',this)">📸 Photo Gallery</button>
+<button class="nav-btn" onclick="showPage('testimonies',this)">🙏 Testimonies</button>
+<button class="nav-btn" onclick="showPage('events',this)">📅 Events</button>
+<div class="nav-title">Management</div>
+<button class="nav-btn" onclick="showPage('donations',this)">💛 Donations</button>
+<button class="nav-btn" onclick="showPage('messages',this)">✉️ Messages</button>
+<button class="nav-btn" onclick="showPage('settings',this)">⚙️ Website Settings</button>
+<div class="nav-title">Website</div>
+<a href="https://gohministries.org/" target="_blank" style="display:block;padding:12px;color:var(--muted);text-decoration:none">↗ View Website</a>
 </aside>
 
 <main class="main">
 
-<!-- DASHBOARD -->
 <section id="page-dashboard" class="page">
-  <div class="page-head">
-    <div>
-      <h2>Dashboard</h2>
-      <div class="sub">GOH Ministries overview</div>
-    </div>
-    <button class="btn secondary" onclick="loadDashboard()">↻ Refresh</button>
-  </div>
-
-  <div class="cards">
-    <div class="card">
-      <div class="symbol">📚</div>
-      <div class="label">Website Content</div>
-      <div class="number" id="statContent">0</div>
-    </div>
-    <div class="card">
-      <div class="symbol">💛</div>
-      <div class="label">Donation Records</div>
-      <div class="number" id="statDonations">0</div>
-    </div>
-    <div class="card">
-      <div class="symbol">💰</div>
-      <div class="label">Total Donations (LKR)</div>
-      <div class="number" id="statAmount">0</div>
-    </div>
-    <div class="card">
-      <div class="symbol">✉️</div>
-      <div class="label">Unread Messages</div>
-      <div class="number" id="statMessages">0</div>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>Welcome to GOH Ministries Admin</h3>
-    <p class="sub">
-      Manage ministry activities, church construction updates,
-      family assistance, projects, photos, news, donations and
-      messages from this dashboard.
-    </p>
-    <div class="notice">
-      Remember to publish your content after saving it.
-      Draft content will not appear on the public website.
-    </div>
-  </div>
+<div class="page-head">
+<div><h2>Dashboard</h2><div class="sub">GOH Ministries overview</div></div>
+<button class="btn secondary" onclick="loadDashboard()">↻ Refresh</button>
+</div>
+<div class="cards">
+<div class="card"><div class="symbol">📚</div><div class="label">Website Content</div><div class="number" id="statContent">0</div></div>
+<div class="card"><div class="symbol">💛</div><div class="label">Donation Records</div><div class="number" id="statDonations">0</div></div>
+<div class="card"><div class="symbol">💰</div><div class="label">Total Donations (LKR)</div><div class="number" id="statAmount">0</div></div>
+<div class="card"><div class="symbol">✉️</div><div class="label">Unread Messages</div><div class="number" id="statMessages">0</div></div>
+</div>
+<div class="panel">
+<h3>Welcome to GOH Ministries Admin</h3>
+<p class="sub">Manage ministry activities, church construction updates, family assistance, projects, photos, news, donations and messages.</p>
+<div class="notice">Remember to publish your content after saving it. Draft content will not appear on the public website.</div>
+</div>
 </section>
 
-<!-- CONTENT MANAGEMENT -->
 <section id="page-content" class="page hidden">
-  <div class="page-head">
-    <div>
-      <h2 id="contentHeading">Content Management</h2>
-      <div class="sub">Create, edit and publish website content</div>
-    </div>
-    <button class="btn" onclick="newItem()">＋ Add New</button>
-  </div>
-
-  <div id="itemEditor" class="panel hidden">
-    <h3 id="editorHeading">Add Content</h3>
-    <input type="hidden" id="itemId">
-
-    <div class="form-grid">
-      <div class="full">
-        <label>Title *</label>
-        <input id="itemTitle" placeholder="Enter title">
-      </div>
-
-      <div>
-        <label>Slug</label>
-        <input id="itemSlug" placeholder="example-title">
-      </div>
-
-      <div>
-        <label>Display order</label>
-        <input id="itemOrder" type="number" value="0">
-      </div>
-
-      <div class="full">
-        <label>Short description</label>
-        <textarea id="itemDescription" placeholder="Short description"></textarea>
-      </div>
-
-      <div class="full">
-        <label>Full content</label>
-        <textarea id="itemContent" style="min-height:160px"
-          placeholder="Write your content here"></textarea>
-      </div>
-
-      <div class="full">
-        <label>Image URL</label>
-        <input id="itemImage" placeholder="Image URL">
-        <label>Or upload image (maximum 8 MB)</label>
-        <input type="file" id="itemFile" accept="image/jpeg,image/png,image/webp,image/gif">
-        <button class="btn secondary small" onclick="uploadImage()">Upload Image</button>
-        <img id="imagePreview" class="preview hidden" alt="Image preview">
-      </div>
-
-      <div>
-        <label>Publication status</label>
-        <select id="itemStatus">
-          <option value="published">Published</option>
-          <option value="draft">Draft</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="btn" onclick="saveItem()">Save Content</button>
-      <button class="btn secondary" onclick="closeEditor()">Cancel</button>
-    </div>
-    <div id="editorStatus" class="status"></div>
-  </div>
-
-  <div class="panel">
-    <div class="page-head">
-      <h3>Saved Content</h3>
-      <button class="btn secondary small" onclick="loadItems()">↻ Refresh</button>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Order</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="itemsTable"></tbody>
-      </table>
-    </div>
-  </div>
+<div class="page-head">
+<div><h2 id="contentHeading">Content Management</h2><div class="sub">Create, edit and publish website content</div></div>
+<button class="btn" onclick="newItem()">＋ Add New</button>
+</div>
+<div id="itemEditor" class="panel hidden">
+<h3 id="editorHeading">Add Content</h3>
+<input type="hidden" id="itemId">
+<div class="form-grid">
+<div class="full"><label>Title *</label><input id="itemTitle" placeholder="Enter title"></div>
+<div><label>Slug</label><input id="itemSlug" placeholder="example-title"></div>
+<div><label>Display order</label><input id="itemOrder" type="number" value="0"></div>
+<div class="full"><label>Short description</label><textarea id="itemDescription"></textarea></div>
+<div class="full"><label>Full content</label><textarea id="itemContent" style="min-height:160px"></textarea></div>
+<div class="full">
+<label>Image URL</label><input id="itemImage" placeholder="Image URL">
+<label>Or upload image (maximum 8 MB)</label>
+<input type="file" id="itemFile" accept="image/jpeg,image/png,image/webp,image/gif">
+<button class="btn secondary small" onclick="uploadImage()">Upload Image</button>
+<img id="imagePreview" class="preview hidden" alt="Image preview">
+</div>
+<div><label>Publication status</label><select id="itemStatus"><option value="published">Published</option><option value="draft">Draft</option></select></div>
+</div>
+<div class="actions">
+<button class="btn" onclick="saveItem()">Save Content</button>
+<button class="btn secondary" onclick="closeEditor()">Cancel</button>
+</div>
+<div id="editorStatus" class="status"></div>
+</div>
+<div class="panel">
+<div class="page-head"><h3>Saved Content</h3><button class="btn secondary small" onclick="loadItems()">↻ Refresh</button></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Image</th><th>Title</th><th>Status</th><th>Order</th><th>Actions</th></tr></thead>
+<tbody id="itemsTable"></tbody>
+</table></div>
+</div>
 </section>
 
-<!-- DONATIONS -->
 <section id="page-donations" class="page hidden">
-  <div class="page-head">
-    <div>
-      <h2>Donation Records</h2>
-      <div class="sub">Record and manage donations in LKR</div>
-    </div>
-    <button class="btn secondary" onclick="loadDonations()">↻ Refresh</button>
-  </div>
-
-  <div class="cards">
-    <div class="card">
-      <div class="label">Total Records</div>
-      <div class="number" id="donationCount">0</div>
-    </div>
-    <div class="card">
-      <div class="label">Total Amount (LKR)</div>
-      <div class="number" id="donationTotal">0</div>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>Add Donation Record</h3>
-    <div class="form-grid">
-      <div>
-        <label>Donor name</label>
-        <input id="donorName" placeholder="Anonymous">
-      </div>
-      <div>
-        <label>Donor email</label>
-        <input id="donorEmail" type="email" placeholder="Email">
-      </div>
-      <div>
-        <label>Amount (LKR) *</label>
-        <input id="donorAmount" type="number" min="1" step="0.01" placeholder="1000">
-      </div>
-      <div>
-        <label>Project / Purpose</label>
-        <input id="donorProject" placeholder="Church construction">
-      </div>
-      <div>
-        <label>Reference</label>
-        <input id="donorReference" placeholder="Bank reference">
-      </div>
-      <div>
-        <label>Donation date</label>
-        <input id="donorDate" type="date">
-      </div>
-      <div class="full">
-        <label>Notes</label>
-        <textarea id="donorNotes" placeholder="Additional information"></textarea>
-      </div>
-    </div>
-    <button class="btn" onclick="saveDonation()">Save Donation</button>
-    <div id="donationStatus" class="status"></div>
-  </div>
-
-  <div class="panel">
-    <h3>Donation History</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th><th>Donor</th><th>Amount</th>
-            <th>Project</th><th>Reference</th><th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="donationsTable"></tbody>
-      </table>
-    </div>
-  </div>
+<div class="page-head"><div><h2>Donation Records</h2><div class="sub">Record and manage donations in LKR</div></div><button class="btn secondary" onclick="loadDonations()">↻ Refresh</button></div>
+<div class="cards">
+<div class="card"><div class="label">Total Records</div><div class="number" id="donationCount">0</div></div>
+<div class="card"><div class="label">Total Amount (LKR)</div><div class="number" id="donationTotal">0</div></div>
+</div>
+<div class="panel">
+<h3>Add Donation Record</h3>
+<div class="form-grid">
+<div><label>Donor name</label><input id="donorName" placeholder="Anonymous"></div>
+<div><label>Donor email</label><input id="donorEmail" type="email"></div>
+<div><label>Amount (LKR) *</label><input id="donorAmount" type="number" min="1" step="0.01"></div>
+<div><label>Project / Purpose</label><input id="donorProject" placeholder="Church construction"></div>
+<div><label>Reference</label><input id="donorReference" placeholder="Bank reference"></div>
+<div><label>Donation date</label><input id="donorDate" type="date"></div>
+<div class="full"><label>Notes</label><textarea id="donorNotes"></textarea></div>
+</div>
+<button class="btn" onclick="saveDonation()">Save Donation</button>
+<div id="donationStatus" class="status"></div>
+</div>
+<div class="panel">
+<h3>Donation History</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Date</th><th>Donor</th><th>Amount</th><th>Project</th><th>Reference</th><th>Action</th></tr></thead>
+<tbody id="donationsTable"></tbody>
+</table></div>
+</div>
 </section>
 
-<!-- MESSAGES -->
 <section id="page-messages" class="page hidden">
-  <div class="page-head">
-    <div>
-      <h2>Contact Messages</h2>
-      <div class="sub">Messages received from the public website</div>
-    </div>
-    <button class="btn secondary" onclick="loadMessages()">↻ Refresh</button>
-  </div>
-
-  <div class="panel">
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th><th>Name</th><th>Email</th>
-            <th>Subject / Message</th><th>Status</th><th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="messagesTable"></tbody>
-      </table>
-    </div>
-  </div>
+<div class="page-head"><div><h2>Contact Messages</h2><div class="sub">Messages received from the public website</div></div><button class="btn secondary" onclick="loadMessages()">↻ Refresh</button></div>
+<div class="panel"><div class="table-wrap"><table>
+<thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Subject / Message</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="messagesTable"></tbody>
+</table></div></div>
 </section>
 
-<!-- SETTINGS -->
 <section id="page-settings" class="page hidden">
-  <div class="page-head">
-    <div>
-      <h2>Website Settings</h2>
-      <div class="sub">Manage basic website information</div>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>Ministry Information</h3>
-    <label>Ministry name</label>
-    <input id="settingName" placeholder="GOH Ministries">
-
-    <label>Website description</label>
-    <textarea id="settingDescription"></textarea>
-
-    <label>Contact email</label>
-    <input id="settingEmail" type="email">
-
-    <label>Contact phone</label>
-    <input id="settingPhone">
-
-    <label>WhatsApp number</label>
-    <input id="settingWhatsapp">
-
-    <label>Address</label>
-    <textarea id="settingAddress"></textarea>
-
-    <label>Facebook page URL</label>
-    <input id="settingFacebook">
-
-    <label>YouTube channel URL</label>
-    <input id="settingYoutube">
-
-    <button class="btn" onclick="saveSettings()">Save Settings</button>
-    <div id="settingsStatus" class="status"></div>
-  </div>
-
-  <div class="panel">
-    <h3>API Connection</h3>
-    <p class="sub">Worker API endpoint</p>
-    <code style="color:var(--gold)">https://gohm.createlk.workers.dev</code>
-    <div style="margin-top:15px">
-      <button class="btn secondary" onclick="checkAPI()">Test API Connection</button>
-    </div>
-    <div id="apiStatus" class="status"></div>
-  </div>
+<div class="page-head"><div><h2>Website Settings</h2><div class="sub">Manage basic website information</div></div></div>
+<div class="panel">
+<h3>Ministry Information</h3>
+<label>Ministry name</label><input id="settingName" placeholder="GOH Ministries">
+<label>Website description</label><textarea id="settingDescription"></textarea>
+<label>Contact email</label><input id="settingEmail" type="email">
+<label>Contact phone</label><input id="settingPhone">
+<label>WhatsApp number</label><input id="settingWhatsapp">
+<label>Address</label><textarea id="settingAddress"></textarea>
+<label>Facebook page URL</label><input id="settingFacebook">
+<label>YouTube channel URL</label><input id="settingYoutube">
+<button class="btn" onclick="saveSettings()">Save Settings</button>
+<div id="settingsStatus" class="status"></div>
+</div>
+<div class="panel">
+<h3>API Connection</h3>
+<p class="sub">Worker API endpoint</p>
+<code style="color:var(--gold)">https://gohm.createlk.workers.dev</code>
+<div style="margin-top:15px"><button class="btn secondary" onclick="checkAPI()">Test API Connection</button></div>
+<div id="apiStatus" class="status"></div>
+</div>
 </section>
 
 </main>
@@ -567,717 +257,401 @@ td{color:#e1e8f2}
 </div>
 
 <script>
-/* ==========================================
-   GOH MINISTRIES ADMIN CONFIGURATION
-========================================== */
-
+/* GOH MINISTRIES CONFIGURATION */
 const API = "https://gohm.createlk.workers.dev";
 
 const GOOGLE_CLIENT_ID =
-"582157960266-3r4k503a5a3oomo9nrau7l61aifavbqh.apps.googleusercontent.com";
+"865065943863-fqu3k2n85n6jc81p0ift4ueor7hobj1n.apps.googleusercontent.com";
 
 const CONTENT_TYPES = {
-  children: "Children's Ministry",
-  assistance: "Family Assistance",
-  construction: "Church Construction",
-  projects: "Projects",
-  news: "News & Announcements",
-  gallery: "Photo Gallery",
-  testimonies: "Testimonies",
-  events: "Events"
+children:"Children's Ministry",
+assistance:"Family Assistance",
+construction:"Church Construction",
+projects:"Projects",
+news:"News & Announcements",
+gallery:"Photo Gallery",
+testimonies:"Testimonies",
+events:"Events"
 };
 
-let currentType = "children";
-let currentItems = [];
-let currentUser = null;
+let currentType="children";
+let currentItems=[];
+let currentUser=null;
 
-/* ==========================================
-   API HELPER
-========================================== */
-
-async function api(path, options = {}) {
-  const config = {
-    ...options,
-    credentials: "include",
-    headers: {
-      ...(options.body instanceof FormData
-        ? {}
-        : {"Content-Type":"application/json"}),
-      ...(options.headers || {})
-    }
-  };
-
-  const response = await fetch(API + path, config);
-
-  let data;
-  try {
-    data = await response.json();
-  } catch {
-    throw new Error("Server returned an invalid response");
-  }
-
-  if (!response.ok || data.success === false) {
-    throw new Error(data.error || "Request failed (" + response.status + ")");
-  }
-
-  return data;
+async function api(path,options={}){
+const headers={...(options.headers||{})};
+if(!(options.body instanceof FormData)) headers["Content-Type"]="application/json";
+const response=await fetch(API+path,{
+...options,credentials:"include",headers
+});
+let data;
+try{data=await response.json()}catch{throw new Error("Server returned an invalid response")}
+if(!response.ok||data.success===false)throw new Error(data.error||"Request failed ("+response.status+")");
+return data;
 }
 
-function message(elementId, text, type = "ok") {
-  const el = document.getElementById(elementId);
-  if (!el) return;
-
-  el.textContent = text;
-  el.className = "status show " + type;
+function message(id,text,type="ok"){
+const el=document.getElementById(id);
+if(!el)return;
+el.textContent=text;
+el.className="status show "+type;
 }
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
-  })[char]);
+function escapeHTML(value){
+return String(value??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+})[c]);
 }
 
-function formatMoney(value) {
-  return Number(value || 0).toLocaleString("en-LK", {
-    minimumFractionDigits:2,
-    maximumFractionDigits:2
-  });
+function formatMoney(value){
+return Number(value||0).toLocaleString("en-LK",{
+minimumFractionDigits:2,maximumFractionDigits:2
+});
 }
 
-/* ==========================================
-   GOOGLE LOGIN
-========================================== */
+/* GOOGLE SIGN-IN */
+function showLoginError(text){message("loginStatus",text,"error")}
 
-function showLoginError(text) {
-  message("loginStatus", text, "error");
+function googleLogin(response){
+if(!response||!response.credential){
+showLoginError("Google did not return a login credential.");
+return;
+}
+api("/api/auth/google",{
+method:"POST",
+body:JSON.stringify({credential:response.credential})
+}).then(async result=>{
+currentUser=result.user;
+await checkSession();
+}).catch(error=>showLoginError(error.message));
 }
 
-function googleLogin(response) {
-  if (!response || !response.credential) {
-    showLoginError("Google did not return a login credential.");
-    return;
-  }
-
-  api("/api/auth/google", {
-    method:"POST",
-    body:JSON.stringify({
-      credential:response.credential
-    })
-  })
-  .then(async result => {
-    currentUser = result.user;
-    await checkSession();
-  })
-  .catch(error => {
-    showLoginError(error.message);
-  });
+function initializeGoogle(){
+if(!window.google?.accounts?.id){
+setTimeout(initializeGoogle,300);
+return;
+}
+google.accounts.id.initialize({
+client_id:GOOGLE_CLIENT_ID,
+callback:googleLogin,
+auto_select:false
+});
+google.accounts.id.renderButton(
+document.getElementById("googleButton"),
+{theme:"filled_blue",size:"large",shape:"rectangular",text:"signin_with",width:260}
+);
 }
 
-function initializeGoogle() {
-  if (!window.google || !google.accounts || !google.accounts.id) {
-    setTimeout(initializeGoogle, 300);
-    return;
-  }
-
-  google.accounts.id.initialize({
-    client_id:GOOGLE_CLIENT_ID,
-    callback:googleLogin,
-    auto_select:false
-  });
-
-  google.accounts.id.renderButton(
-    document.getElementById("googleButton"),
-    {
-      theme:"filled_blue",
-      size:"large",
-      shape:"rectangular",
-      text:"signin_with",
-      width:260
-    }
-  );
+async function checkSession(){
+try{
+const result=await api("/api/auth/me");
+if(!result.authenticated)throw new Error("Not authenticated");
+currentUser=result.user;
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("adminApp").classList.remove("hidden");
+document.getElementById("userEmail").textContent=currentUser.email||"";
+const photo=document.getElementById("userPhoto");
+if(currentUser.picture)photo.src=currentUser.picture;
+else photo.style.display="none";
+showPage("dashboard");
+loadDashboard();
+}catch(error){
+document.getElementById("loginScreen").classList.remove("hidden");
+document.getElementById("adminApp").classList.add("hidden");
+}
 }
 
-async function checkSession() {
-  try {
-    const result = await api("/api/auth/me");
-
-    if (!result.authenticated) {
-      throw new Error("Not authenticated");
-    }
-
-    currentUser = result.user;
-    document.getElementById("loginScreen").classList.add("hidden");
-    document.getElementById("adminApp").classList.remove("hidden");
-
-    document.getElementById("userEmail").textContent =
-      currentUser.email || "";
-
-    const photo = document.getElementById("userPhoto");
-    if (currentUser.picture) {
-      photo.src = currentUser.picture;
-    } else {
-      photo.style.display = "none";
-    }
-
-    showPage("dashboard");
-    loadDashboard();
-
-  } catch (error) {
-    document.getElementById("loginScreen").classList.remove("hidden");
-    document.getElementById("adminApp").classList.add("hidden");
-  }
+async function logout(){
+try{await api("/api/auth/logout",{method:"POST",body:"{}"})}catch(e){}
+currentUser=null;
+location.reload();
 }
 
-async function logout() {
-  try {
-    await api("/api/auth/logout", {
-      method:"POST",
-      body:"{}"
-    });
-  } catch(error) {}
+/* NAVIGATION */
+function toggleMenu(){document.getElementById("sidebar").classList.toggle("open")}
 
-  currentUser = null;
-  location.reload();
+function showPage(page,button){
+document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
+document.querySelectorAll(".nav-btn").forEach(el=>el.classList.remove("active"));
+
+if(CONTENT_TYPES[page]){
+currentType=page;
+document.getElementById("contentHeading").textContent=CONTENT_TYPES[page];
+closeEditor();
+document.getElementById("page-content").classList.remove("hidden");
+loadItems();
+}else{
+document.getElementById("page-"+page)?.classList.remove("hidden");
+}
+if(button)button.classList.add("active");
+if(page==="dashboard")loadDashboard();
+if(page==="donations")loadDonations();
+if(page==="messages")loadMessages();
+if(page==="settings")loadSettings();
+document.getElementById("sidebar").classList.remove("open");
 }
 
-/* ==========================================
-   NAVIGATION
-========================================== */
-
-function toggleMenu() {
-  document.getElementById("sidebar").classList.toggle("open");
+/* DASHBOARD */
+async function loadDashboard(){
+try{
+const result=await api("/api/admin/stats");
+const s=result.stats||{};
+document.getElementById("statContent").textContent=s.content||0;
+document.getElementById("statDonations").textContent=s.donations||0;
+document.getElementById("statAmount").textContent=formatMoney(s.donationAmount);
+document.getElementById("statMessages").textContent=s.unreadMessages||0;
+}catch(e){console.error(e)}
 }
 
-function showPage(page, button) {
-  document.querySelectorAll(".page").forEach(el => {
-    el.classList.add("hidden");
-  });
-
-  document.querySelectorAll(".nav-btn").forEach(el => {
-    el.classList.remove("active");
-  });
-
-  const selected = document.getElementById("page-" + page);
-  if (selected) selected.classList.remove("hidden");
-
-  if (button) button.classList.add("active");
-
-  if (CONTENT_TYPES[page]) {
-    currentType = page;
-    document.getElementById("contentHeading").textContent =
-      CONTENT_TYPES[page];
-    closeEditor();
-    loadItems();
-    document.getElementById("page-content").classList.remove("hidden");
-  }
-
-  if (page === "dashboard") loadDashboard();
-  if (page === "donations") loadDonations();
-  if (page === "messages") loadMessages();
-  if (page === "settings") loadSettings();
-
-  document.getElementById("sidebar").classList.remove("open");
+/* CONTENT */
+async function loadItems(){
+const table=document.getElementById("itemsTable");
+table.innerHTML='<tr><td colspan="5">Loading...</td></tr>';
+try{
+const result=await api("/api/items?admin=1&type="+encodeURIComponent(currentType));
+currentItems=result.items||[];
+if(!currentItems.length){
+table.innerHTML='<tr><td colspan="5" class="empty">No content added yet.</td></tr>';
+return;
+}
+table.innerHTML=currentItems.map(item=>`
+<tr>
+<td>${item.image?`<img class="thumb" src="${escapeHTML(item.image)}" alt="">`:"—"}</td>
+<td><strong>${escapeHTML(item.title)}</strong><div class="sub">${escapeHTML(item.description||"")}</div></td>
+<td><span class="badge ${item.status==="published"?"green":"red"}">${escapeHTML(item.status)}</span></td>
+<td>${Number(item.sort_order||0)}</td>
+<td><div class="actions">
+<button class="btn secondary small" onclick="editItem(${Number(item.id)})">Edit</button>
+<button class="btn danger small" onclick="deleteItem(${Number(item.id)})">Delete</button>
+</div></td>
+</tr>`).join("");
+}catch(error){
+table.innerHTML=`<tr><td colspan="5">${escapeHTML(error.message)}</td></tr>`;
+}
 }
 
-/* ==========================================
-   DASHBOARD
-========================================== */
-
-async function loadDashboard() {
-  try {
-    const result = await api("/api/admin/stats");
-    const s = result.stats || {};
-
-    document.getElementById("statContent").textContent =
-      s.content || 0;
-
-    document.getElementById("statDonations").textContent =
-      s.donations || 0;
-
-    document.getElementById("statAmount").textContent =
-      formatMoney(s.donationAmount);
-
-    document.getElementById("statMessages").textContent =
-      s.unreadMessages || 0;
-
-  } catch(error) {
-    console.error("Dashboard:", error);
-  }
+function newItem(){
+["itemId","itemTitle","itemSlug","itemDescription","itemContent","itemImage","itemFile"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("itemOrder").value="0";
+document.getElementById("itemStatus").value="published";
+document.getElementById("imagePreview").classList.add("hidden");
+document.getElementById("editorHeading").textContent="Add New Content";
+document.getElementById("itemEditor").classList.remove("hidden");
+document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
 }
 
-/* ==========================================
-   CONTENT MANAGEMENT
-========================================== */
+function closeEditor(){document.getElementById("itemEditor").classList.add("hidden")}
 
-async function loadItems() {
-  const table = document.getElementById("itemsTable");
-  table.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
-
-  try {
-    const result = await api(
-      "/api/items?admin=1&type=" + encodeURIComponent(currentType)
-    );
-
-    currentItems = result.items || [];
-
-    if (!currentItems.length) {
-      table.innerHTML =
-        '<tr><td colspan="5" class="empty">No content added yet.</td></tr>';
-      return;
-    }
-
-    table.innerHTML = currentItems.map(item => `
-      <tr>
-        <td>
-          ${item.image
-            ? `<img class="thumb" src="${escapeHTML(item.image)}" alt="">`
-            : "—"}
-        </td>
-        <td>
-          <strong>${escapeHTML(item.title)}</strong>
-          <div class="sub">${escapeHTML(item.description || "")}</div>
-        </td>
-        <td>
-          <span class="badge ${item.status === "published" ? "green" : "red"}">
-            ${escapeHTML(item.status)}
-          </span>
-        </td>
-        <td>${Number(item.sort_order || 0)}</td>
-        <td>
-          <div class="actions">
-            <button class="btn secondary small"
-              onclick="editItem(${Number(item.id)})">Edit</button>
-            <button class="btn danger small"
-              onclick="deleteItem(${Number(item.id)})">Delete</button>
-          </div>
-        </td>
-      </tr>
-    `).join("");
-
-  } catch(error) {
-    table.innerHTML =
-      `<tr><td colspan="5">${escapeHTML(error.message)}</td></tr>`;
-  }
+function editItem(id){
+const item=currentItems.find(x=>Number(x.id)===Number(id));
+if(!item)return;
+document.getElementById("itemId").value=item.id;
+document.getElementById("itemTitle").value=item.title||"";
+document.getElementById("itemSlug").value=item.slug||"";
+document.getElementById("itemOrder").value=item.sort_order||0;
+document.getElementById("itemDescription").value=item.description||"";
+document.getElementById("itemContent").value=item.content||"";
+document.getElementById("itemImage").value=item.image||"";
+document.getElementById("itemStatus").value=item.status||"published";
+const preview=document.getElementById("imagePreview");
+if(item.image){preview.src=item.image;preview.classList.remove("hidden")}
+else preview.classList.add("hidden");
+document.getElementById("editorHeading").textContent="Edit Content";
+document.getElementById("itemEditor").classList.remove("hidden");
+document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
 }
 
-function newItem() {
-  document.getElementById("itemId").value = "";
-  document.getElementById("itemTitle").value = "";
-  document.getElementById("itemSlug").value = "";
-  document.getElementById("itemOrder").value = "0";
-  document.getElementById("itemDescription").value = "";
-  document.getElementById("itemContent").value = "";
-  document.getElementById("itemImage").value = "";
-  document.getElementById("itemFile").value = "";
-  document.getElementById("itemStatus").value = "published";
-  document.getElementById("imagePreview").classList.add("hidden");
-
-  document.getElementById("editorHeading").textContent = "Add New Content";
-  document.getElementById("itemEditor").classList.remove("hidden");
-
-  document.getElementById("itemEditor").scrollIntoView({
-    behavior:"smooth"
-  });
+async function saveItem(){
+const id=document.getElementById("itemId").value;
+const body={
+type:currentType,
+title:document.getElementById("itemTitle").value.trim(),
+slug:document.getElementById("itemSlug").value.trim(),
+sort_order:Number(document.getElementById("itemOrder").value||0),
+description:document.getElementById("itemDescription").value,
+content:document.getElementById("itemContent").value,
+image:document.getElementById("itemImage").value.trim(),
+status:document.getElementById("itemStatus").value,
+metadata:{}
+};
+if(!body.title){message("editorStatus","Please enter a title.","error");return}
+try{
+await api(id?"/api/items/"+id:"/api/items",{
+method:id?"PUT":"POST",body:JSON.stringify(body)
+});
+message("editorStatus","Content saved successfully.");
+closeEditor();await loadItems();await loadDashboard();
+}catch(e){message("editorStatus",e.message,"error")}
 }
 
-function closeEditor() {
-  document.getElementById("itemEditor").classList.add("hidden");
+async function deleteItem(id){
+if(!confirm("Delete this content permanently?"))return;
+try{
+await api("/api/items/"+id,{method:"DELETE"});
+await loadItems();await loadDashboard();
+}catch(e){alert(e.message)}
 }
 
-function editItem(id) {
-  const item = currentItems.find(x => Number(x.id) === Number(id));
-  if (!item) return;
-
-  document.getElementById("itemId").value = item.id;
-  document.getElementById("itemTitle").value = item.title || "";
-  document.getElementById("itemSlug").value = item.slug || "";
-  document.getElementById("itemOrder").value = item.sort_order || 0;
-  document.getElementById("itemDescription").value = item.description || "";
-  document.getElementById("itemContent").value = item.content || "";
-  document.getElementById("itemImage").value = item.image || "";
-  document.getElementById("itemStatus").value = item.status || "published";
-
-  const preview = document.getElementById("imagePreview");
-  if (item.image) {
-    preview.src = item.image;
-    preview.classList.remove("hidden");
-  } else {
-    preview.classList.add("hidden");
-  }
-
-  document.getElementById("editorHeading").textContent = "Edit Content";
-  document.getElementById("itemEditor").classList.remove("hidden");
-  document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
+/* IMAGE UPLOAD */
+async function uploadImage(){
+const file=document.getElementById("itemFile").files[0];
+if(!file){message("editorStatus","Please select an image first.","error");return}
+if(file.size>8*1024*1024){message("editorStatus","Image must be 8 MB or smaller.","error");return}
+if(!["image/jpeg","image/png","image/webp","image/gif"].includes(file.type)){
+message("editorStatus","Unsupported image type.","error");return;
+}
+const form=new FormData();
+form.append("file",file);
+try{
+message("editorStatus","Uploading image...");
+const result=await api("/api/admin/upload",{method:"POST",body:form});
+document.getElementById("itemImage").value=result.url;
+const preview=document.getElementById("imagePreview");
+preview.src=result.url;preview.classList.remove("hidden");
+message("editorStatus","Image uploaded successfully.");
+}catch(e){message("editorStatus",e.message,"error")}
 }
 
-async function saveItem() {
-  const id = document.getElementById("itemId").value;
-
-  const body = {
-    id:id ? Number(id) : undefined,
-    type:currentType,
-    title:document.getElementById("itemTitle").value.trim(),
-    slug:document.getElementById("itemSlug").value.trim(),
-    sort_order:Number(document.getElementById("itemOrder").value || 0),
-    description:document.getElementById("itemDescription").value,
-    content:document.getElementById("itemContent").value,
-    image:document.getElementById("itemImage").value.trim(),
-    status:document.getElementById("itemStatus").value,
-    metadata:{}
-  };
-
-  if (!body.title) {
-    message("editorStatus","Please enter a title.","error");
-    return;
-  }
-
-  try {
-    await api(id ? "/api/items/" + id : "/api/items", {
-      method:id ? "PUT" : "POST",
-      body:JSON.stringify(body)
-    });
-
-    message("editorStatus","Content saved successfully.","ok");
-    closeEditor();
-    await loadItems();
-    await loadDashboard();
-
-  } catch(error) {
-    message("editorStatus",error.message,"error");
-  }
+/* DONATIONS */
+async function loadDonations(){
+const table=document.getElementById("donationsTable");
+table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
+try{
+const result=await api("/api/admin/donations");
+const donations=result.donations||[];
+const totals=result.totals||{};
+document.getElementById("donationCount").textContent=totals.count??donations.length;
+document.getElementById("donationTotal").textContent=formatMoney(totals.total);
+if(!donations.length){
+table.innerHTML='<tr><td colspan="6" class="empty">No donation records.</td></tr>';return;
+}
+table.innerHTML=donations.map(d=>`
+<tr>
+<td>${escapeHTML(d.donation_date)}</td>
+<td>${escapeHTML(d.donor_name)}<div class="sub">${escapeHTML(d.donor_email||"")}</div></td>
+<td><strong>${escapeHTML(d.currency||"LKR")} ${formatMoney(d.amount)}</strong></td>
+<td>${escapeHTML(d.project||"")}</td>
+<td>${escapeHTML(d.reference||"")}</td>
+<td><button class="btn danger small" onclick="deleteDonation(${Number(d.id)})">Delete</button></td>
+</tr>`).join("");
+}catch(e){table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`}
 }
 
-async function deleteItem(id) {
-  if (!confirm("Delete this content permanently?")) return;
-
-  try {
-    await api("/api/items/" + id, {
-      method:"DELETE"
-    });
-
-    await loadItems();
-    await loadDashboard();
-
-  } catch(error) {
-    alert(error.message);
-  }
+async function saveDonation(){
+const amount=Number(document.getElementById("donorAmount").value);
+if(!Number.isFinite(amount)||amount<=0){message("donationStatus","Enter a valid donation amount.","error");return}
+const body={
+donor_name:document.getElementById("donorName").value||"Anonymous",
+donor_email:document.getElementById("donorEmail").value,
+amount,
+project:document.getElementById("donorProject").value,
+reference:document.getElementById("donorReference").value,
+donation_date:document.getElementById("donorDate").value,
+notes:document.getElementById("donorNotes").value
+};
+try{
+await api("/api/admin/donations",{method:"POST",body:JSON.stringify(body)});
+message("donationStatus","Donation record saved.");
+["donorName","donorEmail","donorAmount","donorProject","donorReference","donorNotes"].forEach(id=>document.getElementById(id).value="");
+await loadDonations();await loadDashboard();
+}catch(e){message("donationStatus",e.message,"error")}
 }
 
-/* ==========================================
-   R2 IMAGE UPLOAD
-========================================== */
-
-async function uploadImage() {
-  const fileInput = document.getElementById("itemFile");
-  const file = fileInput.files[0];
-
-  if (!file) {
-    message("editorStatus","Please select an image first.","error");
-    return;
-  }
-
-  if (file.size > 8 * 1024 * 1024) {
-    message("editorStatus","Image must be 8 MB or smaller.","error");
-    return;
-  }
-
-  const form = new FormData();
-  form.append("file",file);
-
-  try {
-    message("editorStatus","Uploading image...","ok");
-
-    const result = await api("/api/admin/upload", {
-      method:"POST",
-      body:form
-    });
-
-    document.getElementById("itemImage").value = result.url;
-
-    const preview = document.getElementById("imagePreview");
-    preview.src = result.url;
-    preview.classList.remove("hidden");
-
-    message("editorStatus","Image uploaded successfully.","ok");
-
-  } catch(error) {
-    message("editorStatus",error.message,"error");
-  }
+async function deleteDonation(id){
+if(!confirm("Delete this donation record?"))return;
+try{
+await api("/api/admin/donations/"+id,{method:"DELETE"});
+await loadDonations();await loadDashboard();
+}catch(e){alert(e.message)}
 }
 
-/* ==========================================
-   DONATIONS
-========================================== */
-
-async function loadDonations() {
-  const table = document.getElementById("donationsTable");
-  table.innerHTML = '<tr><td colspan="6">Loading...</td></tr>';
-
-  try {
-    const result = await api("/api/admin/donations");
-    const donations = result.donations || [];
-    const totals = result.totals || {};
-
-    document.getElementById("donationCount").textContent =
-      totals.count || donations.length;
-
-    document.getElementById("donationTotal").textContent =
-      formatMoney(totals.total);
-
-    if (!donations.length) {
-      table.innerHTML =
-        '<tr><td colspan="6" class="empty">No donation records.</td></tr>';
-      return;
-    }
-
-    table.innerHTML = donations.map(d => `
-      <tr>
-        <td>${escapeHTML(d.donation_date)}</td>
-        <td>
-          ${escapeHTML(d.donor_name)}
-          <div class="sub">${escapeHTML(d.donor_email || "")}</div>
-        </td>
-        <td><strong>${escapeHTML(d.currency)} ${formatMoney(d.amount)}</strong></td>
-        <td>${escapeHTML(d.project || "")}</td>
-        <td>${escapeHTML(d.reference || "")}</td>
-        <td>
-          <button class="btn danger small"
-            onclick="deleteDonation(${Number(d.id)})">Delete</button>
-        </td>
-      </tr>
-    `).join("");
-
-  } catch(error) {
-    table.innerHTML =
-      `<tr><td colspan="6">${escapeHTML(error.message)}</td></tr>`;
-  }
+/* MESSAGES */
+async function loadMessages(){
+const table=document.getElementById("messagesTable");
+table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
+try{
+const result=await api("/api/messages");
+const messages=result.messages||[];
+if(!messages.length){
+table.innerHTML='<tr><td colspan="6" class="empty">No messages received.</td></tr>';return;
+}
+table.innerHTML=messages.map(m=>`
+<tr>
+<td>${escapeHTML(m.created_at||"")}</td>
+<td>${escapeHTML(m.name)}</td>
+<td><a style="color:var(--blue)" href="mailto:${escapeHTML(m.email)}">${escapeHTML(m.email)}</a></td>
+<td><strong>${escapeHTML(m.subject||"No subject")}</strong><div style="margin-top:6px;white-space:pre-wrap">${escapeHTML(m.message)}</div></td>
+<td><span class="badge ${m.status==="read"?"green":"red"}">${escapeHTML(m.status)}</span></td>
+<td><div class="actions">
+<button class="btn secondary small" onclick="toggleMessage(${Number(m.id)},'${m.status==="read"?"new":"read"}')">${m.status==="read"?"Unread":"Mark read"}</button>
+<button class="btn danger small" onclick="deleteMessage(${Number(m.id)})">Delete</button>
+</div></td>
+</tr>`).join("");
+}catch(e){table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`}
 }
 
-async function saveDonation() {
-  const amount = Number(document.getElementById("donorAmount").value);
-
-  if (!Number.isFinite(amount) || amount <= 0) {
-    message("donationStatus","Enter a valid donation amount.","error");
-    return;
-  }
-
-  const body = {
-    donor_name:document.getElementById("donorName").value || "Anonymous",
-    donor_email:document.getElementById("donorEmail").value,
-    amount,
-    project:document.getElementById("donorProject").value,
-    reference:document.getElementById("donorReference").value,
-    donation_date:document.getElementById("donorDate").value,
-    notes:document.getElementById("donorNotes").value
-  };
-
-  try {
-    await api("/api/admin/donations", {
-      method:"POST",
-      body:JSON.stringify(body)
-    });
-
-    message("donationStatus","Donation record saved.","ok");
-
-    ["donorName","donorEmail","donorAmount","donorProject",
-     "donorReference","donorNotes"].forEach(id => {
-      document.getElementById(id).value = "";
-    });
-
-    await loadDonations();
-    await loadDashboard();
-
-  } catch(error) {
-    message("donationStatus",error.message,"error");
-  }
+async function toggleMessage(id,status){
+try{
+await api("/api/messages/"+id,{method:"PUT",body:JSON.stringify({id,status})});
+await loadMessages();await loadDashboard();
+}catch(e){alert(e.message)}
 }
 
-async function deleteDonation(id) {
-  if (!confirm("Delete this donation record?")) return;
-
-  try {
-    await api("/api/admin/donations/" + id, {
-      method:"DELETE"
-    });
-
-    await loadDonations();
-    await loadDashboard();
-
-  } catch(error) {
-    alert(error.message);
-  }
+async function deleteMessage(id){
+if(!confirm("Delete this message permanently?"))return;
+try{
+await api("/api/messages/"+id,{method:"DELETE"});
+await loadMessages();await loadDashboard();
+}catch(e){alert(e.message)}
 }
 
-/* ==========================================
-   CONTACT MESSAGES
-========================================== */
-
-async function loadMessages() {
-  const table = document.getElementById("messagesTable");
-  table.innerHTML = '<tr><td colspan="6">Loading...</td></tr>';
-
-  try {
-    const result = await api("/api/messages");
-    const messages = result.messages || [];
-
-    if (!messages.length) {
-      table.innerHTML =
-        '<tr><td colspan="6" class="empty">No messages received.</td></tr>';
-      return;
-    }
-
-    table.innerHTML = messages.map(m => `
-      <tr>
-        <td>${escapeHTML(m.created_at || "")}</td>
-        <td>${escapeHTML(m.name)}</td>
-        <td>
-          <a style="color:var(--blue)"
-            href="mailto:${escapeHTML(m.email)}">
-            ${escapeHTML(m.email)}
-          </a>
-        </td>
-        <td>
-          <strong>${escapeHTML(m.subject || "No subject")}</strong>
-          <div style="margin-top:6px;white-space:pre-wrap">
-            ${escapeHTML(m.message)}
-          </div>
-        </td>
-        <td>
-          <span class="badge ${m.status === "read" ? "green" : "red"}">
-            ${escapeHTML(m.status)}
-          </span>
-        </td>
-        <td>
-          <div class="actions">
-            <button class="btn secondary small"
-              onclick="toggleMessage(${Number(m.id)},'${m.status === "read" ? "new" : "read"}')">
-              ${m.status === "read" ? "Unread" : "Mark read"}
-            </button>
-            <button class="btn danger small"
-              onclick="deleteMessage(${Number(m.id)})">Delete</button>
-          </div>
-        </td>
-      </tr>
-    `).join("");
-
-  } catch(error) {
-    table.innerHTML =
-      `<tr><td colspan="6">${escapeHTML(error.message)}</td></tr>`;
-  }
-}
-
-async function toggleMessage(id,status) {
-  try {
-    await api("/api/messages/" + id, {
-      method:"PUT",
-      body:JSON.stringify({id,status})
-    });
-
-    await loadMessages();
-    await loadDashboard();
-
-  } catch(error) {
-    alert(error.message);
-  }
-}
-
-async function deleteMessage(id) {
-  if (!confirm("Delete this message permanently?")) return;
-
-  try {
-    await api("/api/messages/" + id, {
-      method:"DELETE"
-    });
-
-    await loadMessages();
-    await loadDashboard();
-
-  } catch(error) {
-    alert(error.message);
-  }
-}
-
-/* ==========================================
-   WEBSITE SETTINGS
-========================================== */
-
-const SETTING_FIELDS = {
-  ministry_name:"settingName",
-  description:"settingDescription",
-  contact_email:"settingEmail",
-  contact_phone:"settingPhone",
-  whatsapp:"settingWhatsapp",
-  address:"settingAddress",
-  facebook:"settingFacebook",
-  youtube:"settingYoutube"
+/* SETTINGS */
+const SETTING_FIELDS={
+ministry_name:"settingName",
+description:"settingDescription",
+contact_email:"settingEmail",
+contact_phone:"settingPhone",
+whatsapp:"settingWhatsapp",
+address:"settingAddress",
+facebook:"settingFacebook",
+youtube:"settingYoutube"
 };
 
-async function loadSettings() {
-  try {
-    const result = await api("/api/admin/settings");
-    const settings = result.settings || {};
-
-    Object.entries(SETTING_FIELDS).forEach(([key,id]) => {
-      document.getElementById(id).value = settings[key] || "";
-    });
-
-  } catch(error) {
-    message("settingsStatus",error.message,"error");
-  }
+async function loadSettings(){
+try{
+const result=await api("/api/admin/settings");
+const settings=result.settings||{};
+Object.entries(SETTING_FIELDS).forEach(([key,id])=>{
+document.getElementById(id).value=settings[key]||"";
+});
+}catch(e){message("settingsStatus",e.message,"error")}
 }
 
-async function saveSettings() {
-  try {
-    for (const [key,id] of Object.entries(SETTING_FIELDS)) {
-      await api("/api/admin/settings", {
-        method:"POST",
-        body:JSON.stringify({
-          key,
-          value:document.getElementById(id).value
-        })
-      });
-    }
-
-    message("settingsStatus","Website settings saved successfully.","ok");
-
-  } catch(error) {
-    message("settingsStatus",error.message,"error");
-  }
+async function saveSettings(){
+try{
+for(const [key,id] of Object.entries(SETTING_FIELDS)){
+await api("/api/admin/settings",{
+method:"POST",
+body:JSON.stringify({key,value:document.getElementById(id).value})
+});
+}
+message("settingsStatus","Website settings saved successfully.");
+}catch(e){message("settingsStatus",e.message,"error")}
 }
 
-/* ==========================================
-   API HEALTH CHECK
-========================================== */
-
-async function checkAPI() {
-  try {
-    const result = await api("/api/health");
-    message(
-      "apiStatus",
-      "Connected: " + result.service + " — " + result.status,
-      "ok"
-    );
-  } catch(error) {
-    message("apiStatus","Connection failed: " + error.message,"error");
-  }
+async function checkAPI(){
+try{
+const result=await api("/api/health");
+message("apiStatus","Connected: "+(result.service||"GOH Ministries")+" — "+(result.status||"running"));
+}catch(e){message("apiStatus","Connection failed: "+e.message,"error")}
 }
 
-/* ==========================================
-   STARTUP
-========================================== */
-
-document.getElementById("donorDate").value =
-  new Date().toISOString().slice(0,10);
-
-window.addEventListener("load", async () => {
-  initializeGoogle();
-  await checkSession();
+/* STARTUP */
+document.getElementById("donorDate").value=new Date().toISOString().slice(0,10);
+window.addEventListener("load",()=>{
+initializeGoogle();
+checkSession();
 });
 </script>
-
 </body>
 </html>
