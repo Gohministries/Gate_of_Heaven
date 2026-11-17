@@ -1,646 +1,962 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>365 Days With God's Word</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<meta name="theme-color" content="#101d35">
+<title>GOH Ministries | Admin Dashboard</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <style>
-*{box-sizing:border-box}
-
 :root{
- --navy:#24344D;
- --purple:#76558F;
- --gold:#B89445;
- --gold2:#D8C28A;
- --cream:#F8F5ED;
- --brown:#5E5142;
- --gray:#8A867E
+  --navy:#101d35;--navy2:#192c4d;--blue:#285da8;
+  --gold:#e7b84b;--bg:#f3f6fb;--white:#fff;
+  --text:#202b3c;--muted:#718096;--line:#e4eaf2;
+  --green:#16865b;--red:#c43d4c;
 }
-
-body{
- margin:0;
- background:#ECEBE7;
- font-family:Montserrat,Arial,sans-serif
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.login-screen{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login-card{width:min(440px,100%);background:white;padding:35px;border-radius:20px;text-align:center;box-shadow:0 15px 45px #101d3520}
+.logo{width:65px;height:65px;border-radius:18px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-size:32px;margin:0 auto 18px}
+.login-card h1{color:var(--navy);margin:0 0 8px}
+.login-card p{color:var(--muted);font-size:14px}
+.login-status{margin-top:15px;color:var(--red);font-size:13px}
+.google-holder{display:flex;justify-content:center;margin-top:25px}
+.app{min-height:100vh}
+.sidebar{
+  width:250px;background:var(--navy);color:white;
+  position:fixed;left:0;top:0;bottom:0;padding:22px 15px;
+  overflow-y:auto;z-index:50
 }
-
-.app{
- max-width:1250px;
- margin:auto;
- padding:20px
+.side-brand{display:flex;align-items:center;gap:12px;padding:5px 8px 25px;border-bottom:1px solid #ffffff22}
+.side-icon{width:42px;height:42px;border-radius:12px;background:#263c60;color:var(--gold);display:grid;place-items:center;font-size:23px}
+.side-brand strong{display:block;font-size:14px}
+.side-brand small{font-size:10px;color:#aebdd1;letter-spacing:1px}
+.nav-label{font-size:10px;color:#879bb6;font-weight:bold;letter-spacing:1.5px;padding:23px 10px 8px}
+.nav-item{
+  width:100%;border:0;background:transparent;color:#d5deeb;
+  text-align:left;padding:12px 13px;border-radius:9px;
+  margin:2px 0;font-size:13px;font-weight:700
 }
-
-.editor{
- background:white;
- padding:22px;
- border-radius:15px;
- margin-bottom:20px;
- box-shadow:0 8px 25px #0001
+.nav-item:hover,.nav-item.active{background:#263d62;color:var(--gold)}
+.main{margin-left:250px;min-height:100vh}
+.topbar{
+  height:70px;background:white;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;position:sticky;top:0;z-index:30
 }
-
-h1{
- margin:0;
- text-align:center;
- color:var(--navy);
- font-size:25px
+.topbar h2{font-size:18px;color:var(--navy);margin:0}
+.user-area{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)}
+.logout{background:#fff0f0;color:var(--red);border:0;border-radius:8px;padding:9px 13px;font-weight:bold}
+.mobile-menu{display:none;border:0;background:transparent;font-size:24px}
+.content{padding:28px;max-width:1400px;margin:auto}
+.page{display:none}
+.page.active{display:block}
+.page-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px;flex-wrap:wrap}
+.page-heading h1{font-size:25px;color:var(--navy);margin:0}
+.page-heading p{font-size:13px;color:var(--muted);margin:5px 0 0}
+.btn{
+  border:0;border-radius:9px;padding:11px 16px;
+  background:var(--blue);color:white;font-weight:700;font-size:13px
 }
-
-.sub{
- text-align:center;
- color:var(--gray);
- font-size:12px;
- margin:7px 0 20px
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.danger{background:#fff0f0;color:var(--red)}
+.btn.secondary{background:#eaf0f8;color:var(--navy)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:25px}
+.stat-card{background:white;border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat-card span{font-size:12px;color:var(--muted)}
+.stat-card strong{display:block;font-size:29px;color:var(--navy);margin-top:7px}
+.stat-card small{font-size:11px;color:var(--muted)}
+.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:20px}
+.panel h3{margin:0 0 15px;color:var(--navy);font-size:16px}
+.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.quick{background:#f5f7fb;border:1px solid var(--line);padding:18px;border-radius:12px;text-align:left}
+.quick strong{display:block;color:var(--navy);margin-bottom:5px}
+.quick span{font-size:12px;color:var(--muted)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--line);font-size:12px;vertical-align:middle}
+th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;background:#f8fafd}
+td strong{color:var(--navy)}
+.thumb{width:55px;height:43px;object-fit:cover;border-radius:7px;background:#e7edf5}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.small-btn{border:0;border-radius:7px;padding:7px 9px;font-size:11px;font-weight:bold;background:#edf2f8;color:var(--navy)}
+.small-btn.delete{background:#fff0f0;color:var(--red)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:bold;color:#526176}
+.field input,.field textarea,.field select{
+  width:100%;padding:11px 12px;border:1px solid #dce4ef;
+  border-radius:8px;background:white;color:var(--text)
 }
-
-.form{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px
+.field textarea{min-height:100px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid #c5d9f3;border-color:var(--blue)}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.notice{padding:13px;border-radius:9px;background:#fff7e5;color:#735619;font-size:12px;margin-bottom:15px}
+.success{color:var(--green);font-size:12px}
+.error{color:var(--red);font-size:12px}
+.empty{text-align:center;padding:28px;color:var(--muted);font-size:13px}
+.search{padding:10px 12px;border:1px solid var(--line);border-radius:8px;min-width:220px}
+.setting-row{display:grid;grid-template-columns:190px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.setting-row label{font-size:12px;font-weight:bold}
+.setting-row input,.setting-row textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px}
+.setting-row textarea{min-height:65px}
+.preview{max-width:150px;max-height:100px;object-fit:cover;border-radius:8px}
+.message-card{border:1px solid var(--line);border-radius:10px;padding:15px;margin:10px 0}
+.message-card h4{margin:0;color:var(--navy)}
+.message-card p{font-size:13px;color:var(--muted);white-space:pre-wrap}
+.badge{display:inline-block;padding:4px 8px;border-radius:30px;background:#edf2f8;color:var(--blue);font-size:10px;font-weight:bold}
+.modal-backdrop{position:fixed;inset:0;background:#071326aa;z-index:100;display:none;align-items:center;justify-content:center;padding:15px}
+.modal-backdrop.open{display:flex}
+.modal{background:white;border-radius:16px;width:min(700px,100%);max-height:90vh;overflow:auto;padding:25px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.modal-head h3{margin:0;color:var(--navy)}
+.close{border:0;background:#edf2f8;border-radius:8px;padding:7px 11px}
+.toast{position:fixed;right:20px;bottom:20px;z-index:200;background:var(--navy);color:white;padding:13px 18px;border-radius:10px;box-shadow:0 8px 30px #0002;font-size:13px;display:none;max-width:90vw}
+@media(max-width:950px){
+  .sidebar{transform:translateX(-100%);transition:.2s}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .mobile-menu{display:block}
+  .stats{grid-template-columns:repeat(2,1fr)}
 }
-
-.full{grid-column:1/-1}
-
-label{
- display:block;
- margin-bottom:5px;
- color:var(--navy);
- font-size:12px;
- font-weight:700
-}
-
-input,textarea,select{
- width:100%;
- padding:10px;
- border:1px solid #d5d2ca;
- border-radius:7px;
- font:inherit;
- outline:none
-}
-
-textarea{
- height:70px;
- resize:vertical
-}
-
-input:focus,textarea:focus,select:focus{
- border-color:var(--gold)
-}
-
-.buttons{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px;
- margin-top:12px
-}
-
-button{
- border:0;
- border-radius:7px;
- padding:12px;
- font:700 13px Montserrat;
- cursor:pointer
-}
-
-button:disabled{
- opacity:.5;
- cursor:wait
-}
-
-.light{background:#eceae4;color:var(--navy)}
-.gold{background:var(--gold);color:white}
-.navy{background:var(--navy);color:white}
-.purple{background:var(--purple);color:white}
-
-.status{
- text-align:center;
- color:var(--gray);
- font-size:11px;
- margin-top:10px
-}
-
-.preview{
- overflow:auto;
- padding:10px
-}
-
-/* 12 × 9 inch landscape design */
-.calendar{
- width:1200px;
- height:900px;
- margin:auto;
- position:relative;
- overflow:hidden;
- background:var(--cream);
- border:18px solid var(--gold2);
- box-shadow:0 12px 35px #0003
-}
-
-.calendar:after{
- content:"";
- position:absolute;
- inset:18px;
- border:2px solid #b8944588;
- pointer-events:none;
- z-index:20
-}
-
-/* Header */
-.header{
- position:absolute;
- top:28px;
- left:50px;
- right:50px;
- text-align:center
-}
-
-.small{
- color:var(--gray);
- font-size:12px;
- font-weight:700;
- letter-spacing:3px
-}
-
-.title{
- color:var(--purple);
- font-size:39px;
- font-weight:800;
- margin-top:3px
-}
-
-.title span{
- color:#4E9DBD;
- font:italic 600 53px "Playfair Display"
-}
-
-.line{
- width:60%;
- height:3px;
- background:var(--gold);
- margin:8px auto
-}
-
-/* Main */
-.main{
- position:absolute;
- top:160px;
- left:55px;
- right:55px;
- bottom:45px;
- display:grid;
- grid-template-columns:40% 60%;
- gap:30px
-}
-
-/* Photo */
-.photo{
- position:relative;
- overflow:hidden;
- border:1px solid #b8944588;
- border-radius:6px;
- background:#e5e0d5
-}
-
-.photo img{
- width:100%;
- height:100%;
- object-fit:cover;
- object-position:center;
- display:none
-}
-
-.placeholder{
- position:absolute;
- inset:0;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- color:#777;
- padding:30px;
- background:linear-gradient(135deg,#eeeae0,#dcd6c9)
-}
-
-/* Right text */
-.text{
- min-width:0;
- padding:10px 18px 5px 12px;
- overflow:hidden
-}
-
-.dayrow{
- display:flex;
- align-items:center;
- gap:15px;
- padding-bottom:13px;
- margin-bottom:18px;
- border-bottom:1px solid var(--gold2)
-}
-
-.day{
- min-width:125px;
- height:54px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:var(--purple);
- color:white;
- border-radius:5px;
- font-size:19px;
- font-weight:800
-}
-
-.date{
- font:22px "Playfair Display";
- color:#555
-}
-
-.lang{
- color:var(--gold);
- font-size:12px;
- font-weight:800;
- letter-spacing:2.5px;
- margin-bottom:9px
-}
-
-.english{
- color:var(--navy);
- font:600 29px/1.42 "Playfair Display";
- max-width:620px
-}
-
-.reference{
- color:var(--gold);
- font-size:14px;
- font-weight:700;
- margin:10px 0
-}
-
-.translation{
- border-top:1px solid var(--gold2);
- padding-top:10px;
- margin-top:10px
-}
-
-.translation b{
- color:#806323;
- font-size:11px;
- letter-spacing:1px
-}
-
-.tamil,.sinhala{
- color:var(--brown);
- font-size:17px;
- line-height:1.55;
- margin-top:6px
-}
-
-.tamil{
- font-family:"Noto Sans Tamil",sans-serif
-}
-
-.sinhala{
- font-family:"Noto Sans Sinhala",sans-serif
-}
-
-.footer{
- position:absolute;
- bottom:14px;
- left:55px;
- right:55px;
- text-align:center;
- color:#967225;
- font:italic 13px "Playfair Display"
-}
-
-@media(max-width:750px){
- .form{grid-template-columns:1fr}
- .full{grid-column:auto}
- .buttons{grid-template-columns:1fr}
+@media(max-width:600px){
+  .content{padding:17px}
+  .topbar{padding:0 15px}
+  .user-area span{display:none}
+  .stats{gap:9px}
+  .stat-card{padding:14px}
+  .stat-card strong{font-size:24px}
+  .grid-two,.form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .quick-grid{grid-template-columns:1fr 1fr}
+  .setting-row{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-<div class="editor">
-
-<h1>365 Days With God's Word</h1>
-
-<div class="sub">
-12 × 9 inch • Landscape • 3600 × 2700 PNG
+<!-- LOGIN -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="logo">✝</div>
+    <h1>GOH Ministries</h1>
+    <p>Secure administrator login</p>
+    <p>Sign in with your authorized Google administrator account.</p>
+    <div class="google-holder">
+      <div id="googleButton"></div>
+    </div>
+    <div id="loginStatus" class="login-status"></div>
+  </div>
 </div>
 
-<div class="form">
+<!-- ADMIN APP -->
+<div id="adminApp" class="app hidden">
 
-<div>
-<label>Day</label>
-<input id="day" type="number" min="1" max="365" value="1">
-</div>
+<aside class="sidebar" id="sidebar">
+  <div class="side-brand">
+    <div class="side-icon">✝</div>
+    <div><strong>GOH MINISTRIES</strong><small>ADMIN PANEL</small></div>
+  </div>
 
-<div>
-<label>Date</label>
-<input id="date" type="text">
-</div>
+  <div class="nav-label">MAIN</div>
+  <button class="nav-item active" data-page="dashboard">▦ &nbsp; Dashboard</button>
 
-<div class="full">
-<label>Upload Photo — Photo appears on LEFT</label>
-<input id="photo" type="file" accept="image/*">
-</div>
+  <div class="nav-label">WEBSITE CONTENT</div>
+  <button class="nav-item" data-page="children">👧 &nbsp; Children's Ministry</button>
+  <button class="nav-item" data-page="assistance">🤝 &nbsp; Helping Families</button>
+  <button class="nav-item" data-page="construction">🏗 &nbsp; Construction</button>
+  <button class="nav-item" data-page="projects">📌 &nbsp; Projects</button>
+  <button class="nav-item" data-page="news">📰 &nbsp; News & Announcements</button>
+  <button class="nav-item" data-page="gallery">📷 &nbsp; Photo Gallery</button>
+  <button class="nav-item" data-page="testimonies">♥ &nbsp; Testimonies</button>
+  <button class="nav-item" data-page="events">📅 &nbsp; Events</button>
 
-<div class="full">
-<label>English Bible Verse — Main</label>
-<textarea id="english"></textarea>
-</div>
+  <div class="nav-label">MANAGEMENT</div>
+  <button class="nav-item" data-page="settings">⚙ &nbsp; Website Settings</button>
+  <button class="nav-item" data-page="donations">♥ &nbsp; Donations</button>
+  <button class="nav-item" data-page="messages">✉ &nbsp; Messages</button>
 
-<div class="full">
-<label>Tamil Bible Verse — Second</label>
-<textarea id="tamil"></textarea>
-</div>
-
-<div class="full">
-<label>Sinhala Bible Verse — Third</label>
-<textarea id="sinhala"></textarea>
-</div>
-
-<div>
-<label>Bible Reference</label>
-<input id="reference" placeholder="Psalm 23:1">
-</div>
-
-<div>
-<label>Photo Position</label>
-<select id="position">
-<option value="center center">Center</option>
-<option value="center top">Top</option>
-<option value="center bottom">Bottom</option>
-<option value="left center">Left</option>
-<option value="right center">Right</option>
-</select>
-</div>
-
-</div>
-
-<div class="buttons">
-<button class="light" onclick="previousDay()">← Previous</button>
-<button class="gold" onclick="nextDay()">Next →</button>
-<button class="navy" onclick="savePNG()">💾 Save PNG</button>
-</div>
-
-<div class="buttons">
-<button class="light" onclick="clearVerse()">Clear</button>
-<button class="purple" onclick="generate()">Update Preview</button>
-</div>
-
-<div id="status" class="status">Day 1 of 365</div>
-
-</div>
-
-<div class="preview">
-
-<div id="calendar" class="calendar">
-
-<div class="header">
-<div class="small">DAILY DEVOTION • BIBLE • FAITH</div>
-<div class="title">365 <span>Days</span> With God's Word</div>
-<div class="line"></div>
-</div>
+  <div class="nav-label">WEBSITE</div>
+  <a href="/" target="_blank" class="nav-item" style="display:block;text-decoration:none">↗ &nbsp; View Public Website</a>
+</aside>
 
 <div class="main">
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="mobile-menu" id="mobileMenu">☰</button>
+      <h2 id="pageTitle">Dashboard</h2>
+    </div>
+    <div class="user-area">
+      <span id="adminEmail">Administrator</span>
+      <button class="logout" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
 
-<div class="photo">
-<div id="placeholder" class="placeholder">Upload your photo</div>
-<img id="outPhoto" alt="Uploaded photo">
+  <div class="content">
+
+    <!-- DASHBOARD -->
+    <section class="page active" id="page-dashboard">
+      <div class="page-heading">
+        <div><h1>Welcome to GOH Ministries</h1><p>Manage your public website and ministry activities.</p></div>
+        <button class="btn gold" onclick="loadDashboard()">↻ Refresh</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card"><span>Total Content Items</span><strong id="statItems">—</strong><small>Published website records</small></div>
+        <div class="stat-card"><span>Donations Recorded</span><strong id="statDonations">—</strong><small>Donation entries</small></div>
+        <div class="stat-card"><span>Messages</span><strong id="statMessages">—</strong><small>Contact enquiries</small></div>
+        <div class="stat-card"><span>Account</span><strong style="font-size:20px;color:var(--green)">Secure</strong><small>Administrator session</small></div>
+      </div>
+
+      <div class="panel">
+        <h3>Quick Management</h3>
+        <div class="quick-grid">
+          <button class="quick" onclick="openPage('children')"><strong>👧 Children</strong><span>Manage children's ministry</span></button>
+          <button class="quick" onclick="openPage('assistance')"><strong>🤝 Assistance</strong><span>Manage family support</span></button>
+          <button class="quick" onclick="openPage('construction')"><strong>🏗 Construction</strong><span>Update building progress</span></button>
+          <button class="quick" onclick="openPage('projects')"><strong>📌 Projects</strong><span>Manage ministry projects</span></button>
+          <button class="quick" onclick="openPage('gallery')"><strong>📷 Gallery</strong><span>Upload ministry photos</span></button>
+          <button class="quick" onclick="openPage('donations')"><strong>♥ Donations</strong><span>Record and review donations</span></button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Important reminders</h3>
+        <div class="notice">Check the accuracy of bank details before publishing donation information. Record donations separately and retain supporting documentation.</div>
+        <p style="font-size:13px;color:var(--muted)">Use Website Settings to update homepage text, contact details and bank information. Use the content sections to publish ministry updates and photos.</p>
+      </div>
+    </section>
+
+    <!-- CONTENT MANAGEMENT TEMPLATE PAGES -->
+    <section class="page" id="page-children">
+      <div class="page-heading"><div><h1>Children's Ministry</h1><p>Manage children's ministry updates and photos.</p></div><button class="btn" onclick="newItem('children')">+ Add Content</button></div>
+      <div id="list-children"></div>
+    </section>
+
+    <section class="page" id="page-assistance">
+      <div class="page-heading"><div><h1>Helping Families</h1><p>Manage humanitarian support activities.</p></div><button class="btn" onclick="newItem('assistance')">+ Add Content</button></div>
+      <div id="list-assistance"></div>
+    </section>
+
+    <section class="page" id="page-construction">
+      <div class="page-heading"><div><h1>Church Construction</h1><p>Manage construction progress, photos and updates.</p></div><button class="btn" onclick="newItem('construction')">+ Add Update</button></div>
+      <div class="panel">
+        <h3>Construction Progress</h3>
+        <div class="form-grid">
+          <div class="field"><label>Project title</label><input id="construction_title" placeholder="Church Construction Project"></div>
+          <div class="field"><label>Progress percentage (0–100)</label><input id="construction_progress" type="number" min="0" max="100" placeholder="0"></div>
+          <div class="field full"><label>Description</label><textarea id="construction_description"></textarea></div>
+        </div>
+        <div class="form-actions"><button class="btn" onclick="saveConstructionSettings()">Save Construction Settings</button></div>
+      </div>
+      <div id="list-construction"></div>
+    </section>
+
+    <section class="page" id="page-projects">
+      <div class="page-heading"><div><h1>Ministry Projects</h1><p>Manage projects and project updates.</p></div><button class="btn" onclick="newItem('projects')">+ Add Project</button></div>
+      <div id="list-projects"></div>
+    </section>
+
+    <section class="page" id="page-news">
+      <div class="page-heading"><div><h1>News & Announcements</h1><p>Publish ministry announcements and updates.</p></div><button class="btn" onclick="newItem('news')">+ Add News</button></div>
+      <div id="list-news"></div>
+    </section>
+
+    <section class="page" id="page-gallery">
+      <div class="page-heading"><div><h1>Photo Gallery</h1><p>Upload and manage ministry photographs.</p></div><button class="btn" onclick="newItem('gallery')">+ Add Photo</button></div>
+      <div id="list-gallery"></div>
+    </section>
+
+    <section class="page" id="page-testimonies">
+      <div class="page-heading"><div><h1>Testimonies</h1><p>Publish testimonies with permission from the people featured.</p></div><button class="btn" onclick="newItem('testimonies')">+ Add Testimony</button></div>
+      <div id="list-testimonies"></div>
+    </section>
+
+    <section class="page" id="page-events">
+      <div class="page-heading"><div><h1>Events & Activities</h1><p>Manage upcoming ministry events.</p></div><button class="btn" onclick="newItem('events')">+ Add Event</button></div>
+      <div id="list-events"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="page" id="page-settings">
+      <div class="page-heading"><div><h1>Website Settings</h1><p>Update public website information.</p></div><button class="btn" onclick="loadSettings()">↻ Reload</button></div>
+
+      <div class="panel">
+        <h3>Homepage & About</h3>
+        <div id="settingsMain"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Bank & Donation Details</h3>
+        <div id="settingsBank"></div>
+        <div class="notice">Make sure the account holder and donation arrangements are clearly disclosed. Do not claim registered charity status or tax deductibility unless legally established.</div>
+      </div>
+
+      <div class="panel">
+        <h3>Contact Information</h3>
+        <div id="settingsContact"></div>
+      </div>
+    </section>
+
+    <!-- DONATIONS -->
+    <section class="page" id="page-donations">
+      <div class="page-heading"><div><h1>Donation Records</h1><p>Record donations and maintain transparent accounts.</p></div><button class="btn" onclick="openDonationForm()">+ Record Donation</button></div>
+      <div class="panel">
+        <div class="notice">Record only donations actually received. Keep bank slips and receipts securely. This dashboard is a record-keeping tool, not a payment processor.</div>
+        <div class="table-wrap" id="donationsTable"><div class="empty">Loading donations...</div></div>
+      </div>
+    </section>
+
+    <!-- MESSAGES -->
+    <section class="page" id="page-messages">
+      <div class="page-heading"><div><h1>Contact Messages</h1><p>View and manage public enquiries.</p></div><button class="btn" onclick="loadMessages()">↻ Refresh</button></div>
+      <div class="panel"><div id="messagesList"><div class="empty">Loading messages...</div></div></div>
+    </section>
+
+  </div>
+</div>
 </div>
 
-<div class="text">
-
-<div class="dayrow">
-<div id="outDay" class="day">DAY 001</div>
-<div id="outDate" class="date"></div>
+<!-- CONTENT MODAL -->
+<div class="modal-backdrop" id="itemModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="itemModalTitle">Add Content</h3><button class="close" onclick="closeModal()">✕</button></div>
+    <form id="itemForm">
+      <input type="hidden" id="item_id">
+      <input type="hidden" id="item_type">
+      <div class="form-grid">
+        <div class="field full"><label>Title *</label><input id="item_title" required maxlength="200"></div>
+        <div class="field full"><label>Description / Content</label><textarea id="item_description"></textarea></div>
+        <div class="field"><label>Date</label><input id="item_date" type="date"></div>
+        <div class="field"><label>Photo URL (optional)</label><input id="item_image_url" placeholder="https://..."></div>
+        <div class="field full">
+          <label>Upload Photo to R2 (optional)</label>
+          <input id="item_image_file" type="file" accept="image/jpeg,image/png,image/webp">
+          <small style="color:var(--muted)">Choose JPG, PNG or WebP. Maximum 8 MB.</small>
+          <div id="uploadStatus"></div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn" id="saveItemBtn">Save Content</button>
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+      </div>
+      <div id="itemFormStatus"></div>
+    </form>
+  </div>
 </div>
 
-<div class="lang">ENGLISH</div>
-
-<div id="outEnglish" class="english"></div>
-
-<div id="outReference" class="reference"></div>
-
-<div class="translation">
-<b>தமிழ் • TAMIL</b>
-<div id="outTamil" class="tamil"></div>
+<!-- DONATION MODAL -->
+<div class="modal-backdrop" id="donationModal">
+  <div class="modal">
+    <div class="modal-head"><h3>Record Donation</h3><button class="close" onclick="closeDonationForm()">✕</button></div>
+    <form id="donationForm">
+      <div class="form-grid">
+        <div class="field"><label>Donor name</label><input id="donor_name" required></div>
+        <div class="field"><label>Amount (LKR)</label><input id="donation_amount" type="number" min="0.01" step="0.01" required></div>
+        <div class="field"><label>Date received</label><input id="donation_date" type="date" required></div>
+        <div class="field"><label>Project / Purpose</label><input id="donation_project"></div>
+        <div class="field"><label>Payment reference</label><input id="donation_reference"></div>
+        <div class="field"><label>Notes</label><input id="donation_notes"></div>
+      </div>
+      <div class="form-actions"><button class="btn" type="submit">Save Donation</button><button type="button" class="btn secondary" onclick="closeDonationForm()">Cancel</button></div>
+      <div id="donationFormStatus"></div>
+    </form>
+  </div>
 </div>
 
-<div class="translation">
-<b>සිංහල • SINHALA</b>
-<div id="outSinhala" class="sinhala"></div>
-</div>
-
-</div>
-</div>
-
-<div class="footer">
-“Walk with God • Grow in His Word”
-</div>
-
-</div>
-</div>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
-const $=id=>document.getElementById(id);
-let currentDay=1;
-const pages={};
+/* =====================================================
+   GOH MINISTRIES ADMIN
+   Worker API: https://gohm.createlk.workers.dev
+   ===================================================== */
 
-function dateFor(day){
- return new Date(2027,0,day).toLocaleDateString("en-US",{
-  month:"long",day:"numeric",year:"numeric"
- });
-}
+const API = "https://gohm.createlk.workers.dev";
 
-function generate(){
- currentDay=Math.max(1,Math.min(365,+$("day").value||1));
- $("day").value=currentDay;
- $("outDay").textContent="DAY "+String(currentDay).padStart(3,"0");
- $("outDate").textContent=$("date").value||dateFor(currentDay);
- $("outEnglish").textContent=$("english").value||"Your Bible verse will appear here.";
- $("outTamil").textContent=$("tamil").value||"தமிழ் வேதாகம வசனம் இங்கே தோன்றும்.";
- $("outSinhala").textContent=$("sinhala").value||"සිංහල බයිබල් පදය මෙහි දිස් වේ.";
- $("outReference").textContent=$("reference").value?"— "+$("reference").value:"";
- $("status").textContent=`Day ${currentDay} of 365`;
-}
+/* Replace with your actual Google OAuth Web Client ID */
+const GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com";
 
-function saveCurrent(){
- pages[currentDay]={
-  date:$("date").value,
-  english:$("english").value,
-  tamil:$("tamil").value,
-  sinhala:$("sinhala").value,
-  reference:$("reference").value,
-  photo:$("outPhoto").src||""
- };
-}
+const TYPES = [
+  "children","assistance","construction","projects",
+  "news","gallery","testimonies","events"
+];
 
-function loadDay(day){
- saveCurrent();
- currentDay=Math.max(1,Math.min(365,+day||1));
-
- const p=pages[currentDay]||{};
-
- $("day").value=currentDay;
- $("date").value=p.date||dateFor(currentDay);
- $("english").value=p.english||"";
- $("tamil").value=p.tamil||"";
- $("sinhala").value=p.sinhala||"";
- $("reference").value=p.reference||"";
-
- if(p.photo){
-  $("outPhoto").src=p.photo;
-  $("outPhoto").style.display="block";
-  $("placeholder").style.display="none";
- }else{
-  $("outPhoto").removeAttribute("src");
-  $("outPhoto").style.display="none";
-  $("placeholder").style.display="flex";
- }
-
- generate();
-}
-
-function nextDay(){
- if(currentDay<365)loadDay(currentDay+1);
-}
-
-function previousDay(){
- if(currentDay>1)loadDay(currentDay-1);
-}
-
-function clearVerse(){
- $("english").value="";
- $("tamil").value="";
- $("sinhala").value="";
- $("reference").value="";
- generate();
-}
-
-$("photo").onchange=function(){
- const file=this.files[0];
- if(!file)return;
-
- if(!file.type.startsWith("image/")){
-  alert("Please select an image.");
-  return;
- }
-
- const reader=new FileReader();
-
- reader.onload=e=>{
-  $("outPhoto").src=e.target.result;
-  $("outPhoto").style.display="block";
-  $("placeholder").style.display="none";
-
-  pages[currentDay]=pages[currentDay]||{};
-  pages[currentDay].photo=e.target.result;
- };
-
- reader.readAsDataURL(file);
+const TITLES = {
+  dashboard:"Dashboard",
+  children:"Children's Ministry",
+  assistance:"Helping Families",
+  construction:"Church Construction",
+  projects:"Ministry Projects",
+  news:"News & Announcements",
+  gallery:"Photo Gallery",
+  testimonies:"Testimonies",
+  events:"Events & Activities",
+  settings:"Website Settings",
+  donations:"Donations",
+  messages:"Messages"
 };
 
-$("position").onchange=function(){
- $("outPhoto").style.objectPosition=this.value;
-};
+let currentAdmin = null;
+let allItems = {};
+let currentSettings = {};
+let toastTimer = null;
 
-["day","date","english","tamil","sinhala","reference"].forEach(id=>{
- $(id).addEventListener("input",generate);
+const $ = id => document.getElementById(id);
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
+}
+
+function showToast(message){
+  const toast=$("toast");
+  toast.textContent=message;
+  toast.style.display="block";
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.style.display="none",3500);
+}
+
+async function api(path,options={}){
+  const response=await fetch(API+path,{
+    ...options,
+    credentials:"include",
+    headers:{
+      ...(options.body instanceof FormData?{}:{"Content-Type":"application/json"}),
+      ...(options.headers||{})
+    }
+  });
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok || data.success===false){
+    throw new Error(data.error||data.message||"Request failed ("+response.status+")");
+  }
+  return data;
+}
+
+function getItems(data){
+  if(Array.isArray(data))return data;
+  return data.items||data.data||data.results||[];
+}
+
+function setStatus(id,message,type="error"){
+  const el=$(id);
+  if(!el)return;
+  el.className=type;
+  el.textContent=message;
+}
+
+function openPage(page){
+  document.querySelectorAll(".page").forEach(el=>el.classList.remove("active"));
+  document.querySelectorAll(".nav-item[data-page]").forEach(el=>el.classList.remove("active"));
+  const section=$("page-"+page);
+  if(section)section.classList.add("active");
+  const nav=document.querySelector('.nav-item[data-page="'+page+'"]');
+  if(nav)nav.classList.add("active");
+  $("pageTitle").textContent=TITLES[page]||"Admin";
+  $("sidebar").classList.remove("open");
+
+  if(TYPES.includes(page))loadType(page);
+  if(page==="settings")loadSettings();
+  if(page==="donations")loadDonations();
+  if(page==="messages")loadMessages();
+  if(page==="dashboard")loadDashboard();
+}
+
+document.querySelectorAll(".nav-item[data-page]").forEach(button=>{
+  button.addEventListener("click",()=>openPage(button.dataset.page));
 });
 
-async function savePNG(){
+$("mobileMenu").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
 
- generate();
+/* GOOGLE AUTHENTICATION */
 
- const btn=document.querySelector('button[onclick="savePNG()"]');
- btn.disabled=true;
- btn.textContent="Creating PNG...";
- $("status").textContent="Creating 3600 × 2700 PNG...";
-
- try{
-
-  await document.fonts.ready;
-
-  const img=$("outPhoto");
-
-  if(img.src&&!img.complete){
-   await new Promise(resolve=>{
-    img.onload=resolve;
-    img.onerror=resolve;
-   });
+function initializeGoogle(){
+  if(!window.google || !google.accounts || !google.accounts.id){
+    setTimeout(initializeGoogle,500);
+    return;
   }
 
-  await new Promise(r=>setTimeout(r,300));
+  if(!GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID.startsWith("YOUR_")){
+    $("loginStatus").textContent="Add your Google OAuth Client ID in the admin.html code first.";
+    return;
+  }
 
-  const canvas=await html2canvas($("calendar"),{
-   width:1200,
-   height:900,
-   scale:3,
-   useCORS:true,
-   allowTaint:false,
-   backgroundColor:"#F8F5ED",
-   imageTimeout:20000,
-   logging:false
+  google.accounts.id.initialize({
+    client_id:GOOGLE_CLIENT_ID,
+    callback:handleGoogleLogin
   });
 
-  canvas.toBlob(blob=>{
-   if(!blob){
-    alert("PNG creation failed.");
-    return;
-   }
-
-   const url=URL.createObjectURL(blob);
-   const a=document.createElement("a");
-
-   a.href=url;
-   a.download="Bible-Calendar-Day-"+
-     String(currentDay).padStart(3,"0")+".png";
-
-   a.click();
-
-   setTimeout(()=>URL.revokeObjectURL(url),1000);
-
-   $("status").textContent="✓ PNG saved • 3600 × 2700 px";
-  },"image/png");
-
- }catch(err){
-
-  console.error(err);
-  $("status").textContent="PNG export failed";
-  alert("PNG export failed. Please use Chrome or Edge.");
-
- }finally{
-
-  btn.disabled=false;
-  btn.textContent="💾 Save PNG";
- }
+  google.accounts.id.renderButton($("googleButton"),{
+    theme:"outline",size:"large",shape:"rectangular",
+    text:"signin_with",width:260
+  });
 }
 
-/* Sample Day 1 */
-$("english").value=
-"The Lord is my shepherd; I shall not want.";
+async function handleGoogleLogin(response){
+  $("loginStatus").textContent="Checking administrator account...";
 
-$("tamil").value=
-"கர்த்தர் என் மேய்ப்பராயிருக்கிறார்; எனக்குக் குறைவில்லை.";
+  try{
+    const result=await api("/api/auth/google",{
+      method:"POST",
+      body:JSON.stringify({credential:response.credential})
+    });
 
-$("sinhala").value=
-"ස්වාමීන්වහන්සේ මාගේ එඬේරාණෝය; මට හිඟයක් නොවන්නේය.";
+    if(result.success===false)throw new Error(result.error||"Login failed");
+    await checkSession();
+  }catch(error){
+    $("loginStatus").textContent=error.message;
+  }
+}
 
-$("reference").value="Psalm 23:1";
+async function checkSession(){
+  try{
+    const result=await api("/api/auth/me");
+    const user=result.user||result.admin||result;
+    if(!user || user.is_admin===false)throw new Error("Administrator access is required.");
+    currentAdmin=user;
+    showAdmin();
+  }catch(error){
+    $("adminApp").classList.add("hidden");
+    $("loginScreen").classList.remove("hidden");
+    if(error.message!=="Unauthorized"){
+      $("loginStatus").textContent=error.message;
+    }
+  }
+}
 
-loadDay(1);
+function showAdmin(){
+  $("loginScreen").classList.add("hidden");
+  $("adminApp").classList.remove("hidden");
+  $("adminEmail").textContent=currentAdmin.email||"Administrator";
+  openPage("dashboard");
+}
+
+$("logoutBtn").addEventListener("click",async()=>{
+  try{await api("/api/auth/logout",{method:"POST"});}catch(e){}
+  currentAdmin=null;
+  $("adminApp").classList.add("hidden");
+  $("loginScreen").classList.remove("hidden");
+  $("loginStatus").textContent="You have signed out.";
+});
+
+window.addEventListener("load",()=>{
+  initializeGoogle();
+  checkSession();
+});
+
+/* DASHBOARD */
+
+async function loadDashboard(){
+  try{
+    const data=await api("/api/admin/stats");
+    const stats=data.stats||data;
+    $("statItems").textContent=stats.total_items??stats.total_content??"—";
+    $("statDonations").textContent=stats.total_donations??"—";
+    $("statMessages").textContent=stats.total_messages??"—";
+  }catch(error){
+    console.error(error);
+    $("statItems").textContent="—";
+    $("statDonations").textContent="—";
+    $("statMessages").textContent="—";
+  }
+}
+
+/* CONTENT CRUD */
+
+async function loadType(type){
+  const container=$("list-"+type);
+  container.innerHTML='<div class="empty">Loading content...</div>';
+
+  try{
+    const data=await api("/api/items?admin=1&type="+encodeURIComponent(type));
+    const items=getItems(data);
+    allItems[type]=items;
+    renderItems(type,items);
+  }catch(error){
+    container.innerHTML='<div class="empty error">'+escapeHTML(error.message)+'</div>';
+  }
+}
+
+function renderItems(type,items){
+  const container=$("list-"+type);
+  if(!items.length){
+    container.innerHTML='<div class="panel empty">No content yet. Click the Add button to create your first record.</div>';
+    return;
+  }
+
+  container.innerHTML=`
+  <div class="panel">
+    <div class="page-heading">
+      <h3>${escapeHTML(TITLES[type])} Records</h3>
+      <span class="badge">${items.length} records</span>
+    </div>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Photo</th><th>Title</th><th>Description</th><th>Date</th><th>Actions</th></tr></thead>
+      <tbody>
+      ${items.map(item=>{
+        const img=item.image_url||item.image||"";
+        return `<tr>
+          <td>${img?`<img class="thumb" src="${escapeHTML(img)}" alt="">`:"—"}</td>
+          <td><strong>${escapeHTML(item.title||"Untitled")}</strong></td>
+          <td>${escapeHTML((item.description||"").slice(0,100))}</td>
+          <td>${escapeHTML(item.date||"—")}</td>
+          <td><div class="actions">
+            <button class="small-btn" onclick="editItem('${type}',${Number(item.id)})">Edit</button>
+            <button class="small-btn delete" onclick="deleteItem('${type}',${Number(item.id)})">Delete</button>
+          </div></td>
+        </tr>`;
+      }).join("")}
+      </tbody>
+    </table>
+    </div>
+  </div>`;
+}
+
+function newItem(type){
+  $("itemForm").reset();
+  $("item_id").value="";
+  $("item_type").value=type;
+  $("itemModalTitle").textContent="Add "+TITLES[type];
+  $("itemFormStatus").textContent="";
+  $("uploadStatus").textContent="";
+  $("itemModal").classList.add("open");
+}
+
+function editItem(type,id){
+  const item=(allItems[type]||[]).find(x=>Number(x.id)===Number(id));
+  if(!item)return showToast("Content record not found.");
+
+  $("item_id").value=item.id;
+  $("item_type").value=type;
+  $("item_title").value=item.title||"";
+  $("item_description").value=item.description||"";
+  $("item_date").value=(item.date||"").slice(0,10);
+  $("item_image_url").value=item.image_url||item.image||"";
+  $("item_image_file").value="";
+  $("itemModalTitle").textContent="Edit "+TITLES[type];
+  $("itemFormStatus").textContent="";
+  $("uploadStatus").textContent="";
+  $("itemModal").classList.add("open");
+}
+
+function closeModal(){
+  $("itemModal").classList.remove("open");
+}
+
+async function uploadImage(file){
+  if(!file)return "";
+  if(file.size>8*1024*1024)throw new Error("Image must be smaller than 8 MB.");
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+    throw new Error("Please choose a JPG, PNG or WebP image.");
+  }
+
+  const form=new FormData();
+  form.append("file",file);
+
+  $("uploadStatus").textContent="Uploading photo...";
+  const result=await api("/api/admin/upload",{method:"POST",body:form});
+  $("uploadStatus").textContent="Photo uploaded.";
+  return result.url||result.image_url||result.key||"";
+}
+
+$("itemForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const button=$("saveItemBtn");
+  button.disabled=true;
+  setStatus("itemFormStatus","Saving...","success");
+
+  try{
+    const type=$("item_type").value;
+    const id=$("item_id").value;
+    let imageUrl=$("item_image_url").value.trim();
+    const file=$("item_image_file").files[0];
+
+    if(file){
+      imageUrl=await uploadImage(file);
+      if(!imageUrl)throw new Error("Upload succeeded but no image URL was returned.");
+    }
+
+    const payload={
+      type,
+      title:$("item_title").value.trim(),
+      description:$("item_description").value.trim(),
+      date:$("item_date").value||null,
+      image_url:imageUrl
+    };
+
+    if(!payload.title)throw new Error("Please enter a title.");
+
+    await api(id?"/api/items/"+encodeURIComponent(id):"/api/items",{
+      method:id?"PUT":"POST",
+      body:JSON.stringify(payload)
+    });
+
+    closeModal();
+    showToast("Content saved successfully.");
+    loadType(type);
+    loadDashboard();
+  }catch(error){
+    setStatus("itemFormStatus",error.message,"error");
+  }finally{
+    button.disabled=false;
+  }
+});
+
+async function deleteItem(type,id){
+  if(!confirm("Delete this content permanently?"))return;
+  try{
+    await api("/api/items/"+encodeURIComponent(id),{method:"DELETE"});
+    showToast("Content deleted.");
+    loadType(type);
+    loadDashboard();
+  }catch(error){showToast(error.message);}
+}
+
+/* SETTINGS */
+
+const SETTING_GROUPS={
+  settingsMain:[
+    ["site_name","Website name","text"],
+    ["hero_title","Homepage headline","textarea"],
+    ["hero_description","Homepage description","textarea"],
+    ["about_title","About title","text"],
+    ["about_description","About description","textarea"],
+    ["about_image","About photo URL","text"],
+    ["footer_description","Footer description","textarea"]
+  ],
+  settingsBank:[
+    ["bank_name","Bank name","text"],
+    ["account_name","Account holder name","text"],
+    ["account_number","Account number","text"],
+    ["bank_branch","Bank branch","text"],
+    ["donation_notice","Donation disclosure","textarea"]
+  ],
+  settingsContact:[
+    ["contact_email","Contact email","text"],
+    ["contact_phone","Contact phone","text"],
+    ["contact_address","Address / Location","text"],
+    ["whatsapp","WhatsApp number (international format)","text"]
+  ]
+};
+
+async function loadSettings(){
+  try{
+    const data=await api("/api/admin/settings");
+    currentSettings=data.settings||data.data||data;
+
+    Object.entries(SETTING_GROUPS).forEach(([containerId,fields])=>{
+      $(containerId).innerHTML=fields.map(([key,label,type])=>{
+        const value=currentSettings[key]??"";
+        const control=type==="textarea"
+          ?`<textarea id="setting_${key}">${escapeHTML(value)}</textarea>`
+          :`<input id="setting_${key}" value="${escapeHTML(value)}">`;
+
+        return `<div class="setting-row">
+          <label for="setting_${key}">${escapeHTML(label)}</label>
+          ${control}
+          <button class="btn secondary" onclick="saveSetting('${key}')">Save</button>
+        </div>`;
+      }).join("");
+    });
+
+    $("construction_title").value=currentSettings.construction_title||"";
+    $("construction_description").value=currentSettings.construction_description||"";
+    $("construction_progress").value=currentSettings.construction_progress||0;
+  }catch(error){
+    showToast("Settings: "+error.message);
+  }
+}
+
+async function saveSetting(key){
+  const value=$("setting_"+key).value;
+  try{
+    await api("/api/admin/settings",{
+      method:"POST",
+      body:JSON.stringify({key,value})
+    });
+    currentSettings[key]=value;
+    showToast("Setting saved.");
+  }catch(error){showToast(error.message);}
+}
+
+async function saveConstructionSettings(){
+  const settings={
+    construction_title:$("construction_title").value,
+    construction_description:$("construction_description").value,
+    construction_progress:String(Math.max(0,Math.min(100,Number($("construction_progress").value)||0)))
+  };
+
+  try{
+    for(const [key,value] of Object.entries(settings)){
+      await api("/api/admin/settings",{
+        method:"POST",
+        body:JSON.stringify({key,value})
+      });
+    }
+    showToast("Construction settings saved.");
+  }catch(error){showToast(error.message);}
+}
+
+/* DONATIONS */
+
+async function loadDonations(){
+  $("donationsTable").innerHTML='<div class="empty">Loading donation records...</div>';
+  try{
+    const data=await api("/api/admin/donations");
+    const items=getItems(data);
+    window.donationRecords=items;
+
+    if(!items.length){
+      $("donationsTable").innerHTML='<div class="empty">No donation records yet.</div>';
+      return;
+    }
+
+    $("donationsTable").innerHTML=`
+    <table>
+      <thead><tr><th>Date</th><th>Donor</th><th>Amount (LKR)</th><th>Project</th><th>Reference</th><th>Action</th></tr></thead>
+      <tbody>
+      ${items.map(item=>`<tr>
+        <td>${escapeHTML(item.donation_date||item.date||"—")}</td>
+        <td><strong>${escapeHTML(item.donor_name||item.name||"—")}</strong></td>
+        <td>${Number(item.amount||0).toLocaleString("en-LK",{minimumFractionDigits:2})}</td>
+        <td>${escapeHTML(item.project||"—")}</td>
+        <td>${escapeHTML(item.reference||"—")}</td>
+        <td><button class="small-btn delete" onclick="deleteDonation(${Number(item.id)})">Delete</button></td>
+      </tr>`).join("")}
+      </tbody>
+    </table>
+    <div style="padding:15px;font-weight:bold;color:var(--navy)">
+      Total recorded: LKR ${items.reduce((sum,x)=>sum+Number(x.amount||0),0).toLocaleString("en-LK",{minimumFractionDigits:2})}
+    </div>
+    <button class="btn secondary" onclick="exportDonations()">Download CSV</button>`;
+  }catch(error){
+    $("donationsTable").innerHTML='<div class="empty error">'+escapeHTML(error.message)+'</div>';
+  }
+}
+
+function openDonationForm(){
+  $("donationForm").reset();
+  $("donation_date").value=new Date().toISOString().slice(0,10);
+  $("donationModal").classList.add("open");
+}
+
+function closeDonationForm(){
+  $("donationModal").classList.remove("open");
+}
+
+$("donationForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const payload={
+    donor_name:$("donor_name").value.trim(),
+    amount:Number($("donation_amount").value),
+    donation_date:$("donation_date").value,
+    project:$("donation_project").value.trim(),
+    reference:$("donation_reference").value.trim(),
+    notes:$("donation_notes").value.trim()
+  };
+
+  try{
+    await api("/api/admin/donations",{
+      method:"POST",
+      body:JSON.stringify(payload)
+    });
+    closeDonationForm();
+    showToast("Donation record saved.");
+    loadDonations();
+    loadDashboard();
+  }catch(error){
+    setStatus("donationFormStatus",error.message);
+  }
+});
+
+async function deleteDonation(id){
+  if(!confirm("Delete this donation record?"))return;
+  try{
+    await api("/api/admin/donations/"+encodeURIComponent(id),{method:"DELETE"});
+    showToast("Donation record deleted.");
+    loadDonations();
+    loadDashboard();
+  }catch(error){showToast(error.message);}
+}
+
+function exportDonations(){
+  const items=window.donationRecords||[];
+  const fields=["donation_date","donor_name","amount","project","reference","notes"];
+  const csv=[
+    fields.join(","),
+    ...items.map(item=>fields.map(key=>'"'+String(item[key]??"").replace(/"/g,'""')+'"').join(","))
+  ].join("\r\n");
+
+  const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download="goh-donations.csv";a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* MESSAGES */
+
+async function loadMessages(){
+  $("messagesList").innerHTML='<div class="empty">Loading messages...</div>';
+  try{
+    const data=await api("/api/messages");
+    const items=getItems(data);
+    if(!items.length){
+      $("messagesList").innerHTML='<div class="empty">No messages received.</div>';
+      return;
+    }
+
+    $("messagesList").innerHTML=items.map(item=>`
+      <div class="message-card">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div><h4>${escapeHTML(item.name||"Visitor")}</h4>
+          <small>${escapeHTML(item.email||"")} · ${escapeHTML(item.subject||"General enquiry")}</small></div>
+          <span class="badge">${escapeHTML(item.status||"New")}</span>
+        </div>
+        <p>${escapeHTML(item.message||"")}</p>
+        <small style="color:var(--muted)">${escapeHTML(item.created_at||"")}</small>
+        <div class="actions" style="margin-top:12px">
+          <button class="small-btn" onclick="updateMessage(${Number(item.id)},'read')">Mark Read</button>
+          <button class="small-btn delete" onclick="deleteMessage(${Number(item.id)})">Delete</button>
+        </div>
+      </div>
+    `).join("");
+  }catch(error){
+    $("messagesList").innerHTML='<div class="empty error">'+escapeHTML(error.message)+'</div>';
+  }
+}
+
+async function updateMessage(id,status){
+  try{
+    await api("/api/messages/"+encodeURIComponent(id),{
+      method:"PUT",body:JSON.stringify({status})
+    });
+    showToast("Message updated.");
+    loadMessages();
+  }catch(error){showToast(error.message);}
+}
+
+async function deleteMessage(id){
+  if(!confirm("Delete this message?"))return;
+  try{
+    await api("/api/messages/"+encodeURIComponent(id),{method:"DELETE"});
+    showToast("Message deleted.");
+    loadMessages();
+    loadDashboard();
+  }catch(error){showToast(error.message);}
+}
 </script>
-
 </body>
 </html>
