@@ -67,7 +67,7 @@ th{color:var(--gold);font-weight:600}
 .login-icon{width:70px;height:70px;margin:auto auto 15px;display:grid;place-items:center;background:var(--gold);color:#111c2b;font-size:35px;border-radius:18px}
 .login-card h1{font-size:24px;margin:8px}
 .login-card p{color:var(--muted);line-height:1.6;font-size:14px}
-.google-box{display:flex;justify-content:center;margin:24px 0}
+.google-box{display:flex;justify-content:center;margin:24px 0;min-height:42px}
 .mobile-menu{display:none}
 .empty{text-align:center;color:var(--muted);padding:25px}
 .preview{max-width:180px;max-height:110px;border-radius:8px;display:block;margin:8px 0}
@@ -78,9 +78,6 @@ th{color:var(--gold);font-weight:600}
 .inline-check{display:flex;align-items:center;gap:9px;margin:10px 0}
 .inline-check input{width:auto;margin:0}
 .small-note{font-size:12px;color:var(--muted);line-height:1.5}
-.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
-.tabs button{border:1px solid var(--line);background:#172b46;color:white;border-radius:8px;padding:9px 12px}
-.tabs button.active{background:var(--gold);color:#101d30}
 @media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.sidebar{width:215px}}
 @media(max-width:650px){.layout{display:block}.sidebar{width:100%;display:none;border-right:0;border-bottom:1px solid var(--line);padding:8px 12px}.sidebar.open{display:block}.main{padding:17px}.topbar{padding:12px}.mobile-menu{display:inline-block}.cards{grid-template-columns:1fr 1fr;gap:9px}.card{padding:13px}.card .number{font-size:22px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.brand h1{font-size:14px}.user-area{gap:5px}.user-area span{max-width:100px;overflow:hidden;text-overflow:ellipsis}}
 </style>
@@ -119,16 +116,7 @@ th{color:var(--gold);font-weight:600}
 <button class="nav-btn active" onclick="showPage('dashboard',this)">📊 Dashboard</button>
 
 <div class="nav-title">Ministries & Content</div>
-<div id="ministryNav">
-<button class="nav-btn" onclick="showContentType('children')">👧 Children's Ministry</button>
-<button class="nav-btn" onclick="showContentType('assistance')">❤️ Family Assistance</button>
-<button class="nav-btn" onclick="showContentType('construction')">🏗️ Church Construction</button>
-<button class="nav-btn" onclick="showContentType('projects')">🌍 Projects</button>
-<button class="nav-btn" onclick="showContentType('news')">📰 News & Announcements</button>
-<button class="nav-btn" onclick="showContentType('gallery')">📸 Photo Gallery</button>
-<button class="nav-btn" onclick="showContentType('testimonies')">🙏 Testimonies</button>
-<button class="nav-btn" onclick="showContentType('events')">📅 Events</button>
-</div>
+<div id="ministryNav"></div>
 
 <div class="nav-title">GOH Samaritan Club</div>
 <button class="nav-btn" onclick="showPage('beneficiaries',this)">🤝 Beneficiary Families</button>
@@ -179,7 +167,6 @@ th{color:var(--gold);font-weight:600}
 <div><label>Display order</label><input id="itemOrder" type="number" value="0"></div>
 <div class="full"><label>Short description</label><textarea id="itemDescription"></textarea></div>
 <div class="full"><label>Full content</label><textarea id="itemContent" style="min-height:160px"></textarea></div>
-
 <div class="full">
 <label>Upload multiple images (maximum 8 MB each)</label>
 <input type="file" id="itemFiles" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
@@ -189,7 +176,6 @@ th{color:var(--gold);font-weight:600}
 <label>Primary image URL</label>
 <input id="itemImage" placeholder="Primary image URL">
 </div>
-
 <div><label>Publication status</label><select id="itemStatus"><option value="published">Published</option><option value="draft">Draft</option></select></div>
 </div>
 <div class="actions">
@@ -381,6 +367,8 @@ th{color:var(--gold);font-weight:600}
 </div>
 
 <script>
+"use strict";
+
 const API="https://gohm.createlk.workers.dev";
 const GOOGLE_CLIENT_ID="865065943863-fqu3k2n85n6jc81p0ift4ueor7hobj1n.apps.googleusercontent.com";
 
@@ -394,16 +382,17 @@ prayer:"Prayer Ministry",
 evangelism:"Evangelism Ministry",
 missionary:"Missionary Ministry",
 pastoral:"Pastoral Ministry",
-bible-study:"Bible Study Ministry",
-sunday-school:"Sunday School Ministry",
-community-outreach:"Community Outreach",
+"bible-study":"Bible Study Ministry",
+"sunday-school":"Sunday School Ministry",
+"community-outreach":"Community Outreach",
 assistance:"Family Assistance",
 construction:"Church Construction",
 projects:"Projects",
 news:"News & Announcements",
 gallery:"Photo Gallery",
 testimonies:"Testimonies",
-events:"Events"
+events:"Events",
+"samaritan-club":"GOH Samaritan Club"
 };
 
 let CONTENT_TYPES={...DEFAULT_TYPES};
@@ -516,7 +505,10 @@ if(slug)CONTENT_TYPES[slug]=t.name||t.title||slug;
 });
 }
 renderMinistryNav();
-}catch(e){console.warn("Ministry types endpoint unavailable; using built-in categories.",e)}
+}catch(e){
+console.warn("Ministry types endpoint unavailable; using built-in categories.",e);
+renderMinistryNav();
+}
 }
 function renderMinistryNav(){
 const nav=document.getElementById("ministryNav");
@@ -525,7 +517,7 @@ nav.innerHTML=Object.entries(CONTENT_TYPES).map(([slug,name])=>
 ).join("");
 }
 function iconForType(type){
-const icons={children:"👧",youth:"🧑",women:"🌸",men:"👨",worship:"🎵",prayer:"🙏",evangelism:"📖",missionary:"🌍",pastoral:"⛪","bible-study":"📚","sunday-school":"🧒","community-outreach":"🤝",assistance:"❤️",construction:"🏗️",projects:"🌱",news:"📰",gallery:"📸",testimonies:"✨",events:"📅"};
+const icons={children:"👧",youth:"🧑",women:"🌸",men:"👨",worship:"🎵",prayer:"🙏",evangelism:"📖",missionary:"🌍",pastoral:"⛪","bible-study":"📚","sunday-school":"🧒","community-outreach":"🤝",assistance:"❤️",construction:"🏗️",projects:"🌱",news:"📰",gallery:"📸",testimonies:"✨",events:"📅","samaritan-club":"🤝"};
 return icons[type]||"✝️";
 }
 
@@ -947,7 +939,10 @@ message("apiStatus","Connected: "+(result.service||"GOH Ministries")+" — "+(re
 
 /* STARTUP */
 document.getElementById("donorDate").value=dateToday();
+document.getElementById("benDate").value=dateToday();
+
 window.addEventListener("load",()=>{
+renderMinistryNav();
 initializeGoogle();
 checkSession();
 });
