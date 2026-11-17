@@ -1,752 +1,735 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<!-- Google AdSense -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7369880405117405"
-crossorigin="anonymous"></script>
-
-<title>GOH Ministries | Gate of Heaven Ministries</title>
-
-<meta name="description"
-content="Gate of Heaven Ministries provides daily Bible devotionals, prayer, Christian encouragement and biblical resources in English, Tamil and Sinhala.">
-
-<link rel="icon"
-href="https://media.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101d35">
+<meta name="description" content="GOH Ministries — Sharing God's love through children’s ministry, humanitarian support, church construction and community projects.">
+<title>GOH Ministries | Sharing God's Love</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
+:root{
+  --bg:#f5f7fb;
+  --navy:#101d35;
+  --navy2:#192c4d;
+  --blue:#285da8;
+  --gold:#e7b84b;
+  --white:#fff;
+  --text:#1d2939;
+  --muted:#697586;
+  --line:#e5eaf1;
+  --radius:18px;
+  --shadow:0 12px 35px rgba(16,29,53,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f4f7fb;
-color:#172033;
-line-height:1.6
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.65
 }
-
 a{text-decoration:none;color:inherit}
-
-.container{
-width:min(1000px,92%);
-margin:auto
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1160px,92%);margin:auto}
+.topbar{
+  background:var(--navy);color:#dce5f3;
+  padding:8px 0;font-size:13px
 }
-
+.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:#fff;
-border-bottom:1px solid #e5e7eb
+  background:#fff;position:sticky;top:0;z-index:100;
+  box-shadow:0 3px 16px rgba(0,0,0,.06)
 }
-
 .nav{
-min-height:64px;
-display:flex;
-align-items:center;
-justify-content:space-between
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px
 }
-
-.logo{
-display:flex;
-align-items:center;
-gap:9px
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy)}
+.brand-mark{
+  width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;background:var(--navy);
+  color:var(--gold);font-size:23px
 }
-
-.logo img{
-width:42px;
-height:42px;
-object-fit:contain;
-border-radius:9px
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}
+.navlinks{display:flex;align-items:center;gap:19px;font-size:13px;font-weight:700}
+.navlinks a:hover{color:var(--blue)}
+.donate-btn,.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border:0;border-radius:10px;padding:12px 20px;
+  background:var(--gold);color:var(--navy);font-weight:800
 }
-
-.logo-title{
-font-size:14px;
-font-weight:900
-}
-
-.logo-sub{
-font-size:8px;
-color:#6b7280
-}
-
-.nav-links{
-display:flex;
-gap:5px
-}
-
-.nav-links a{
-padding:8px 10px;
-border-radius:8px;
-font-size:10px;
-font-weight:800
-}
-
-.nav-links a:hover{
-background:#f1f5f9
-}
-
-.menu{
-display:none;
-width:40px;
-height:40px;
-border:1px solid #e5e7eb;
-background:#fff;
-border-radius:9px;
-font-size:18px
-}
-
-.mobile-menu{
-display:none
-}
-
-.mobile-menu.show{
-display:block;
-position:fixed;
-top:64px;
-left:0;
-right:0;
-z-index:999;
-background:#fff;
-padding:8px 4%;
-border-bottom:1px solid #e5e7eb;
-box-shadow:0 10px 25px #0002
-}
-
-.mobile-menu a{
-display:block;
-padding:12px;
-font-size:12px;
-font-weight:800
-}
-
-/* HERO */
-
+.btn.blue{background:var(--blue);color:white}
+.btn.outline{background:transparent;border:1px solid rgba(255,255,255,.6);color:white}
+.menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--navy)}
 .hero{
-padding:20px 0 12px
+  background:linear-gradient(110deg,rgba(9,22,43,.94),rgba(15,39,72,.78)),
+  url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1800&q=85") center/cover;
+  color:white;padding:105px 0 95px;min-height:520px;
+  display:flex;align-items:center
 }
-
-.hero-card{
-background:linear-gradient(135deg,#111827,#334155);
-color:#fff;
-border-radius:22px;
-padding:38px 22px;
-text-align:center
+.hero-content{max-width:720px}
+.eyebrow{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:12px;text-transform:uppercase}
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.08;margin:16px 0}
+.hero p{font-size:18px;color:#e0e8f4;max-width:620px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:-38px;position:relative}
+.stat{
+  background:white;padding:23px;border-radius:15px;
+  text-align:center;box-shadow:var(--shadow)
 }
-
-.hero-logo{
-width:68px;
-height:68px;
-background:#fff;
-border-radius:15px;
-padding:5px;
-object-fit:contain;
-margin-bottom:10px
-}
-
-.label{
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-color:#fbbf24
-}
-
-.hero h1{
-font-size:clamp(30px,7vw,48px);
-line-height:1.1;
-margin:8px 0 12px
-}
-
-.hero h1 span{
-color:#fbbf24
-}
-
-.hero p{
-max-width:650px;
-margin:auto;
-font-size:12px;
-color:#d1d5db
-}
-
-.buttons{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-top:18px;
-flex-wrap:wrap
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:11px 16px;
-border-radius:9px;
-font-size:11px;
-font-weight:900
-}
-
-.primary{
-background:#fbbf24;
-color:#111827
-}
-
-.white{
-background:#fff;
-color:#111827
-}
-
-/* CONTENT */
-
-section{
-padding:14px 0
-}
-
+.stat strong{display:block;font-size:27px;color:var(--blue)}
+.stat span{font-size:13px;color:var(--muted)}
+section{padding:78px 0}
+.section-head{text-align:center;max-width:720px;margin:0 auto 38px}
+.section-head h2{font-size:clamp(28px,4vw,39px);color:var(--navy);margin:8px 0}
+.section-head p{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:18px;
-padding:23px
+  background:white;border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 20px rgba(16,29,53,.04)
 }
-
-.head{
-text-align:center;
-margin-bottom:18px
+.card img{width:100%;height:210px;object-fit:cover;display:block;background:#e8edf4}
+.card-body{padding:22px}
+.card h3{margin:0 0 9px;color:var(--navy);font-size:19px}
+.card p{margin:0 0 15px;color:var(--muted);font-size:14px}
+.card .date{font-size:12px;color:var(--blue);font-weight:800;margin-bottom:8px}
+.readmore{color:var(--blue);font-size:13px;font-weight:800}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.about-image{width:100%;height:410px;object-fit:cover;border-radius:22px}
+.about-copy h2{font-size:36px;line-height:1.2;color:var(--navy)}
+.about-copy p{color:var(--muted)}
+.checklist{padding:0;list-style:none}
+.checklist li{padding:7px 0}
+.checklist li:before{content:"✓";color:#21956a;font-weight:900;margin-right:10px}
+.dark-section{background:var(--navy);color:white}
+.dark-section .section-head h2{color:white}
+.dark-section .section-head p{color:#c5d0df}
+.ministry-card{background:#192c4d;border:1px solid #304765;color:white}
+.ministry-card h3{color:white}
+.ministry-card p{color:#c5d0df}
+.ministry-card .readmore{color:var(--gold)}
+.construction{
+  background:linear-gradient(110deg,rgba(16,29,53,.94),rgba(16,29,53,.82)),
+  url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=85") center/cover;
+  color:white;border-radius:22px;padding:45px
 }
-
-.head h2{
-font-size:23px;
-margin:5px 0
+.construction h2{font-size:34px;margin:8px 0}
+.construction p{max-width:650px;color:#e1e8f1}
+.progress-track{height:12px;border-radius:20px;background:#ffffff44;overflow:hidden;margin:22px 0}
+.progress-fill{height:100%;width:0;background:var(--gold);border-radius:20px}
+.donation-layout{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:27px}
+.panel h3{color:var(--navy);margin-top:0}
+.bank-row{padding:12px 0;border-bottom:1px solid var(--line)}
+.bank-row strong{display:block;font-size:12px;color:var(--muted)}
+.bank-row span{font-weight:700;overflow-wrap:anywhere}
+.notice{
+  padding:15px;border-radius:12px;background:#fff7e5;
+  border:1px solid #f0d99f;color:#624b18;font-size:13px;margin-top:16px
 }
-
-.head p{
-font-size:10px;
-color:#6b7280
+form{display:grid;gap:13px}
+input,textarea{
+  width:100%;padding:13px 14px;border:1px solid #d8e0eb;
+  border-radius:10px;background:white;color:var(--text)
 }
-
-.languages{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
+textarea{min-height:125px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid #b6cbea;border-color:var(--blue)}
+.form-status{font-size:13px;color:var(--blue);font-weight:700}
+.gallery-card img{height:235px}
+.empty{
+  grid-column:1/-1;text-align:center;background:white;
+  border:1px dashed #cbd5e1;border-radius:14px;padding:28px;color:var(--muted)
 }
-
-.language{
-padding:20px 12px;
-text-align:center;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:14px
-}
-
-.language .flag{
-font-size:25px;
-margin-bottom:5px
-}
-
-.language strong{
-display:block;
-font-size:15px
-}
-
-.language span{
-font-size:9px;
-color:#6b7280
-}
-
-.resources{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.resource{
-padding:18px;
-text-align:center;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:14px
-}
-
-.resource-icon{
-font-size:24px;
-margin-bottom:5px
-}
-
-.resource h3{
-font-size:14px;
-margin-bottom:3px
-}
-
-.resource p{
-font-size:9px;
-color:#6b7280
-}
-
-.ministry{
-background:linear-gradient(135deg,#111827,#334155);
-color:#fff
-}
-
-.ministry h2{
-font-size:23px;
-margin:5px 0 8px
-}
-
-.ministry p{
-font-size:11px;
-color:#cbd5e1;
-max-width:700px
-}
-
-.ministry .btn{
-margin-top:14px;
-background:#fbbf24;
-color:#111827
-}
-
-.cta{
-text-align:center;
-background:#fff;
-border:1px solid #e5e7eb
-}
-
-.cta p{
-font-size:10px;
-color:#6b7280;
-margin:5px 0 14px
-}
-
-/* FOOTER */
-
-footer{
-background:#0b1120;
-color:#fff;
-padding:28px 0 18px;
-margin-top:15px
-}
-
-.footer{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px
-}
-
-.footer-brand{
-display:flex;
-align-items:center;
-gap:9px
-}
-
-.footer-brand img{
-width:40px;
-height:40px;
-background:#fff;
-border-radius:8px;
-padding:3px
-}
-
-.footer-brand strong{
-display:block;
-font-size:13px
-}
-
-.footer-brand span{
-display:block;
-font-size:8px;
-color:#94a3b8
-}
-
-.footer-links{
-display:flex;
-gap:14px;
-flex-wrap:wrap
-}
-
-.footer-links a{
-font-size:9px;
-color:#cbd5e1
-}
-
-.copy{
-text-align:center;
-border-top:1px solid #ffffff18;
-margin-top:18px;
-padding-top:13px;
-font-size:8px;
-color:#64748b
-}
-
+footer{background:#091426;color:#d4deec;padding:55px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+footer h3,footer h4{color:white}
+footer p,footer a{font-size:13px;color:#b8c6d8}
+footer a{display:block;margin:7px 0}
+.footer-bottom{border-top:1px solid #ffffff22;margin-top:35px;padding-top:18px;font-size:12px;color:#9eafc4}
 .whatsapp{
-position:fixed;
-right:16px;
-bottom:16px;
-width:52px;
-height:52px;
-display:grid;
-place-items:center;
-background:#25d366;
-color:#fff;
-border-radius:50%;
-font-size:23px;
-z-index:9999
+  position:fixed;right:20px;bottom:20px;z-index:90;
+  background:#20b76b;color:white;border-radius:50px;
+  padding:13px 18px;font-weight:800;box-shadow:var(--shadow)
 }
-
-@media(max-width:750px){
-.nav-links{display:none}
-.menu{display:block}
-.resources{grid-template-columns:repeat(2,1fr)}
+.loading{color:var(--muted);text-align:center;padding:25px}
+@media(max-width:900px){
+  .navlinks{
+    display:none;position:absolute;top:76px;left:0;right:0;
+    background:white;padding:20px 5%;box-shadow:var(--shadow);
+    flex-direction:column;align-items:stretch
+  }
+  .navlinks.open{display:flex}
+  .menu-btn{display:block}
+  .grid{grid-template-columns:repeat(2,1fr)}
 }
-
-@media(max-width:600px){
-.languages,
-.resources{grid-template-columns:1fr}
-
-.footer{
-flex-direction:column;
-text-align:center
-}
-
-.footer-links{
-justify-content:center
-}
-
-.buttons{
-flex-direction:column
-}
-
-.btn{
-width:100%
-}
+@media(max-width:650px){
+  .hero{padding:75px 0;min-height:470px}
+  .stats{grid-template-columns:1fr;margin-top:18px}
+  section{padding:58px 0}
+  .grid,.about-grid,.donation-layout,.footer-grid{grid-template-columns:1fr}
+  .about-image{height:270px}
+  .construction{padding:28px}
+  .construction h2{font-size:28px}
+  .topbar .container{justify-content:center;text-align:center}
 }
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+  <div class="container">
+    <span>✝ Sharing God's love through faith, hope and service</span>
+    <span>GOH Ministries · Sri Lanka</span>
+  </div>
+</div>
+
 <header>
-<div class="container nav">
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <div class="brand-mark">✝</div>
+      <div>
+        <div id="brandName">GOH MINISTRIES</div>
+        <small>FAITH · LOVE · SERVICE</small>
+      </div>
+    </a>
 
-<a href="index.html" class="logo">
-<img
-src="https://media.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries">
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
 
-<div>
-<div class="logo-title">GOH Ministries</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
-</div>
-</a>
-
-<nav class="nav-links">
-<a href="devotional.html">📖 Devotional</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="donate.html">❤️ Donate</a>
-</nav>
-
-<button class="menu" id="menuBtn"
-aria-label="Open menu"
-aria-expanded="false">☰</button>
-
-</div>
+    <nav class="navlinks" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#ministries">Ministries</a>
+      <a href="#projects">Projects</a>
+      <a href="#news">News</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+      <a class="donate-btn" href="#donate">Donate ♥</a>
+    </nav>
+  </div>
 </header>
 
-<nav class="mobile-menu" id="mobileMenu">
-<a href="devotional.html">📖 Daily Devotional</a>
-<a href="about.html">ℹ️ About Us</a>
-<a href="contact.html">💬 Contact Us</a>
-<a href="donate.html">❤️ Support the Ministry</a>
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-<div class="container">
-
-<div class="hero-card">
-
-<img
-class="hero-logo"
-src="https://media.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="Gate of Heaven Ministries">
-
-<div class="label">
-GATE OF HEAVEN MINISTRIES
-</div>
-
-<h1>
-Grow in Faith.<br>
-<span>Walk With Christ.</span>
-</h1>
-
-<p>
-Daily biblical encouragement, prayer and Christian
-resources to help you grow in God's Word.
-</p>
-
-<div class="buttons">
-
-<a href="devotional.html" class="btn primary">
-📖 Today's Devotional
-</a>
-
-<a href="about.html" class="btn white">
-⛪ Our Ministry
-</a>
-
-</div>
-
-</div>
-</div>
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow" id="heroEyebrow">WELCOME TO GOH MINISTRIES</div>
+      <h1 id="heroTitle">Sharing God's Love. Bringing Hope. Changing Lives.</h1>
+      <p id="heroDescription">
+        Serving communities, supporting children and families, and building a future
+        rooted in the love and hope of Jesus Christ.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="#ministries">Explore Our Ministries</a>
+        <a class="btn outline" href="#donate">Support Our Mission</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- DAILY DEVOTIONAL -->
-
-<section>
 <div class="container">
-
-<div class="card">
-
-<div class="head">
-
-<div class="label">DAILY DEVOTIONAL</div>
-
-<h2>Today's Word & Prayer</h2>
-
-<p>
-Daily Bible verse, explanation and prayer in three languages.
-</p>
-
+  <div class="stats">
+    <div class="stat"><strong>♥</strong><span>Serving with Love</span></div>
+    <div class="stat"><strong>✝</strong><span>Faith in Jesus Christ</span></div>
+    <div class="stat"><strong>🤝</strong><span>Hope for Communities</span></div>
+  </div>
 </div>
 
-<div class="languages">
-
-<a class="language"
-href="devotional.html?lang=en">
-<div class="flag">🇬🇧</div>
-<strong>English</strong>
-<span>Read today's devotional</span>
-</a>
-
-<a class="language"
-href="devotional.html?lang=ta">
-<div class="flag">🇱🇰</div>
-<strong>தமிழ்</strong>
-<span>இன்றைய தியானம்</span>
-</a>
-
-<a class="language"
-href="devotional.html?lang=si">
-<div class="flag">🇱🇰</div>
-<strong>සිංහල</strong>
-<span>අද දින භක්තිමත් පණිවිඩය</span>
-</a>
-
-</div>
-
-</div>
-</div>
+<section id="about">
+  <div class="container about-grid">
+    <div>
+      <img class="about-image" id="aboutImage"
+        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85"
+        alt="Community people together">
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">WHO WE ARE</div>
+      <h2 id="aboutTitle">A Ministry With a Heart for People</h2>
+      <p id="aboutDescription">
+        GOH Ministries exists to share the love of God through practical service,
+        encouragement, prayer and community support.
+      </p>
+      <ul class="checklist">
+        <li>Sharing the love and hope of Jesus Christ</li>
+        <li>Supporting children and families</li>
+        <li>Helping people facing difficult circumstances</li>
+        <li>Serving communities through meaningful projects</li>
+      </ul>
+      <a class="btn blue" href="#contact">Connect With Us</a>
+    </div>
+  </div>
 </section>
 
-<!-- RESOURCES -->
-
-<section>
-<div class="container">
-
-<div class="card">
-
-<div class="head">
-
-<div class="label">BIBLICAL RESOURCES</div>
-
-<h2>Resources for Your Faith Journey</h2>
-
-<p>
-Biblical encouragement for everyday Christian life.
-</p>
-
-</div>
-
-<div class="resources">
-
-<div class="resource">
-<div class="resource-icon">📖</div>
-<h3>Bible Teaching</h3>
-<p>Learn and understand God's Word.</p>
-</div>
-
-<div class="resource">
-<div class="resource-icon">🙏</div>
-<h3>Prayer</h3>
-<p>Grow in prayer and seek God daily.</p>
-</div>
-
-<div class="resource">
-<div class="resource-icon">❤️</div>
-<h3>Encouragement</h3>
-<p>Find hope through Scripture.</p>
-</div>
-
-<div class="resource">
-<div class="resource-icon">🌍</div>
-<h3>Evangelism</h3>
-<p>Share the Gospel of Jesus Christ.</p>
-</div>
-
-<div class="resource">
-<div class="resource-icon">🤝</div>
-<h3>Discipleship</h3>
-<p>Grow as a follower of Christ.</p>
-</div>
-
-<div class="resource">
-<div class="resource-icon">⛪</div>
-<h3>Christian Service</h3>
-<p>Serve God and people with love.</p>
-</div>
-
-</div>
-
-</div>
-</div>
+<section class="dark-section" id="ministries">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">WHAT WE DO</div>
+      <h2>Our Ministries</h2>
+      <p>Practical expressions of God's love, care and compassion.</p>
+    </div>
+    <div class="grid" id="ministryGrid">
+      <article class="card ministry-card">
+        <div class="card-body"><h3>Children's Ministry</h3>
+          <p>Encouraging children through care, learning and Christian values.</p></div>
+      </article>
+      <article class="card ministry-card">
+        <div class="card-body"><h3>Helping Families</h3>
+          <p>Supporting families experiencing hardship with practical assistance.</p></div>
+      </article>
+      <article class="card ministry-card">
+        <div class="card-body"><h3>Church Construction</h3>
+          <p>Working together to establish a place for worship and fellowship.</p></div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- MINISTRY -->
-
-<section>
-<div class="container">
-
-<div class="card ministry">
-
-<div class="label">
-ABOUT OUR MINISTRY
-</div>
-
-<h2>Gate of Heaven Ministries</h2>
-
-<p>
-Gate of Heaven Ministries exists to proclaim the Gospel
-of Jesus Christ, teach God's Word, encourage believers
-and serve people with Christian love.
-</p>
-
-<a href="about.html" class="btn">
-Learn About Our Ministry →
-</a>
-
-</div>
-</div>
+<section id="children">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">THE NEXT GENERATION</div>
+      <h2>Children's Ministry</h2>
+      <p>Creating opportunities for children to grow, learn and experience love and encouragement.</p>
+    </div>
+    <div class="grid" id="childrenGrid"><div class="loading">Loading children's ministry...</div></div>
+  </div>
 </section>
 
-<!-- CONTACT -->
-
-<section>
-<div class="container">
-
-<div class="card cta">
-
-<div class="label">CONNECT WITH US</div>
-
-<h2>We Would Love to Hear From You</h2>
-
-<p>
-For prayer, ministry information or general enquiries,
-please contact us.
-</p>
-
-<a href="contact.html"
-class="btn"
-style="background:#111827;color:#fff">
-💬 Contact Us
-</a>
-
-</div>
-</div>
+<section id="assistance" style="background:#edf2f8">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">COMPASSION IN ACTION</div>
+      <h2>Helping Families in Need</h2>
+      <p>Standing alongside families and individuals during difficult times.</p>
+    </div>
+    <div class="grid" id="assistanceGrid"><div class="loading">Loading assistance updates...</div></div>
+  </div>
 </section>
+
+<section id="construction">
+  <div class="container">
+    <div class="construction">
+      <div class="eyebrow">BUILDING TOGETHER</div>
+      <h2 id="constructionTitle">Church Construction Project</h2>
+      <p id="constructionDescription">
+        Join us in prayer and support as we work towards establishing a place
+        for worship, fellowship and community.
+      </p>
+      <div class="progress-track"><div class="progress-fill" id="constructionProgress"></div></div>
+      <p id="constructionProgressText">Construction progress updates will be shared here.</p>
+      <a class="btn" href="#donate">Support This Project</a>
+      <div class="grid" id="constructionGrid" style="margin-top:30px"></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">MAKING A DIFFERENCE</div>
+      <h2>Our Projects</h2>
+      <p>Discover the projects and activities supported by the ministry.</p>
+    </div>
+    <div class="grid" id="projectsGrid"><div class="loading">Loading projects...</div></div>
+  </div>
+</section>
+
+<section id="news" style="background:#edf2f8">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">LATEST UPDATES</div>
+      <h2>News & Announcements</h2>
+      <p>Updates, announcements and stories from our ministry.</p>
+    </div>
+    <div class="grid" id="newsGrid"><div class="loading">Loading news...</div></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">MOMENTS THAT MATTER</div>
+      <h2>Photo Gallery</h2>
+      <p>See moments from our ministry, activities and community projects.</p>
+    </div>
+    <div class="grid" id="galleryGrid"><div class="loading">Loading gallery...</div></div>
+  </div>
+</section>
+
+<section id="testimonies" style="background:#edf2f8">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">STORIES OF HOPE</div>
+      <h2>Testimonies</h2>
+      <p>Stories of faith, encouragement and transformation.</p>
+    </div>
+    <div class="grid" id="testimoniesGrid"><div class="loading">Loading testimonies...</div></div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">JOIN US</div>
+      <h2>Events & Activities</h2>
+      <p>Find out about upcoming ministry activities and community events.</p>
+    </div>
+    <div class="grid" id="eventsGrid"><div class="loading">Loading events...</div></div>
+  </div>
+</section>
+
+<section class="dark-section" id="donate">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PARTNER WITH US</div>
+      <h2>Support the Ministry</h2>
+      <p>Your generosity can help support ministry activities and practical community needs.</p>
+    </div>
+
+    <div class="donation-layout">
+      <div class="panel">
+        <h3>Bank Transfer Details</h3>
+        <div class="bank-row"><strong>Bank</strong><span id="bankName">Please contact us for details</span></div>
+        <div class="bank-row"><strong>Account Name</strong><span id="accountName">Please contact us for details</span></div>
+        <div class="bank-row"><strong>Account Number</strong><span id="accountNumber">Please contact us for details</span></div>
+        <div class="bank-row"><strong>Branch</strong><span id="bankBranch">Please contact us for details</span></div>
+        <div class="bank-row"><strong>Reference</strong><span>GOH Ministry Donation</span></div>
+        <div class="notice" id="donationNotice">
+          Please contact the ministry to confirm the current donation arrangements
+          before making a transfer. Keep your bank confirmation for your records.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Donation Enquiry</h3>
+        <p style="color:var(--muted);font-size:14px">
+          Contact us if you would like to support a particular ministry or project.
+        </p>
+        <form id="donationForm">
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Email address" required>
+          <input name="amount" type="number" min="1" placeholder="Donation amount (LKR)">
+          <input name="project" placeholder="Project or ministry (optional)">
+          <textarea name="message" placeholder="Your message (optional)"></textarea>
+          <button class="btn blue" type="submit">Send Donation Enquiry</button>
+          <div class="form-status" id="donationStatus"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#edf2f8">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">GET IN TOUCH</div>
+      <h2>Contact GOH Ministries</h2>
+      <p>We welcome your questions, messages, prayer requests and enquiries.</p>
+    </div>
+
+    <div class="donation-layout">
+      <div class="panel">
+        <h3>Contact Information</h3>
+        <div class="bank-row"><strong>Email</strong><span id="contactEmail">Please contact us through the form</span></div>
+        <div class="bank-row"><strong>Phone</strong><span id="contactPhone">Contact details coming soon</span></div>
+        <div class="bank-row"><strong>Location</strong><span id="contactAddress">Sri Lanka</span></div>
+        <p style="color:var(--muted);font-size:14px;margin-top:18px">
+          We appreciate your prayers and encouragement.
+        </p>
+      </div>
+      <div class="panel">
+        <h3>Send Us a Message</h3>
+        <form id="contactForm">
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Your email" required>
+          <input name="subject" placeholder="Subject">
+          <textarea name="message" placeholder="Write your message..." required></textarea>
+          <button class="btn blue" type="submit">Send Message</button>
+          <div class="form-status" id="contactStatus"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
-
-<div class="container">
-
-<div class="footer">
-
-<div class="footer-brand">
-
-<img
-src="https://media.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries">
-
-<div>
-<strong>GOH Ministries</strong>
-<span>Gate of Heaven Ministries</span>
-</div>
-
-</div>
-
-<nav class="footer-links">
-
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="donate.html">Donate</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-<a href="disclaimer.html">Disclaimer</a>
-
-</nav>
-
-</div>
-
-<div class="copy">
-© 2026 GOH Ministries. All rights reserved.
-</div>
-
-</div>
-
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 id="footerName">GOH Ministries</h3>
+        <p id="footerDescription">
+          Sharing God's love through faith, compassion and practical service.
+          Thank you for remembering our ministry in your prayers.
+        </p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#about">About Us</a>
+        <a href="#ministries">Our Ministries</a>
+        <a href="#projects">Projects</a>
+        <a href="#news">News</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonies">Testimonies</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#donate">Donate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> GOH Ministries. All rights reserved.
+      <span style="float:right">Built with faith and love.</span>
+    </div>
+  </div>
 </footer>
 
-<a
-class="whatsapp"
-href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener"
-aria-label="Contact GOH Ministries on WhatsApp">
-💬
-</a>
+<a class="whatsapp" id="whatsappLink" href="#contact" target="_blank" rel="noopener">✆ Contact Us</a>
 
 <script>
+/* =========================================================
+   GOH MINISTRIES PUBLIC WEBSITE
+   Backend API: Cloudflare Worker
+   ========================================================= */
 
-const menuBtn=document.getElementById("menuBtn");
-const mobileMenu=document.getElementById("mobileMenu");
+const API = "https://gohm.createlk.workers.dev";
 
-menuBtn.onclick=function(){
-
-const open=mobileMenu.classList.toggle("show");
-
-menuBtn.textContent=open?"✕":"☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-open?"true":"false"
-);
-
+const DEFAULTS = {
+  site_name: "GOH Ministries",
+  hero_title: "Sharing God's Love. Bringing Hope. Changing Lives.",
+  hero_description: "Serving communities, supporting children and families, and building a future rooted in the love and hope of Jesus Christ.",
+  about_title: "A Ministry With a Heart for People",
+  about_description: "GOH Ministries exists to share the love of God through practical service, encouragement, prayer and community support.",
+  bank_name: "",
+  account_name: "",
+  account_number: "",
+  bank_branch: "",
+  donation_notice: "",
+  contact_email: "",
+  contact_phone: "",
+  contact_address: "Sri Lanka",
+  whatsapp: "",
+  construction_title: "Church Construction Project",
+  construction_description: "Join us in prayer and support as we work towards establishing a place for worship, fellowship and community.",
+  construction_progress: "0"
 };
 
-mobileMenu.querySelectorAll("a").forEach(function(link){
+const $ = id => document.getElementById(id);
 
-link.onclick=function(){
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
+}
 
-mobileMenu.classList.remove("show");
-menuBtn.textContent="☰";
-menuBtn.setAttribute("aria-expanded","false");
+function safeURL(value){
+  if(!value) return "";
+  try{
+    const url = new URL(value, API);
+    return ["http:","https:"].includes(url.protocol) ? url.href : "";
+  }catch{
+    return "";
+  }
+}
 
-};
+async function request(path, options = {}){
+  const response = await fetch(API + path, {
+    ...options,
+    headers:{
+      ...(options.body instanceof FormData ? {} : {"Content-Type":"application/json"}),
+      ...(options.headers || {})
+    }
+  });
 
+  const data = await response.json().catch(() => ({}));
+  if(!response.ok || data.success === false){
+    throw new Error(data.error || data.message || "Request failed. Please try again.");
+  }
+  return data;
+}
+
+function getArray(data){
+  if(Array.isArray(data)) return data;
+  if(Array.isArray(data.items)) return data.items;
+  if(Array.isArray(data.data)) return data.data;
+  if(Array.isArray(data.results)) return data.results;
+  return [];
+}
+
+function itemImage(item){
+  return safeURL(item.image_url || item.image || item.photo || item.url || "");
+}
+
+function cardHTML(item, options = {}){
+  const image = itemImage(item);
+  const title = escapeHTML(item.title || item.name || "Ministry Update");
+  const description = escapeHTML(item.description || item.content || item.message || "");
+  const date = escapeHTML(item.date || item.event_date || item.created_at || "");
+  const imageHTML = image
+    ? `<img src="${escapeHTML(image)}" alt="${title}" loading="lazy">`
+    : "";
+
+  return `
+    <article class="card ${options.gallery ? "gallery-card" : ""}">
+      ${imageHTML}
+      <div class="card-body">
+        ${date ? `<div class="date">${date}</div>` : ""}
+        <h3>${title}</h3>
+        <p>${description}</p>
+      </div>
+    </article>`;
+}
+
+function showItems(containerId, items, emptyText, options = {}){
+  const container = $(containerId);
+  if(!container) return;
+  if(!items.length){
+    container.innerHTML = `<div class="empty">${escapeHTML(emptyText)}</div>`;
+    return;
+  }
+  container.innerHTML = items.map(item => cardHTML(item, options)).join("");
+}
+
+async function loadType(type, containerId, emptyText, options = {}){
+  try{
+    const data = await request("/api/items?type=" + encodeURIComponent(type));
+    showItems(containerId, getArray(data), emptyText, options);
+  }catch(error){
+    console.error("Could not load " + type, error);
+    showItems(containerId, [], "This section is temporarily unavailable.");
+  }
+}
+
+function applySettings(raw){
+  let settings = {...DEFAULTS};
+
+  if(Array.isArray(raw)){
+    raw.forEach(row => {
+      if(row && row.key) settings[row.key] = row.value;
+    });
+  }else if(raw && typeof raw === "object"){
+    if(raw.settings && typeof raw.settings === "object"){
+      settings = {...settings, ...raw.settings};
+    }else{
+      settings = {...settings, ...raw};
+    }
+  }
+
+  const setText = (id, key) => {
+    if($(id) && settings[key] !== undefined && settings[key] !== null && settings[key] !== ""){
+      $(id).textContent = settings[key];
+    }
+  };
+
+  setText("brandName","site_name");
+  setText("footerName","site_name");
+  setText("heroTitle","hero_title");
+  setText("heroDescription","hero_description");
+  setText("aboutTitle","about_title");
+  setText("aboutDescription","about_description");
+  setText("constructionTitle","construction_title");
+  setText("constructionDescription","construction_description");
+  setText("bankName","bank_name");
+  setText("accountName","account_name");
+  setText("accountNumber","account_number");
+  setText("bankBranch","bank_branch");
+  setText("donationNotice","donation_notice");
+  setText("contactEmail","contact_email");
+  setText("contactPhone","contact_phone");
+  setText("contactAddress","contact_address");
+  setText("footerDescription","footer_description");
+
+  const progress = Math.max(0,Math.min(100,Number(settings.construction_progress) || 0));
+  $("constructionProgress").style.width = progress + "%";
+  $("constructionProgressText").textContent = "Project progress: " + progress + "%";
+
+  if(settings.about_image){
+    const url = safeURL(settings.about_image);
+    if(url) $("aboutImage").src = url;
+  }
+
+  if(settings.whatsapp){
+    const number = String(settings.whatsapp).replace(/[^\d]/g,"");
+    if(number){
+      $("whatsappLink").href = "https://wa.me/" + number;
+      $("whatsappLink").textContent = "✆ WhatsApp Us";
+    }
+  }
+}
+
+async function loadSettings(){
+  try{
+    const data = await request("/api/settings");
+    applySettings(data);
+  }catch(error){
+    console.error("Settings could not be loaded:",error);
+  }
+}
+
+async function loadAllSections(){
+  await Promise.all([
+    loadType("children","childrenGrid","Children's ministry updates will appear here."),
+    loadType("assistance","assistanceGrid","Community assistance updates will appear here."),
+    loadType("construction","constructionGrid","Construction updates will appear here."),
+    loadType("projects","projectsGrid","Project updates will appear here."),
+    loadType("news","newsGrid","News and announcements will appear here."),
+    loadType("gallery","galleryGrid","Photos will appear here.",{gallery:true}),
+    loadType("testimonies","testimoniesGrid","Testimonies will appear here."),
+    loadType("events","eventsGrid","Upcoming events will appear here.")
+  ]);
+}
+
+async function submitForm(form, endpoint, statusId){
+  const status = $(statusId);
+  const button = form.querySelector("button[type=submit]");
+  status.textContent = "Sending...";
+  button.disabled = true;
+
+  const formData = Object.fromEntries(new FormData(form).entries());
+
+  try{
+    await request(endpoint,{
+      method:"POST",
+      body:JSON.stringify(formData)
+    });
+    status.textContent = "Thank you. Your message has been sent.";
+    form.reset();
+  }catch(error){
+    status.textContent = error.message || "Unable to send. Please try again later.";
+  }finally{
+    button.disabled = false;
+  }
+}
+
+$("contactForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  submitForm(event.currentTarget,"/api/messages","contactStatus");
 });
 
-</script>
+$("donationForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  submitForm(event.currentTarget,"/api/messages","donationStatus");
+});
 
+$("menuBtn").addEventListener("click",()=>{
+  $("navLinks").classList.toggle("open");
+});
+
+document.querySelectorAll("#navLinks a").forEach(link=>{
+  link.addEventListener("click",()=> $("navLinks").classList.remove("open"));
+});
+
+$("year").textContent = new Date().getFullYear();
+
+(async function startWebsite(){
+  await loadSettings();
+  await loadAllSections();
+})();
+</script>
 </body>
 </html>
