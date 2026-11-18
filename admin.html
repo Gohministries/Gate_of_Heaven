@@ -7,1502 +7,808 @@
 <meta name="theme-color" content="#091426">
 <title>GOH Ministries | Admin Dashboard</title>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-
 <style>
 :root{
---bg:#091426;
---panel:#12233b;
---panel2:#172b46;
---gold:#ffd166;
---text:#f5f7fb;
---muted:#aebbd0;
---line:#30435f;
---green:#35c98b;
---red:#ff6b6b;
---blue:#69a9ff
+  --bg:#091426;--panel:#12233b;--panel2:#172b46;
+  --gold:#ffd166;--text:#f5f7fb;--muted:#a8b5c8;
+  --line:#293d58;--blue:#3977d5;--red:#e45d68;
+  --green:#38bd8a;
 }
 *{box-sizing:border-box}
-body{
-margin:0;background:var(--bg);color:var(--text);
-font-family:Arial,sans-serif
-}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-
-.topbar{
-background:#0d1c31;border-bottom:1px solid var(--line);
-padding:12px 20px;display:flex;align-items:center;
-justify-content:space-between;gap:12px;
-position:sticky;top:0;z-index:20
-}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
-.logo{
-width:40px;height:40px;border-radius:11px;
-display:grid;place-items:center;background:var(--gold);
-color:#101d30;font-size:22px;font-weight:bold;flex-shrink:0
-}
-.brand h1{font-size:17px;margin:0}
-.brand small{color:var(--muted);font-size:11px}
-.user-area{display:flex;align-items:center;gap:10px}
-.profile-info{display:flex;align-items:center;gap:9px;min-width:0}
-.profile-info img{
-width:38px;height:38px;border-radius:50%;
-object-fit:cover;border:2px solid var(--gold)
-}
-.profile-info span{
-font-size:13px;font-weight:bold;max-width:160px;
-overflow:hidden;text-overflow:ellipsis;white-space:nowrap
-}
-
-.layout{display:flex;min-height:calc(100vh - 64px)}
-.sidebar{
-width:255px;flex-shrink:0;background:#0d1c31;
-border-right:1px solid var(--line);padding:15px 12px
-}
-.nav-title{
-font-size:11px;color:#8193ad;padding:14px 12px 7px;
-text-transform:uppercase;letter-spacing:1px
-}
-.nav-btn{
-display:flex;width:100%;gap:11px;align-items:center;
-text-align:left;padding:11px 12px;border:0;
-border-radius:9px;color:var(--muted);
-background:transparent;margin:3px 0;font-weight:600
-}
-.nav-btn:hover,.nav-btn.active{background:#203957;color:var(--gold)}
-.main{flex:1;padding:24px;min-width:0}
-.page-head{
-display:flex;justify-content:space-between;align-items:center;
-gap:12px;flex-wrap:wrap;margin-bottom:20px
-}
-h2{margin:0 0 7px;font-size:24px}
-.sub{color:var(--muted);font-size:13px;line-height:1.5}
-.cards{
-display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-gap:13px;margin-bottom:20px
-}
-.card,.panel{
-background:var(--panel);border:1px solid var(--line);
-border-radius:13px;padding:17px;min-width:0
-}
-.card .label{color:var(--muted);font-size:13px}
-.card .number{font-size:26px;font-weight:bold;margin-top:10px}
-.card .symbol{font-size:21px;margin-bottom:8px}
-.panel{margin-bottom:17px}
-.panel h3{margin:0 0 15px;font-size:17px}
-
-.btn{
-border:0;border-radius:8px;padding:10px 15px;
-font-weight:bold;background:var(--gold);color:#101d30
-}
-.btn:hover{filter:brightness(1.08)}
-.btn.secondary{background:#29415f;color:white}
-.btn.danger{background:#74333b;color:white}
-.btn.small{padding:7px 10px;font-size:12px;min-height:32px}
-
-input,textarea,select{
-width:100%;padding:11px 12px;border:1px solid var(--line);
-border-radius:8px;background:#0b192c;color:white;
-outline:none;margin:6px 0 13px
-}
-input:focus,textarea:focus,select:focus{border-color:var(--gold)}
-textarea{min-height:100px;resize:vertical}
-label{font-size:13px;color:#cbd5e1}
-.form-grid{
-display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px
-}
-.form-grid .full{grid-column:1/-1}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table{width:100%;border-collapse:collapse;min-width:620px}
-th,td{
-text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);
-font-size:13px;vertical-align:top
-}
-th{color:var(--gold);font-weight:600}
-.thumb{
-width:65px;height:48px;object-fit:cover;border-radius:6px;
-background:#263a54
-}
-.actions{display:flex;gap:6px;flex-wrap:wrap}
-.badge{
-display:inline-block;padding:5px 8px;border-radius:20px;
-font-size:11px;background:#29415f;color:#dce8f8
-}
-.badge.green{background:#174e3d;color:#8ff0c6}
-.badge.red{background:#5a2b34;color:#ffb7b7}
-.notice{
-padding:12px;border-radius:8px;background:#1a3551;
-color:#c8ddf8;font-size:13px;margin-bottom:14px;line-height:1.5
-}
-.status{
-padding:11px 13px;border-radius:8px;margin:12px 0;
-font-size:13px;display:none;white-space:pre-wrap
-}
-.status.show{display:block}
-.status.error{background:#552b34;color:#ffc4c4}
-.status.ok{background:#174b3b;color:#a7f3d0}
-.login-screen{
-min-height:100vh;display:grid;place-items:center;padding:20px;
-background:radial-gradient(circle at top,#203d60 0,transparent 50%),var(--bg)
-}
-.login-card{
-width:min(430px,100%);text-align:center;padding:35px 25px;
-border:1px solid var(--line);background:var(--panel);border-radius:18px
-}
-.login-icon{
-width:70px;height:70px;margin:auto auto 15px;
-display:grid;place-items:center;background:var(--gold);
-color:#111c2b;font-size:35px;border-radius:18px
-}
-.login-card h1{font-size:24px;margin:8px}
-.login-card p{color:var(--muted);line-height:1.6;font-size:14px}
-.google-box{display:flex;justify-content:center;margin:24px 0;min-height:42px}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login-card{width:min(440px,100%);background:var(--panel);border:1px solid var(--line);
+border-radius:20px;padding:35px;text-align:center}
+.logo{font-size:42px;color:var(--gold)}
+.login-card h1{margin:12px 0 8px}
+.muted{color:var(--muted);line-height:1.6}
+#loginMessage{margin-top:15px;color:var(--gold)}
+.layout{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+.sidebar{background:#0d1c30;border-right:1px solid var(--line);
+padding:22px 14px;position:sticky;top:0;height:100vh}
+.brand{padding:8px 12px 25px;font-size:20px;font-weight:bold}
+.brand span{color:var(--gold)}
+.nav button{display:block;width:100%;text-align:left;border:0;
+background:transparent;color:var(--muted);padding:13px 14px;
+border-radius:10px;margin:4px 0}
+.nav button.active,.nav button:hover{background:var(--panel2);color:white}
+.sidebar-bottom{position:absolute;bottom:20px;left:14px;right:14px}
+.main{min-width:0}
+.topbar{height:72px;border-bottom:1px solid var(--line);
+display:flex;align-items:center;justify-content:space-between;
+padding:0 26px;background:#0c1a2d;position:sticky;top:0;z-index:5}
+.topbar h2{font-size:18px;margin:0}
+.content{padding:25px;max-width:1400px;margin:auto}
+.page{display:none}.page.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.stat,.panel{background:var(--panel);border:1px solid var(--line);
+border-radius:15px;padding:20px}
+.stat small{color:var(--muted)}
+.stat strong{display:block;font-size:27px;margin-top:12px;color:var(--gold)}
+.panel{margin-bottom:18px}
+.panel h3{margin:0 0 17px}
+.section-head{display:flex;justify-content:space-between;align-items:center;
+gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.field{margin-bottom:14px}
+.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}
+.field input,.field textarea,.field select{
+width:100%;background:#0b192b;color:white;border:1px solid var(--line);
+border-radius:9px;padding:12px;outline:none}
+.field textarea{min-height:100px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue)}
+.full{grid-column:1/-1}
+.btn{border:0;border-radius:9px;padding:11px 16px;font-weight:bold}
+.primary{background:var(--blue);color:white}
+.gold{background:var(--gold);color:#172033}
+.danger{background:var(--red);color:white}
+.secondary{background:#263c58;color:white}
+.success{background:var(--green);color:#06251b}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{text-align:left;padding:13px;border-bottom:1px solid var(--line);
+font-size:13px;vertical-align:top}
+th{color:var(--muted)}
+.status{display:inline-block;padding:5px 9px;border-radius:20px;
+background:#203d37;color:#78e1b4;font-size:12px}
+.status.off{background:#462b32;color:#ffabb1}
+.notice{padding:12px;border-radius:9px;background:#182f4b;color:var(--muted);
+line-height:1.5;margin:12px 0}
+.checkline{display:flex;gap:10px;align-items:center;color:var(--muted);margin:12px 0}
+.checkline input{width:18px;height:18px}
+.image-preview{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.image-preview img{width:105px;height:85px;object-fit:cover;border-radius:8px;
+border:1px solid var(--line)}
+.image-item{position:relative}
+.image-item button{position:absolute;right:4px;top:4px;border:0;
+background:#a42e3b;color:white;border-radius:50%;width:23px;height:23px}
+.message{padding:13px;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+.message p{white-space:pre-wrap;line-height:1.5}
+.toast{position:fixed;right:20px;bottom:20px;z-index:20;
+background:#183c35;color:#baf6df;padding:14px 18px;border-radius:10px;
+display:none;max-width:90vw}
 .mobile-menu{display:none}
-.empty{text-align:center;color:var(--muted);padding:25px}
-.preview{max-width:180px;max-height:110px;border-radius:8px;display:block;margin:8px 0}
-.image-grid{
-display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));
-gap:10px;margin:12px 0
-}
-.image-card{
-background:#0b192c;border:1px solid var(--line);
-border-radius:9px;padding:7px;min-width:0
-}
-.image-card img{width:100%;height:90px;object-fit:cover;border-radius:6px}
-.image-card button{width:100%;margin-top:6px}
-.inline-check{display:flex;align-items:center;gap:9px;margin:10px 0}
-.inline-check input{width:auto;margin:0}
-.small-note{font-size:12px;color:var(--muted);line-height:1.5}
-
-@media(max-width:950px){
-.sidebar{width:220px}
-.main{padding:18px}
-.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-
-@media(max-width:650px){
-.topbar{padding:10px;gap:8px;flex-wrap:wrap}
-.brand{gap:7px}
-.brand h1{font-size:14px}
-.brand small{font-size:10px}
-.logo{width:34px;height:34px;font-size:19px}
-.user-area{gap:7px;margin-left:auto}
-.profile-info{gap:5px}
-.profile-info img{width:32px;height:32px}
-.profile-info span{max-width:95px;font-size:11px}
-.user-area .btn{padding:8px 9px;font-size:11px}
+@media(max-width:900px){
+.layout{grid-template-columns:1fr}
+.sidebar{position:fixed;z-index:10;left:-260px;width:245px;transition:.2s}
+.sidebar.open{left:0}
 .mobile-menu{display:inline-block}
-.layout{display:block}
-.sidebar{
-width:100%;display:none;border-right:0;
-border-bottom:1px solid var(--line);padding:8px 12px
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-.sidebar.open{display:block;max-height:65vh;overflow-y:auto}
-.main{padding:12px}
-.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.card,.panel{padding:13px;border-radius:10px}
-.card .number{font-size:21px}
-.page-head{align-items:flex-start;gap:10px}
-h2{font-size:20px}
-.form-grid{grid-template-columns:minmax(0,1fr);gap:5px}
-.form-grid .full{grid-column:auto}
-input,textarea,select{font-size:16px;min-height:44px}
-.btn{min-height:40px}
-.actions{gap:7px}
-.actions .btn{flex:1 1 auto}
-table{min-width:620px}
-.nav-btn{min-height:43px}
-.image-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.page-head>.btn{white-space:nowrap}
-}
-
-@media(max-width:380px){
-.profile-info span{max-width:65px}
-.brand small{display:none}
-.card .number{font-size:19px}
+@media(max-width:600px){
+.content{padding:15px}.topbar{padding:0 15px}
+.form-grid{grid-template-columns:1fr}
+.grid{gap:10px}.stat{padding:14px}
+.stat strong{font-size:22px}
 }
 </style>
 </head>
-
 <body>
 
-<section id="loginScreen" class="login-screen">
-<div class="login-card">
-<div class="login-icon">✝</div>
-<h1>GOH Ministries</h1>
-<p>Secure administrator login</p>
-<p>Sign in with your authorized Google administrator account.</p>
-<div id="googleButton" class="google-box"></div>
-<div id="loginStatus" class="status"></div>
-<small style="color:#8193ad">Authorized access only</small>
-</div>
+<section id="loginScreen" class="login-wrap">
+  <div class="login-card">
+    <div class="logo">✝</div>
+    <h1>GOH Ministries</h1>
+    <p class="muted">Secure administrator login</p>
+    <p class="muted">Sign in with your authorized Google administrator account.</p>
+    <div id="googleButton" style="display:flex;justify-content:center;margin-top:22px"></div>
+    <p id="loginMessage"></p>
+  </div>
 </section>
 
-<div id="adminApp" class="hidden">
+<div id="dashboard" class="layout hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">✝ <span>GOH</span> Ministries</div>
+    <nav class="nav">
+      <button class="active" data-page="overview">📊 Dashboard</button>
+      <button data-page="content">📝 Content Manager</button>
+      <button data-page="settings">⚙️ Website Settings</button>
+      <button data-page="donations">💝 Donation Ledger</button>
+      <button data-page="messages">✉️ Messages</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="btn secondary" style="width:100%" onclick="logout()">Sign Out</button>
+    </div>
+  </aside>
 
-<header class="topbar">
-<div class="brand">
-<button class="btn secondary mobile-menu" onclick="toggleMenu()">☰</button>
-<div class="logo">✝</div>
-<div>
-<h1>GOH Ministries</h1>
-<small>Administration Dashboard</small>
-</div>
-</div>
+  <main class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:13px">
+        <button class="btn secondary mobile-menu" onclick="toggleMenu()">☰</button>
+        <h2 id="pageTitle">Dashboard</h2>
+      </div>
+      <span id="adminEmail" class="muted"></span>
+    </header>
 
-<div class="user-area">
-<div class="profile-info">
-<img id="userPhoto" src="" alt="Google profile">
-<span id="userName">Administrator</span>
-</div>
-<button class="btn secondary small" onclick="logout()">Logout</button>
-</div>
-</header>
+    <div class="content">
 
-<div class="layout">
+      <section class="page active" id="page-overview">
+        <div class="section-head">
+          <div><h2>Welcome to GOH Ministries</h2>
+          <p class="muted">Manage your ministry website and activities.</p></div>
+          <button class="btn primary" onclick="showPage('content')">Manage Content</button>
+        </div>
+        <div class="grid">
+          <div class="stat"><small>Total Content Items</small><strong id="statItems">—</strong></div>
+          <div class="stat"><small>Donation Records</small><strong id="statDonations">—</strong></div>
+          <div class="stat"><small>Messages</small><strong id="statMessages">—</strong></div>
+          <div class="stat"><small>Ministry Sections</small><strong id="statTypes">—</strong></div>
+        </div>
+        <div class="panel" style="margin-top:20px">
+          <h3>Quick Guide</h3>
+          <p class="muted">Use Content Manager to publish ministry updates, projects, news, events, testimonies and gallery posts. Use Website Settings to update public contact and donation information.</p>
+        </div>
+      </section>
 
-<aside class="sidebar" id="sidebar">
-<div class="nav-title">Overview</div>
-<button class="nav-btn active" onclick="showPage('dashboard',this)">📊 Dashboard</button>
+      <section class="page" id="page-content">
+        <div class="section-head">
+          <div><h2>Content Manager</h2><p class="muted">Create and manage public website content.</p></div>
+          <button class="btn gold" onclick="newItem()">＋ Add New Content</button>
+        </div>
 
-<div class="nav-title">Ministries & Content</div>
-<div id="ministryNav"></div>
+        <div class="panel">
+          <div class="form-grid">
+            <div class="field">
+              <label>Filter by ministry section</label>
+              <select id="filterType" onchange="loadItems()">
+                <option value="">All Sections</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Search content</label>
+              <input id="searchItems" placeholder="Search titles..." oninput="renderItems()">
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Title</th><th>Section</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="itemsTable"><tr><td colspan="4">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
 
-<div class="nav-title">GOH Samaritan Club</div>
-<button class="nav-btn" onclick="showPage('beneficiaries',this)">🤝 Beneficiary Families</button>
-<button class="nav-btn" onclick="showPage('assistanceRecords',this)">🎁 Assistance Records</button>
+        <div class="panel" id="itemEditor">
+          <div class="section-head">
+            <h3 id="editorTitle">Add Content</h3>
+            <button class="btn secondary" onclick="resetEditor()">Clear Form</button>
+          </div>
+          <input type="hidden" id="itemId">
+          <div class="form-grid">
+            <div class="field">
+              <label>Ministry / Content Type</label>
+              <select id="itemType">
+                <option value="children">Children's Ministry</option>
+                <option value="assistance">GOH Samaritan Club / Support Ministry</option>
+                <option value="construction">Church Construction</option>
+                <option value="projects">Ministry Projects</option>
+                <option value="news">News & Updates</option>
+                <option value="gallery">Photo Gallery</option>
+                <option value="testimonies">Testimonies</option>
+                <option value="events">Events</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Title</label>
+              <input id="itemTitle" placeholder="Enter title">
+            </div>
+            <div class="field full">
+              <label>Short Description</label>
+              <textarea id="itemDescription" placeholder="Write a short description"></textarea>
+            </div>
+            <div class="field full">
+              <label>Full Content / Details</label>
+              <textarea id="itemContent" placeholder="Write the full content"></textarea>
+            </div>
+            <div class="field">
+              <label>Status</label>
+              <select id="itemStatus">
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Display Order</label>
+              <input id="itemOrder" type="number" value="0">
+            </div>
+            <div class="field full">
+              <label>Upload Multiple Images</label>
+              <input id="itemImages" type="file" accept="image/*" multiple onchange="previewSelectedImages()">
+              <p class="muted">You can select several images for one title. Each image is uploaded to your R2 storage. Maximum 8 MB per image.</p>
+              <div id="imagePreview" class="image-preview"></div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn gold" id="saveItemBtn" onclick="saveItem()">Save Content</button>
+            <button class="btn secondary" onclick="resetEditor()">Cancel</button>
+          </div>
+          <p id="itemMessage" class="muted"></p>
+        </div>
+      </section>
 
-<div class="nav-title">Management</div>
-<button class="nav-btn" onclick="showPage('donations',this)">💛 Donations</button>
-<button class="nav-btn" onclick="showPage('messages',this)">✉️ Messages</button>
-<button class="nav-btn" onclick="showPage('settings',this)">⚙️ Website Settings</button>
-<button class="nav-btn" onclick="showPage('payments',this)">🏦 Payment Settings</button>
+      <section class="page" id="page-settings">
+        <div class="section-head">
+          <div><h2>Website Settings</h2><p class="muted">Changes here are reflected on the public website.</p></div>
+          <button class="btn gold" onclick="saveSettings()">Save All Settings</button>
+        </div>
 
-<div class="nav-title">Website</div>
-<a href="https://gohministries.org/" target="_blank" rel="noopener" style="display:block;padding:12px;color:var(--muted);text-decoration:none">↗ View Website</a>
-</aside>
+        <div class="panel">
+          <h3>Ministry Information</h3>
+          <div class="form-grid">
+            <div class="field"><label>Ministry Name</label><input id="s_ministry_name"></div>
+            <div class="field"><label>Contact Email</label><input id="s_contact_email" type="email"></div>
+            <div class="field"><label>Contact Phone</label><input id="s_contact_phone"></div>
+            <div class="field"><label>WhatsApp Number</label><input id="s_whatsapp"></div>
+            <div class="field full"><label>Ministry Description</label><textarea id="s_description"></textarea></div>
+            <div class="field full"><label>Address</label><input id="s_address"></div>
+            <div class="field"><label>Facebook URL</label><input id="s_facebook" type="url"></div>
+            <div class="field"><label>YouTube URL</label><input id="s_youtube" type="url"></div>
+          </div>
+        </div>
 
-<main class="main">
+        <div class="panel">
+          <h3>Bank Transfer Details</h3>
+          <label class="checkline"><input type="checkbox" id="s_bank_enabled"> Show bank transfer details on the public website</label>
+          <div class="notice">Bank details are optional. Disable this setting to hide the bank transfer section from visitors.</div>
+          <div class="form-grid">
+            <div class="field"><label>Bank Name</label><input id="s_bank_name"></div>
+            <div class="field"><label>Account Name</label><input id="s_bank_account_name"></div>
+            <div class="field"><label>Account Number</label><input id="s_bank_account_number"></div>
+            <div class="field"><label>Branch</label><input id="s_bank_branch"></div>
+            <div class="field"><label>SWIFT Code (Optional)</label><input id="s_bank_swift"></div>
+            <div class="field"><label>Currency (Optional)</label><input id="s_bank_currency" placeholder="LKR"></div>
+          </div>
+        </div>
 
-<section id="page-dashboard" class="page">
-<div class="page-head">
-<div>
-<h2>Dashboard</h2>
-<div class="sub">GOH Ministries overview</div>
-</div>
-<button class="btn secondary" onclick="loadDashboard()">↻ Refresh</button>
-</div>
+        <div class="panel">
+          <h3>Online Donation / Payment Link</h3>
+          <label class="checkline"><input type="checkbox" id="s_payment_enabled"> Show online payment button on the public website</label>
+          <div class="notice">This is an optional external payment link. Enter your payment provider's HTTPS payment URL. A payment button will only appear when enabled and a valid HTTPS link is provided.</div>
+          <div class="form-grid">
+            <div class="field full"><label>Payment Link (Optional)</label><input id="s_payment_link" type="url" placeholder="https://..."></div>
+            <div class="field full"><label>Payment Button Label</label><input id="s_payment_link_label" placeholder="Donate Online"></div>
+          </div>
+        </div>
 
-<div class="cards">
-<div class="card"><div class="symbol">📚</div><div class="label">Website Content</div><div class="number" id="statContent">0</div></div>
-<div class="card"><div class="symbol">💛</div><div class="label">Donation Records</div><div class="number" id="statDonations">0</div></div>
-<div class="card"><div class="symbol">💰</div><div class="label">Total Donations (LKR)</div><div class="number" id="statAmount">0</div></div>
-<div class="card"><div class="symbol">✉️</div><div class="label">Unread Messages</div><div class="number" id="statMessages">0</div></div>
-<div class="card"><div class="symbol">🤝</div><div class="label">Beneficiary Families</div><div class="number" id="statBeneficiaries">—</div></div>
-<div class="card"><div class="symbol">🎁</div><div class="label">Assistance Records</div><div class="number" id="statAssistance">—</div></div>
-</div>
+        <div class="panel">
+          <h3>PayHere Configuration (Optional)</h3>
+          <div class="notice">These fields store your PayHere configuration preferences. They do not independently create a checkout session. Use your payment link above for the public donation button.</div>
+          <div class="form-grid">
+            <div class="field"><label>PayHere Merchant ID</label><input id="s_payhere_merchant_id"></div>
+            <div class="field"><label>PayHere Mode</label>
+              <select id="s_payhere_mode"><option value="sandbox">Sandbox</option><option value="live">Live</option></select>
+            </div>
+            <div class="field full"><label class="checkline"><input type="checkbox" id="s_payhere_enabled"> PayHere enabled</label></div>
+          </div>
+        </div>
 
-<div class="panel">
-<h3>Welcome to GOH Ministries Admin</h3>
-<p class="sub">Manage ministries, church construction, Samaritan Club beneficiaries, assistance, photos, donations and messages.</p>
-<div class="notice">Publish content to make it visible on the public website. Draft content should remain unpublished.</div>
-</div>
-</section>
+        <div class="panel">
+          <h3>Public Website Preview</h3>
+          <p class="muted">Bank transfer section: <strong id="bankPreview">—</strong></p>
+          <p class="muted">Online payment button: <strong id="paymentPreview">—</strong></p>
+          <button class="btn secondary" onclick="updateSettingsPreview()">Refresh Preview</button>
+        </div>
+        <button class="btn gold" onclick="saveSettings()">Save All Settings</button>
+        <p id="settingsMessage" class="muted"></p>
+      </section>
 
-<section id="page-content" class="page hidden">
-<div class="page-head">
-<div><h2 id="contentHeading">Content Management</h2><div class="sub">Create, edit and publish ministry content</div></div>
-<button class="btn" onclick="newItem()">＋ Add New</button>
-</div>
+      <section class="page" id="page-donations">
+        <div class="section-head"><div><h2>Donation Ledger</h2><p class="muted">View donation records received by the system.</p></div>
+        <button class="btn secondary" onclick="loadDonations()">Refresh</button></div>
+        <div class="panel table-wrap">
+          <table><thead><tr><th>Donor</th><th>Email</th><th>Amount</th><th>Date</th><th>Project</th><th>Reference</th></tr></thead>
+          <tbody id="donationsTable"><tr><td colspan="6">Loading...</td></tr></tbody></table>
+        </div>
+      </section>
 
-<div id="itemEditor" class="panel hidden">
-<h3 id="editorHeading">Add Content</h3>
-<input type="hidden" id="itemId">
-<div class="form-grid">
-<div class="full"><label>Title *</label><input id="itemTitle" placeholder="Enter title"></div>
-<div><label>Slug</label><input id="itemSlug" placeholder="example-title"></div>
-<div><label>Display order</label><input id="itemOrder" type="number" value="0"></div>
-<div class="full"><label>Short description</label><textarea id="itemDescription"></textarea></div>
-<div class="full"><label>Full content</label><textarea id="itemContent" style="min-height:160px"></textarea></div>
-<div class="full">
-<label>Upload multiple images (maximum 8 MB each)</label>
-<input type="file" id="itemFiles" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
-<button class="btn secondary small" onclick="uploadImages()">Upload Selected Images</button>
-<div class="small-note">Upload several photos under this one content title. Uploaded photos are saved with the content when you save.</div>
-<div id="imageGallery" class="image-grid"></div>
-<label>Primary image URL</label>
-<input id="itemImage" placeholder="Primary image URL">
-</div>
-<div><label>Publication status</label><select id="itemStatus"><option value="published">Published</option><option value="draft">Draft</option></select></div>
-</div>
-<div class="actions">
-<button class="btn" onclick="saveItem()">Save Content</button>
-<button class="btn secondary" onclick="closeEditor()">Cancel</button>
-</div>
-<div id="editorStatus" class="status"></div>
-</div>
+      <section class="page" id="page-messages">
+        <div class="section-head"><div><h2>Messages & Enquiries</h2><p class="muted">Contact and donation enquiries submitted through the website.</p></div>
+        <button class="btn secondary" onclick="loadMessages()">Refresh</button></div>
+        <div id="messagesList"></div>
+      </section>
 
-<div class="panel">
-<div class="page-head"><h3>Saved Content</h3><button class="btn secondary small" onclick="loadItems()">↻ Refresh</button></div>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Images</th><th>Title</th><th>Status</th><th>Order</th><th>Actions</th></tr></thead>
-<tbody id="itemsTable"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section id="page-beneficiaries" class="page hidden">
-<div class="page-head">
-<div><h2>GOH Samaritan Club</h2><div class="sub">Beneficiary family registration and management</div></div>
-<button class="btn" onclick="newBeneficiary()">＋ Register Family</button>
-</div>
-
-<div class="notice">Biblical foundation: Matthew 25:35–40 — serving people in need with compassion and dignity.</div>
-
-<div id="beneficiaryEditor" class="panel hidden">
-<h3 id="beneficiaryEditorTitle">Register Beneficiary Family</h3>
-<input type="hidden" id="beneficiaryId">
-<div class="form-grid">
-<div><label>Family / Beneficiary name *</label><input id="benName"></div>
-<div><label>Primary contact person</label><input id="benContactPerson"></div>
-<div><label>Phone number</label><input id="benPhone"></div>
-<div><label>Email</label><input id="benEmail" type="email"></div>
-<div class="full"><label>Address</label><textarea id="benAddress"></textarea></div>
-<div><label>District</label><input id="benDistrict"></div>
-<div><label>Number of family members</label><input id="benMembers" type="number" min="1" value="1"></div>
-<div class="full"><label>Family members and ages</label><textarea id="benFamilyDetails" placeholder="Name, age, relationship..."></textarea></div>
-<div class="full"><label>Living conditions / Needs</label><textarea id="benLiving" placeholder="Describe the family's living situation and needs"></textarea></div>
-<div><label>Beneficiary status</label><select id="benStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
-<div><label>Registration date</label><input id="benDate" type="date"></div>
-<div class="full"><label>Internal notes</label><textarea id="benNotes"></textarea></div>
-</div>
-<div class="actions">
-<button class="btn" onclick="saveBeneficiary()">Save Family</button>
-<button class="btn secondary" onclick="closeBeneficiaryEditor()">Cancel</button>
-</div>
-<div id="beneficiaryStatus" class="status"></div>
-</div>
-
-<div class="panel">
-<h3>Registered Families</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Family</th><th>Contact</th><th>District</th><th>Members</th><th>Status</th><th>Actions</th></tr></thead>
-<tbody id="beneficiariesTable"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section id="page-assistanceRecords" class="page hidden">
-<div class="page-head">
-<div><h2>Assistance Distribution</h2><div class="sub">Record support provided to beneficiary families</div></div>
-<button class="btn" onclick="newAssistance()">＋ Record Assistance</button>
-</div>
-
-<div id="assistanceEditor" class="panel hidden">
-<h3>New Assistance Record</h3>
-<div class="form-grid">
-<div class="full"><label>Beneficiary family *</label><select id="assistBeneficiary"><option value="">Select family</option></select></div>
-<div><label>Assistance type *</label>
-<select id="assistType">
-<option value="food">Food</option><option value="clothing">Clothing</option>
-<option value="education">Education</option><option value="medical">Medical</option>
-<option value="housing">Housing</option><option value="emergency">Emergency</option>
-<option value="financial">Financial</option><option value="other">Other</option>
-</select></div>
-<div><label>Assistance date</label><input id="assistDate" type="date"></div>
-<div><label>Quantity / Value</label><input id="assistQuantity" placeholder="e.g. 2 food packs / LKR 5000"></div>
-<div><label>Cash amount (LKR)</label><input id="assistAmount" type="number" min="0" step="0.01"></div>
-<div class="full"><label>Description</label><textarea id="assistDescription"></textarea></div>
-<div><label>Provided by</label><input id="assistProvider"></div>
-<div><label>Reference</label><input id="assistReference"></div>
-</div>
-<button class="btn" onclick="saveAssistance()">Save Assistance Record</button>
-<button class="btn secondary" onclick="closeAssistanceEditor()">Cancel</button>
-<div id="assistanceStatus" class="status"></div>
-</div>
-
-<div class="panel">
-<h3>Assistance History</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Date</th><th>Beneficiary</th><th>Type</th><th>Details</th><th>Amount</th></tr></thead>
-<tbody id="assistanceTable"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section id="page-donations" class="page hidden">
-<div class="page-head">
-<div><h2>Donation Records</h2><div class="sub">Record and manage donations in LKR</div></div>
-<button class="btn secondary" onclick="loadDonations()">↻ Refresh</button>
-</div>
-
-<div class="cards">
-<div class="card"><div class="label">Total Records</div><div class="number" id="donationCount">0</div></div>
-<div class="card"><div class="label">Total Amount (LKR)</div><div class="number" id="donationTotal">0</div></div>
-</div>
-
-<div class="panel">
-<h3>Add Donation Record</h3>
-<div class="form-grid">
-<div><label>Donor name</label><input id="donorName" placeholder="Anonymous"></div>
-<div><label>Donor email</label><input id="donorEmail" type="email"></div>
-<div><label>Amount (LKR) *</label><input id="donorAmount" type="number" min="1" step="0.01"></div>
-<div><label>Project / Purpose</label><input id="donorProject" placeholder="Church construction"></div>
-<div><label>Payment method</label><select id="donorMethod"><option>Bank Transfer</option><option>Cash</option><option>Online Payment</option><option>Goods</option><option>Other</option></select></div>
-<div><label>Reference</label><input id="donorReference" placeholder="Bank reference"></div>
-<div><label>Donation date</label><input id="donorDate" type="date"></div>
-<div class="full"><label>Notes</label><textarea id="donorNotes"></textarea></div>
-</div>
-<button class="btn" onclick="saveDonation()">Save Donation</button>
-<div id="donationStatus" class="status"></div>
+    </div>
+  </main>
 </div>
 
-<div class="panel">
-<h3>Donation History</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Date</th><th>Donor</th><th>Amount</th><th>Project</th><th>Reference</th><th>Action</th></tr></thead>
-<tbody id="donationsTable"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section id="page-messages" class="page hidden">
-<div class="page-head">
-<div><h2>Contact Messages</h2><div class="sub">Messages received from the public website</div></div>
-<button class="btn secondary" onclick="loadMessages()">↻ Refresh</button>
-</div>
-<div class="panel">
-<div class="table-wrap">
-<table>
-<thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Subject / Message</th><th>Status</th><th>Actions</th></tr></thead>
-<tbody id="messagesTable"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section id="page-settings" class="page hidden">
-<div class="page-head">
-<div><h2>Website Settings</h2><div class="sub">Manage basic website information</div></div>
-</div>
-
-<div class="panel">
-<h3>Ministry Information</h3>
-<label>Ministry name</label><input id="settingName" placeholder="GOH Ministries">
-<label>Website description</label><textarea id="settingDescription"></textarea>
-<label>Contact email</label><input id="settingEmail" type="email">
-<label>Contact phone</label><input id="settingPhone">
-<label>WhatsApp number</label><input id="settingWhatsapp">
-<label>Address</label><textarea id="settingAddress"></textarea>
-<label>Facebook page URL</label><input id="settingFacebook">
-<label>YouTube channel URL</label><input id="settingYoutube">
-<button class="btn" onclick="saveSettings()">Save Settings</button>
-<div id="settingsStatus" class="status"></div>
-</div>
-
-<div class="panel">
-<h3>API Connection</h3>
-<p class="sub">Worker API endpoint</p>
-<code style="color:var(--gold)">https://gohm.createlk.workers.dev</code>
-<div style="margin-top:15px"><button class="btn secondary" onclick="checkAPI()">Test API Connection</button></div>
-<div id="apiStatus" class="status"></div>
-</div>
-</section>
-
-<section id="page-payments" class="page hidden">
-<div class="page-head">
-<div><h2>Payment & Donation Settings</h2><div class="sub">Manage public donation instructions and payment methods</div></div>
-</div>
-
-<div class="panel">
-<h3>Bank Transfer Details</h3>
-<div class="inline-check">
-<input type="checkbox" id="bankEnabled">
-<label for="bankEnabled">Enable bank transfer donations</label>
-</div>
-<div class="form-grid">
-<div><label>Bank name</label><input id="payBankName"></div>
-<div><label>Account holder name</label><input id="payAccountHolder"></div>
-<div><label>Account number</label><input id="payAccountNumber"></div>
-<div><label>Branch</label><input id="payBranch"></div>
-<div><label>SWIFT / Bank code</label><input id="paySwift"></div>
-<div><label>Currency</label><input id="payCurrency" value="LKR"></div>
-</div>
-</div>
-
-<div class="panel">
-<h3>Online Donation Link</h3>
-<div class="inline-check">
-<input type="checkbox" id="linkEnabled">
-<label for="linkEnabled">Enable online donation link</label>
-</div>
-<label>Donation / payment URL</label>
-<input id="payDonationUrl" type="url" placeholder="https://...">
-</div>
-
-<div class="panel">
-<button class="btn" onclick="savePaymentSettings()">Save Payment Settings</button>
-<div id="paymentStatus" class="status"></div>
-</div>
-</section>
-
-</main>
-</div>
-</div>
+<div id="toast" class="toast"></div>
 
 <script>
-"use strict";
+const API = "https://gohm.createlk.workers.dev";
+const GOOGLE_CLIENT_ID = "865065943863-fqu3k2n85n6jc81p0ift4ueor7hobj1n.apps.googleusercontent.com";
 
-const API="https://gohm.createlk.workers.dev";
-const GOOGLE_CLIENT_ID="865065943863-fqu3k2n85n6jc81p0ift4ueor7hobj1n.apps.googleusercontent.com";
+let items = [];
+let ministryTypes = [];
+let settings = {};
+let currentImages = [];
+let selectedFiles = [];
+let currentUser = null;
 
-const DEFAULT_TYPES={
-children:"Children's Ministry",
-youth:"Youth Ministry",
-women:"Women's Ministry",
-men:"Men's Ministry",
-worship:"Worship Ministry",
-prayer:"Prayer Ministry",
-evangelism:"Evangelism Ministry",
-missionary:"Missionary Ministry",
-pastoral:"Pastoral Ministry",
-"bible-study":"Bible Study Ministry",
-"sunday-school":"Sunday School Ministry",
-"community-outreach":"Community Outreach",
-assistance:"Family Assistance",
-construction:"Church Construction",
-projects:"Projects",
-news:"News & Announcements",
-gallery:"Photo Gallery",
-testimonies:"Testimonies",
-events:"Events",
-"samaritan-club":"GOH Samaritan Club"
-};
+const $ = id => document.getElementById(id);
 
-let CONTENT_TYPES={...DEFAULT_TYPES};
-let currentType="children";
-let currentItems=[];
-let currentImages=[];
-let currentUser=null;
-let beneficiaries=[];
-
-async function api(path,options={}){
-const headers={...(options.headers||{})};
-if(!(options.body instanceof FormData))headers["Content-Type"]="application/json";
-const response=await fetch(API+path,{...options,credentials:"include",headers});
-const raw=await response.text();
-let data={};
-if(raw){
-try{data=JSON.parse(raw)}
-catch{throw new Error("Server returned an invalid response: "+raw.slice(0,150))}
+function toast(message){
+  const el=$("toast");
+  el.textContent=message;
+  el.style.display="block";
+  setTimeout(()=>el.style.display="none",3500);
 }
-if(!response.ok||data.success===false)
-throw new Error(data.error||"Request failed ("+response.status+")");
-return data;
-}
-
-function message(id,text,type="ok"){
-const el=document.getElementById(id);
-if(!el)return;
-el.textContent=text;
-el.className="status show "+type;
-}
-
 function escapeHTML(value){
-return String(value??"").replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-}[c]));
+  return String(value??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+function getArray(data){
+  if(Array.isArray(data))return data;
+  if(Array.isArray(data?.items))return data.items;
+  if(Array.isArray(data?.data))return data.data;
+  if(Array.isArray(data?.results))return data.results;
+  if(Array.isArray(data?.donations))return data.donations;
+  if(Array.isArray(data?.messages))return data.messages;
+  return [];
+}
+async function request(path,options={}){
+  const response=await fetch(API+path,{
+    credentials:"include",
+    ...options,
+    headers:{
+      ...(options.body instanceof FormData?{}:{"Content-Type":"application/json"}),
+      ...(options.headers||{})
+    }
+  });
+  const text=await response.text();
+  let data={};
+  try{data=text?JSON.parse(text):{};}catch{data={message:text};}
+  if(!response.ok||data.success===false){
+    throw new Error(data.error||data.message||"Request failed ("+response.status+")");
+  }
+  return data;
+}
+function normalizeSettings(data){
+  let raw=data?.settings||data?.data?.settings||data?.data||data||{};
+  if(Array.isArray(raw)){
+    const obj={};
+    raw.forEach(x=>{if(x?.key)obj[x.key]=x.value;});
+    raw=obj;
+  }
+  const s={...raw};
+  s.ministry_name=s.ministry_name||s.site_name||"";
+  s.description=s.description||s.footer_description||"";
+  s.address=s.address||s.contact_address||"";
+  s.bank_account_name=s.bank_account_name||s.bank_account_holder||s.account_name||"";
+  s.bank_account_number=s.bank_account_number||s.account_number||"";
+  s.payment_link=s.payment_link||s.donation_url||"";
+  s.payment_enabled=s.payment_enabled??s.donation_link_enabled??false;
+  return s;
+}
+function isEnabled(value){
+  return value===true||value===1||value==="1"||
+    String(value).toLowerCase()==="true"||String(value).toLowerCase()==="yes";
+}
+function setValue(id,value){
+  if($(id))$(id).value=value??"";
+}
+function setChecked(id,value){
+  if($(id))$(id).checked=isEnabled(value);
 }
 
-function formatMoney(value){
-return Number(value||0).toLocaleString("en-LK",{
-minimumFractionDigits:2,maximumFractionDigits:2
-});
+async function handleGoogleCredential(response){
+  try{
+    $("loginMessage").textContent="Signing in...";
+    await request("/api/auth/google",{
+      method:"POST",
+      body:JSON.stringify({credential:response.credential})
+    });
+    await checkAuth();
+  }catch(error){
+    $("loginMessage").textContent=error.message;
+  }
 }
-
-function dateToday(){
-return new Date().toISOString().slice(0,10);
+function initGoogle(){
+  if(!window.google?.accounts?.id)return;
+  google.accounts.id.initialize({
+    client_id:GOOGLE_CLIENT_ID,
+    callback:handleGoogleCredential
+  });
+  google.accounts.id.renderButton($("googleButton"),{
+    theme:"filled_blue",size:"large",shape:"pill",
+    text:"signin_with",width:270
+  });
 }
-
-function safeImage(url){
-return /^https?:\/\//i.test(String(url||""))?url:"";
+async function checkAuth(){
+  try{
+    const data=await request("/api/auth/me");
+    currentUser=data.user||data.data?.user||data;
+    $("loginScreen").classList.add("hidden");
+    $("dashboard").classList.remove("hidden");
+    $("adminEmail").textContent=currentUser.email||"Administrator";
+    await initializeDashboard();
+  }catch{
+    $("dashboard").classList.add("hidden");
+    $("loginScreen").classList.remove("hidden");
+    initGoogle();
+  }
 }
-
-/* GOOGLE LOGIN */
-
-function showLoginError(text){
-message("loginStatus",text,"error");
-}
-
-function googleLogin(response){
-if(!response?.credential){
-showLoginError("Google did not return a login credential.");
-return;
-}
-api("/api/auth/google",{
-method:"POST",
-body:JSON.stringify({credential:response.credential})
-})
-.then(()=>checkSession())
-.catch(e=>showLoginError(e.message));
-}
-
-function initializeGoogle(){
-if(!window.google?.accounts?.id){
-setTimeout(initializeGoogle,300);
-return;
-}
-google.accounts.id.initialize({
-client_id:GOOGLE_CLIENT_ID,
-callback:googleLogin,
-auto_select:false
-});
-google.accounts.id.renderButton(
-document.getElementById("googleButton"),
-{
-theme:"filled_blue",
-size:"large",
-shape:"rectangular",
-text:"signin_with",
-width:260
-}
-);
-}
-
-async function checkSession(){
-try{
-const result=await api("/api/auth/me");
-if(!result.authenticated)throw new Error("Not authenticated");
-
-currentUser=result.user||{};
-
-document.getElementById("loginScreen").classList.add("hidden");
-document.getElementById("adminApp").classList.remove("hidden");
-
-const name=currentUser.name||
-currentUser.given_name||
-"Administrator";
-
-document.getElementById("userName").textContent=name;
-
-const photo=document.getElementById("userPhoto");
-if(currentUser.picture){
-photo.src=currentUser.picture;
-photo.style.display="block";
-}else{
-photo.style.display="none";
-}
-
-await loadMinistryTypes();
-showPage("dashboard");
-
-}catch(e){
-document.getElementById("loginScreen").classList.remove("hidden");
-document.getElementById("adminApp").classList.add("hidden");
-}
-}
-
 async function logout(){
-try{
-await api("/api/auth/logout",{method:"POST",body:"{}"});
-}catch(e){}
-currentUser=null;
-location.reload();
+  try{await request("/api/auth/logout",{method:"POST",body:JSON.stringify({})});}
+  catch(e){}
+  location.reload();
 }
-
-/* NAVIGATION */
-
-function toggleMenu(){
-document.getElementById("sidebar").classList.toggle("open");
+function showPage(name){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+  $("page-"+name)?.classList.add("active");
+  document.querySelector(`[data-page="${name}"]`)?.classList.add("active");
+  const titles={overview:"Dashboard",content:"Content Manager",settings:"Website Settings",donations:"Donation Ledger",messages:"Messages"};
+  $("pageTitle").textContent=titles[name]||"Dashboard";
+  $("sidebar").classList.remove("open");
+  if(name==="content")loadItems();
+  if(name==="settings")loadSettings();
+  if(name==="donations")loadDonations();
+  if(name==="messages")loadMessages();
 }
+function toggleMenu(){$("sidebar").classList.toggle("open");}
 
-function activateNav(button){
-document.querySelectorAll(".nav-btn").forEach(el=>el.classList.remove("active"));
-if(button)button.classList.add("active");
-}
-
-function showPage(page,button){
-document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
-activateNav(button);
-document.getElementById("page-"+page)?.classList.remove("hidden");
-
-if(page==="dashboard")loadDashboard();
-if(page==="donations")loadDonations();
-if(page==="messages")loadMessages();
-if(page==="settings")loadSettings();
-if(page==="payments")loadPaymentSettings();
-if(page==="beneficiaries")loadBeneficiaries();
-if(page==="assistanceRecords"){
-loadBeneficiaries();
-loadAssistanceRecords();
-}
-document.getElementById("sidebar").classList.remove("open");
-}
-
-function showContentType(type){
-currentType=type;
-document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
-document.getElementById("page-content").classList.remove("hidden");
-document.getElementById("contentHeading").textContent=CONTENT_TYPES[type]||type;
-activateNav([...document.querySelectorAll(".nav-btn")].find(
-b=>b.getAttribute("onclick")?.includes("'"+type+"'")
-));
-closeEditor();
-loadItems();
-document.getElementById("sidebar").classList.remove("open");
-}
-
-/* MINISTRY TYPES */
-
-async function loadMinistryTypes(){
-try{
-const result=await api("/api/ministry-types");
-const types=result.types||result.ministryTypes||[];
-CONTENT_TYPES={...DEFAULT_TYPES};
-
-types.forEach(t=>{
-if(t.enabled===0||t.enabled===false)return;
-const slug=t.slug||t.type;
-if(slug)CONTENT_TYPES[slug]=t.name||t.title||slug;
+document.querySelectorAll(".nav button").forEach(button=>{
+  button.addEventListener("click",()=>showPage(button.dataset.page));
 });
 
-renderMinistryNav();
-}catch(e){
-console.warn("Using built-in ministry categories.",e);
-renderMinistryNav();
+async function initializeDashboard(){
+  await Promise.allSettled([
+    loadTypes(),loadItems(),loadSettings(),loadStats(),
+    loadDonations(),loadMessages()
+  ]);
 }
+async function loadTypes(){
+  try{
+    const data=await request("/api/ministry-types");
+    ministryTypes=getArray(data);
+  }catch{
+    ministryTypes=[];
+  }
+  const filter=$("filterType");
+  const current=filter.value;
+  filter.innerHTML='<option value="">All Sections</option>';
+  const types=[
+    ["children","Children's Ministry"],
+    ["assistance","GOH Samaritan Club / Support Ministry"],
+    ["construction","Church Construction"],
+    ["projects","Ministry Projects"],
+    ["news","News & Updates"],
+    ["gallery","Photo Gallery"],
+    ["testimonies","Testimonies"],
+    ["events","Events"]
+  ];
+  types.forEach(([value,label])=>{
+    const option=document.createElement("option");
+    option.value=value;option.textContent=label;
+    filter.appendChild(option);
+  });
+  filter.value=current;
+  $("statTypes").textContent=types.length;
 }
-
-function renderMinistryNav(){
-const nav=document.getElementById("ministryNav");
-nav.innerHTML=Object.entries(CONTENT_TYPES).map(([slug,name])=>
-`<button class="nav-btn" onclick="showContentType('${escapeHTML(slug)}')">${iconForType(slug)} ${escapeHTML(name)}</button>`
-).join("");
+async function loadStats(){
+  try{
+    const data=await request("/api/admin/stats");
+    const s=data.stats||data.data||data;
+    $("statItems").textContent=s.total_items??s.total_content??items.length;
+    $("statDonations").textContent=s.total_donations??"—";
+    $("statMessages").textContent=s.total_messages??"—";
+  }catch{
+    $("statItems").textContent=items.length;
+  }
 }
-
-function iconForType(type){
-const icons={
-children:"👧",youth:"🧑",women:"🌸",men:"👨",
-worship:"🎵",prayer:"🙏",evangelism:"📖",
-missionary:"🌍",pastoral:"⛪","bible-study":"📚",
-"sunday-school":"🧒","community-outreach":"🤝",
-assistance:"❤️",construction:"🏗️",projects:"🌱",
-news:"📰",gallery:"📸",testimonies:"✨",events:"📅",
-"samaritan-club":"🤝"
-};
-return icons[type]||"✝️";
-}
-
-/* DASHBOARD */
-
-async function loadDashboard(){
-try{
-const result=await api("/api/admin/stats");
-const s=result.stats||{};
-document.getElementById("statContent").textContent=s.content||0;
-document.getElementById("statDonations").textContent=s.donations||0;
-document.getElementById("statAmount").textContent=formatMoney(s.donationAmount);
-document.getElementById("statMessages").textContent=s.unreadMessages||0;
-}catch(e){console.error(e)}
-
-try{
-const b=await api("/api/admin/beneficiaries");
-document.getElementById("statBeneficiaries").textContent=(b.beneficiaries||[]).length;
-}catch(e){
-document.getElementById("statBeneficiaries").textContent="—";
-}
-
-try{
-const a=await api("/api/admin/assistance-records");
-document.getElementById("statAssistance").textContent=(a.records||a.assistance||[]).length;
-}catch(e){
-document.getElementById("statAssistance").textContent="—";
-}
-}
-
-/* CONTENT MANAGEMENT */
-
 async function loadItems(){
-const table=document.getElementById("itemsTable");
-table.innerHTML='<tr><td colspan="5">Loading...</td></tr>';
-
-try{
-const result=await api("/api/items?admin=1&type="+encodeURIComponent(currentType));
-currentItems=result.items||[];
-
-if(!currentItems.length){
-table.innerHTML='<tr><td colspan="5" class="empty">No content added yet.</td></tr>';
-return;
+  try{
+    const type=$("filterType").value;
+    const data=await request("/api/items"+(type?"?type="+encodeURIComponent(type):""));
+    items=getArray(data);
+    renderItems();
+    $("statItems").textContent=items.length;
+  }catch(error){
+    $("itemsTable").innerHTML='<tr><td colspan="4">'+escapeHTML(error.message)+'</td></tr>';
+  }
 }
-
-table.innerHTML=currentItems.map(item=>{
-const images=getItemImages(item);
-return `<tr>
-<td>${images.length?`<img class="thumb" src="${escapeHTML(safeImage(images[0]))}" alt="">${images.length>1?`<div class="sub">+${images.length-1} more</div>`:""}`:"—"}</td>
-<td><strong>${escapeHTML(item.title)}</strong><div class="sub">${escapeHTML(item.description||"")}</div></td>
-<td><span class="badge ${item.status==="published"?"green":"red"}">${escapeHTML(item.status)}</span></td>
-<td>${Number(item.sort_order||0)}</td>
-<td><div class="actions">
-<button class="btn secondary small" onclick="editItem(${Number(item.id)})">Edit</button>
-<button class="btn danger small" onclick="deleteItem(${Number(item.id)})">Delete</button>
-</div></td>
-</tr>`;
-}).join("");
-
-}catch(e){
-table.innerHTML=`<tr><td colspan="5">${escapeHTML(e.message)}</td></tr>`;
+function typeLabel(type){
+  const map={
+    children:"Children's Ministry",assistance:"GOH Samaritan Club / Support",
+    construction:"Church Construction",projects:"Projects",news:"News",
+    gallery:"Gallery",testimonies:"Testimonies",events:"Events"
+  };
+  return map[type]||type||"Other";
 }
+function renderItems(){
+  const q=$("searchItems").value.toLowerCase();
+  const filtered=items.filter(item=>
+    String(item.title||"").toLowerCase().includes(q)
+  );
+  if(!filtered.length){
+    $("itemsTable").innerHTML='<tr><td colspan="4">No content found.</td></tr>';
+    return;
+  }
+  $("itemsTable").innerHTML=filtered.map(item=>{
+    const id=item.id??item.item_id;
+    const status=item.status||"draft";
+    return `<tr>
+      <td><strong>${escapeHTML(item.title)}</strong></td>
+      <td>${escapeHTML(typeLabel(item.type))}</td>
+      <td><span class="status ${status==="published"?"":"off"}">${escapeHTML(status)}</span></td>
+      <td><div class="actions">
+        <button class="btn secondary" onclick="editItem('${escapeHTML(id)}')">Edit</button>
+        <button class="btn danger" onclick="deleteItem('${escapeHTML(id)}')">Delete</button>
+      </div></td>
+    </tr>`;
+  }).join("");
 }
-
-function parseMetadata(item){
-let m=item.metadata||{};
-if(typeof m==="string"){
-try{m=JSON.parse(m)}catch{m={}}
-}
-return m&&typeof m==="object"?m:{};
-}
-
-function getItemImages(item){
-const m=parseMetadata(item);
-const arr=Array.isArray(m.images)?m.images:[];
-return [...new Set([item.image,...arr].filter(Boolean))];
-}
-
-function renderImageGallery(){
-const box=document.getElementById("imageGallery");
-box.innerHTML=currentImages.length?currentImages.map((url,i)=>`
-<div class="image-card">
-<img src="${escapeHTML(safeImage(url))}" alt="Content image ${i+1}">
-<div class="small-note">${i===0?"Primary image":"Image "+(i+1)}</div>
-<div class="actions">
-<button class="btn secondary small" onclick="setPrimaryImage(${i})">Set primary</button>
-<button class="btn danger small" onclick="removeContentImage(${i})">Remove</button>
-</div>
-</div>`).join(""):'<div class="small-note">No images uploaded yet.</div>';
-
-document.getElementById("itemImage").value=currentImages[0]||"";
-}
-
-function setPrimaryImage(index){
-if(index<0||index>=currentImages.length)return;
-const chosen=currentImages.splice(index,1)[0];
-currentImages.unshift(chosen);
-renderImageGallery();
-}
-
-function removeContentImage(index){
-currentImages.splice(index,1);
-renderImageGallery();
-}
-
 function newItem(){
-["itemId","itemTitle","itemSlug","itemDescription","itemContent","itemImage"].forEach(
-id=>document.getElementById(id).value=""
-);
-document.getElementById("itemFiles").value="";
-document.getElementById("itemOrder").value="0";
-document.getElementById("itemStatus").value="published";
-currentImages=[];
-renderImageGallery();
-document.getElementById("editorHeading").textContent="Add New "+(CONTENT_TYPES[currentType]||"Content");
-document.getElementById("editorStatus").className="status";
-document.getElementById("itemEditor").classList.remove("hidden");
-document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
+  resetEditor();
+  $("itemEditor").scrollIntoView({behavior:"smooth"});
 }
-
-function closeEditor(){
-document.getElementById("itemEditor").classList.add("hidden");
+function resetEditor(){
+  $("itemId").value="";
+  $("editorTitle").textContent="Add Content";
+  $("itemType").value="children";
+  $("itemTitle").value="";
+  $("itemDescription").value="";
+  $("itemContent").value="";
+  $("itemStatus").value="published";
+  $("itemOrder").value="0";
+  $("itemImages").value="";
+  $("imagePreview").innerHTML="";
+  $("itemMessage").textContent="";
+  currentImages=[];
+  selectedFiles=[];
 }
-
+function itemImagesOf(item){
+  let imgs=[];
+  if(Array.isArray(item.images))imgs=item.images;
+  else if(Array.isArray(item.metadata?.images))imgs=item.metadata.images;
+  else if(typeof item.metadata==="string"){
+    try{const m=JSON.parse(item.metadata);if(Array.isArray(m.images))imgs=m.images;}catch(e){}
+  }
+  if(item.image&&!imgs.includes(item.image))imgs.unshift(item.image);
+  if(item.image_url&&!imgs.includes(item.image_url))imgs.unshift(item.image_url);
+  return [...new Set(imgs.filter(Boolean))];
+}
 function editItem(id){
-const item=currentItems.find(x=>Number(x.id)===Number(id));
-if(!item)return;
-
-document.getElementById("itemId").value=item.id;
-document.getElementById("itemTitle").value=item.title||"";
-document.getElementById("itemSlug").value=item.slug||"";
-document.getElementById("itemOrder").value=item.sort_order||0;
-document.getElementById("itemDescription").value=item.description||"";
-document.getElementById("itemContent").value=item.content||"";
-document.getElementById("itemStatus").value=item.status||"published";
-
-currentImages=getItemImages(item);
-renderImageGallery();
-document.getElementById("itemFiles").value="";
-document.getElementById("editorHeading").textContent="Edit Content";
-document.getElementById("editorStatus").className="status";
-document.getElementById("itemEditor").classList.remove("hidden");
-document.getElementById("itemEditor").scrollIntoView({behavior:"smooth"});
+  const item=items.find(x=>String(x.id??x.item_id)===String(id));
+  if(!item)return;
+  $("itemId").value=id;
+  $("editorTitle").textContent="Edit Content";
+  $("itemType").value=item.type||"children";
+  $("itemTitle").value=item.title||"";
+  $("itemDescription").value=item.description||"";
+  $("itemContent").value=item.content||"";
+  $("itemStatus").value=item.status||"draft";
+  $("itemOrder").value=item.sort_order??0;
+  currentImages=itemImagesOf(item);
+  selectedFiles=[];
+  $("itemImages").value="";
+  renderImagePreview();
+  $("itemEditor").scrollIntoView({behavior:"smooth"});
 }
-
-async function uploadImages(){
-const files=[...document.getElementById("itemFiles").files];
-
-if(!files.length){
-message("editorStatus","Please select one or more images.","error");
-return;
+function previewSelectedImages(){
+  selectedFiles=Array.from($("itemImages").files||[]);
+  renderImagePreview();
 }
-
-const allowed=["image/jpeg","image/png","image/webp","image/gif"];
-
-for(const file of files){
-if(file.size>8*1024*1024){
-message("editorStatus",file.name+" exceeds 8 MB.","error");
-return;
+function renderImagePreview(){
+  const existing=currentImages.map((url,index)=>`
+    <div class="image-item">
+      <img src="${escapeHTML(url)}" alt="Content image">
+      <button type="button" onclick="removeExistingImage(${index})">×</button>
+    </div>`).join("");
+  const fresh=selectedFiles.map(file=>`
+    <div class="image-item">
+      <div style="width:105px;height:85px;background:#203650;border-radius:8px;
+      display:grid;place-items:center;text-align:center;padding:5px;font-size:11px">
+      ${escapeHTML(file.name)}</div>
+    </div>`).join("");
+  $("imagePreview").innerHTML=existing+fresh;
 }
-if(!allowed.includes(file.type)){
-message("editorStatus",file.name+" has an unsupported image type.","error");
-return;
+function removeExistingImage(index){
+  currentImages.splice(index,1);
+  renderImagePreview();
 }
+async function uploadImage(file){
+  const form=new FormData();
+  form.append("file",file);
+  const response=await fetch(API+"/api/admin/upload",{
+    method:"POST",credentials:"include",body:form
+  });
+  const data=await response.json();
+  if(!response.ok||data.success===false)throw new Error(data.error||"Image upload failed");
+  return data.url||data.image_url||data.data?.url||data.data?.image_url;
 }
-
-let uploaded=0;
-
-try{
-message("editorStatus","Uploading "+files.length+" image(s)...");
-
-for(const file of files){
-const form=new FormData();
-form.append("file",file);
-
-const result=await api("/api/admin/upload",{
-method:"POST",body:form
-});
-
-if(!result.url)throw new Error("Upload response did not include an image URL.");
-
-currentImages.push(result.url);
-uploaded++;
-renderImageGallery();
-}
-
-document.getElementById("itemFiles").value="";
-message("editorStatus",uploaded+" image(s) uploaded. Save the content to keep the image list.");
-
-}catch(e){
-message("editorStatus","Uploaded "+uploaded+" image(s). "+e.message,"error");
-}
-}
-
 async function saveItem(){
-const id=document.getElementById("itemId").value;
-const title=document.getElementById("itemTitle").value.trim();
-
-if(!title){
-message("editorStatus","Please enter a title.","error");
-return;
+  const title=$("itemTitle").value.trim();
+  if(!title){$("itemMessage").textContent="Please enter a title.";return;}
+  const btn=$("saveItemBtn");
+  btn.disabled=true;btn.textContent="Saving...";
+  try{
+    const uploaded=[];
+    for(const file of selectedFiles){
+      if(file.size>8*1024*1024)throw new Error(file.name+" exceeds 8 MB.");
+      if(!file.type.startsWith("image/"))throw new Error("Please upload image files only.");
+      const url=await uploadImage(file);
+      if(!url)throw new Error("The upload did not return an image URL.");
+      uploaded.push(url);
+    }
+    const images=[...currentImages,...uploaded];
+    const payload={
+      type:$("itemType").value,
+      title,
+      description:$("itemDescription").value.trim(),
+      content:$("itemContent").value.trim(),
+      status:$("itemStatus").value,
+      sort_order:Number($("itemOrder").value)||0,
+      image:images[0]||"",
+      images,
+      metadata:{images}
+    };
+    const id=$("itemId").value;
+    await request(id?"/api/items/"+encodeURIComponent(id):"/api/items",{
+      method:id?"PUT":"POST",body:JSON.stringify(payload)
+    });
+    toast("Content saved successfully.");
+    resetEditor();
+    await loadItems();await loadStats();
+  }catch(error){
+    $("itemMessage").textContent=error.message;
+  }finally{
+    btn.disabled=false;btn.textContent="Save Content";
+  }
 }
-
-const images=[...new Set(currentImages.filter(Boolean))];
-
-const body={
-type:currentType,
-title,
-slug:document.getElementById("itemSlug").value.trim(),
-sort_order:Number(document.getElementById("itemOrder").value||0),
-description:document.getElementById("itemDescription").value,
-content:document.getElementById("itemContent").value,
-image:images[0]||"",
-status:document.getElementById("itemStatus").value,
-metadata:{images}
-};
-
-try{
-await api(id?"/api/items/"+id:"/api/items",{
-method:id?"PUT":"POST",
-body:JSON.stringify(body)
-});
-message("editorStatus","Content saved successfully.");
-closeEditor();
-await loadItems();
-await loadDashboard();
-}catch(e){
-message("editorStatus",e.message,"error");
-}
-}
-
 async function deleteItem(id){
-if(!confirm("Delete this content permanently?"))return;
-try{
-await api("/api/items/"+id,{method:"DELETE"});
-await loadItems();
-await loadDashboard();
-}catch(e){alert(e.message)}
+  if(!confirm("Are you sure you want to delete this content?"))return;
+  try{
+    await request("/api/items/"+encodeURIComponent(id),{method:"DELETE"});
+    toast("Content deleted.");
+    await loadItems();await loadStats();
+  }catch(error){toast(error.message);}
 }
 
-/* BENEFICIARY MANAGEMENT */
-
-function newBeneficiary(){
-clearBeneficiaryForm();
-document.getElementById("beneficiaryEditorTitle").textContent="Register Beneficiary Family";
-document.getElementById("beneficiaryEditor").classList.remove("hidden");
-document.getElementById("beneficiaryEditor").scrollIntoView({behavior:"smooth"});
-}
-
-function clearBeneficiaryForm(){
-[
-"beneficiaryId","benName","benContactPerson","benPhone","benEmail",
-"benAddress","benDistrict","benFamilyDetails","benLiving","benNotes"
-].forEach(id=>document.getElementById(id).value="");
-
-document.getElementById("benMembers").value="1";
-document.getElementById("benStatus").value="active";
-document.getElementById("benDate").value=dateToday();
-}
-
-function closeBeneficiaryEditor(){
-document.getElementById("beneficiaryEditor").classList.add("hidden");
-}
-
-async function loadBeneficiaries(){
-const table=document.getElementById("beneficiariesTable");
-if(!table)return;
-
-table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
-
-try{
-const result=await api("/api/admin/beneficiaries");
-beneficiaries=result.beneficiaries||[];
-
-if(!beneficiaries.length){
-table.innerHTML='<tr><td colspan="6" class="empty">No beneficiary families registered.</td></tr>';
-}else{
-table.innerHTML=beneficiaries.map(b=>`
-<tr>
-<td><strong>${escapeHTML(b.name||b.family_name||"")}</strong><div class="sub">${escapeHTML(b.address||"")}</div></td>
-<td>${escapeHTML(b.contact_person||"")}<div class="sub">${escapeHTML(b.phone||"")}</div></td>
-<td>${escapeHTML(b.district||"")}</td>
-<td>${Number(b.family_members||b.member_count||1)}</td>
-<td><span class="badge ${b.status==="active"?"green":"red"}">${escapeHTML(b.status||"active")}</span></td>
-<td><div class="actions">
-<button class="btn secondary small" onclick="editBeneficiary(${Number(b.id)})">Edit</button>
-<button class="btn danger small" onclick="deleteBeneficiary(${Number(b.id)})">Delete</button>
-</div></td>
-</tr>`).join("");
-}
-}catch(e){
-table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`;
-}
-}
-
-function editBeneficiary(id){
-const b=beneficiaries.find(x=>Number(x.id)===Number(id));
-if(!b)return;
-
-document.getElementById("beneficiaryId").value=b.id;
-document.getElementById("benName").value=b.name||b.family_name||"";
-document.getElementById("benContactPerson").value=b.contact_person||"";
-document.getElementById("benPhone").value=b.phone||"";
-document.getElementById("benEmail").value=b.email||"";
-document.getElementById("benAddress").value=b.address||"";
-document.getElementById("benDistrict").value=b.district||"";
-document.getElementById("benMembers").value=b.family_members||b.member_count||1;
-document.getElementById("benFamilyDetails").value=b.family_details||"";
-document.getElementById("benLiving").value=b.living_conditions||"";
-document.getElementById("benStatus").value=b.status||"active";
-document.getElementById("benDate").value=(b.registration_date||"").slice(0,10);
-document.getElementById("benNotes").value=b.notes||"";
-
-document.getElementById("beneficiaryEditorTitle").textContent="Edit Beneficiary Family";
-document.getElementById("beneficiaryEditor").classList.remove("hidden");
-}
-
-async function saveBeneficiary(){
-const id=document.getElementById("beneficiaryId").value;
-
-const body={
-name:document.getElementById("benName").value.trim(),
-contact_person:document.getElementById("benContactPerson").value,
-phone:document.getElementById("benPhone").value,
-email:document.getElementById("benEmail").value,
-address:document.getElementById("benAddress").value,
-district:document.getElementById("benDistrict").value,
-family_members:Number(document.getElementById("benMembers").value||1),
-family_details:document.getElementById("benFamilyDetails").value,
-living_conditions:document.getElementById("benLiving").value,
-status:document.getElementById("benStatus").value,
-registration_date:document.getElementById("benDate").value,
-notes:document.getElementById("benNotes").value
-};
-
-if(!body.name){
-message("beneficiaryStatus","Enter a family or beneficiary name.","error");
-return;
-}
-
-try{
-await api(id?"/api/admin/beneficiaries/"+id:"/api/admin/beneficiaries",{
-method:id?"PUT":"POST",
-body:JSON.stringify(body)
-});
-message("beneficiaryStatus","Beneficiary family saved.");
-closeBeneficiaryEditor();
-await loadBeneficiaries();
-await loadDashboard();
-}catch(e){
-message("beneficiaryStatus",e.message,"error");
-}
-}
-
-async function deleteBeneficiary(id){
-if(!confirm("Delete this beneficiary and associated assistance records?"))return;
-try{
-await api("/api/admin/beneficiaries/"+id,{method:"DELETE"});
-await loadBeneficiaries();
-await loadDashboard();
-}catch(e){alert(e.message)}
-}
-
-/* ASSISTANCE RECORDS */
-
-async function newAssistance(){
-await loadBeneficiaries();
-
-const select=document.getElementById("assistBeneficiary");
-select.innerHTML='<option value="">Select family</option>'+beneficiaries.map(b=>
-`<option value="${Number(b.id)}">${escapeHTML(b.name||b.family_name||"Beneficiary")}</option>`
-).join("");
-
-document.getElementById("assistDate").value=dateToday();
-
-["assistQuantity","assistAmount","assistDescription","assistProvider","assistReference"].forEach(
-id=>document.getElementById(id).value=""
-);
-
-document.getElementById("assistanceEditor").classList.remove("hidden");
-document.getElementById("assistanceEditor").scrollIntoView({behavior:"smooth"});
-}
-
-function closeAssistanceEditor(){
-document.getElementById("assistanceEditor").classList.add("hidden");
-}
-
-async function saveAssistance(){
-const body={
-beneficiary_id:Number(document.getElementById("assistBeneficiary").value),
-assistance_type:document.getElementById("assistType").value,
-assistance_date:document.getElementById("assistDate").value,
-quantity:document.getElementById("assistQuantity").value,
-amount:Number(document.getElementById("assistAmount").value||0),
-description:document.getElementById("assistDescription").value,
-provided_by:document.getElementById("assistProvider").value,
-reference:document.getElementById("assistReference").value
-};
-
-if(!body.beneficiary_id){
-message("assistanceStatus","Select a beneficiary family.","error");
-return;
-}
-
-try{
-await api("/api/admin/assistance-records",{
-method:"POST",body:JSON.stringify(body)
-});
-message("assistanceStatus","Assistance record saved.");
-closeAssistanceEditor();
-await loadAssistanceRecords();
-await loadDashboard();
-}catch(e){
-message("assistanceStatus",e.message,"error");
-}
-}
-
-async function loadAssistanceRecords(){
-const table=document.getElementById("assistanceTable");
-if(!table)return;
-
-table.innerHTML='<tr><td colspan="5">Loading...</td></tr>';
-
-try{
-const result=await api("/api/admin/assistance-records");
-const records=result.records||result.assistance||[];
-
-if(!records.length){
-table.innerHTML='<tr><td colspan="5" class="empty">No assistance records yet.</td></tr>';
-return;
-}
-
-table.innerHTML=records.map(r=>{
-const b=beneficiaries.find(x=>Number(x.id)===Number(r.beneficiary_id));
-return `<tr>
-<td>${escapeHTML(r.assistance_date||"")}</td>
-<td>${escapeHTML(r.beneficiary_name||b?.name||b?.family_name||("Family #"+r.beneficiary_id))}</td>
-<td><span class="badge">${escapeHTML(r.assistance_type||"")}</span></td>
-<td>${escapeHTML(r.description||r.quantity||"")}</td>
-<td>${formatMoney(r.amount)} LKR</td>
-</tr>`;
-}).join("");
-
-}catch(e){
-table.innerHTML=`<tr><td colspan="5">${escapeHTML(e.message)}</td></tr>`;
-}
-}
-
-/* DONATIONS */
-
-async function loadDonations(){
-const table=document.getElementById("donationsTable");
-table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
-
-try{
-const result=await api("/api/admin/donations");
-const donations=result.donations||[];
-const totals=result.totals||{};
-
-document.getElementById("donationCount").textContent=totals.count??donations.length;
-document.getElementById("donationTotal").textContent=formatMoney(totals.total);
-
-if(!donations.length){
-table.innerHTML='<tr><td colspan="6" class="empty">No donation records.</td></tr>';
-return;
-}
-
-table.innerHTML=donations.map(d=>`
-<tr>
-<td>${escapeHTML(d.donation_date)}</td>
-<td><strong>${escapeHTML(d.donor_name)}</strong><div class="sub">${escapeHTML(d.donor_email||"")}</div></td>
-<td><strong>${escapeHTML(d.currency||"LKR")} ${formatMoney(d.amount)}</strong></td>
-<td>${escapeHTML(d.project||"")}</td>
-<td>${escapeHTML(d.reference||"")}</td>
-<td><button class="btn danger small" onclick="deleteDonation(${Number(d.id)})">Delete</button></td>
-</tr>`).join("");
-
-}catch(e){
-table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`;
-}
-}
-
-async function saveDonation(){
-const amount=Number(document.getElementById("donorAmount").value);
-
-if(!Number.isFinite(amount)||amount<=0){
-message("donationStatus","Enter a valid donation amount.","error");
-return;
-}
-
-const body={
-donor_name:document.getElementById("donorName").value||"Anonymous",
-donor_email:document.getElementById("donorEmail").value,
-amount,
-project:document.getElementById("donorProject").value,
-reference:document.getElementById("donorReference").value,
-donation_date:document.getElementById("donorDate").value,
-notes:document.getElementById("donorNotes").value,
-payment_method:document.getElementById("donorMethod").value
-};
-
-try{
-await api("/api/admin/donations",{
-method:"POST",body:JSON.stringify(body)
-});
-
-message("donationStatus","Donation record saved.");
-
-[
-"donorName","donorEmail","donorAmount",
-"donorProject","donorReference","donorNotes"
-].forEach(id=>document.getElementById(id).value="");
-
-await loadDonations();
-await loadDashboard();
-
-}catch(e){
-message("donationStatus",e.message,"error");
-}
-}
-
-async function deleteDonation(id){
-if(!confirm("Delete this donation record?"))return;
-try{
-await api("/api/admin/donations/"+id,{method:"DELETE"});
-await loadDonations();
-await loadDashboard();
-}catch(e){alert(e.message)}
-}
-
-/* MESSAGES */
-
-async function loadMessages(){
-const table=document.getElementById("messagesTable");
-table.innerHTML='<tr><td colspan="6">Loading...</td></tr>';
-
-try{
-const result=await api("/api/messages");
-const messages=result.messages||[];
-
-if(!messages.length){
-table.innerHTML='<tr><td colspan="6" class="empty">No messages received.</td></tr>';
-return;
-}
-
-table.innerHTML=messages.map(m=>`
-<tr>
-<td>${escapeHTML(m.created_at||"")}</td>
-<td>${escapeHTML(m.name)}</td>
-<td><a style="color:var(--blue)" href="mailto:${escapeHTML(m.email)}">${escapeHTML(m.email)}</a></td>
-<td><strong>${escapeHTML(m.subject||"No subject")}</strong><div style="margin-top:6px;white-space:pre-wrap">${escapeHTML(m.message)}</div></td>
-<td><span class="badge ${m.status==="read"?"green":"red"}">${escapeHTML(m.status)}</span></td>
-<td><div class="actions">
-<button class="btn secondary small" onclick="toggleMessage(${Number(m.id)},'${m.status==="read"?"new":"read"}')">${m.status==="read"?"Unread":"Mark read"}</button>
-<button class="btn danger small" onclick="deleteMessage(${Number(m.id)})">Delete</button>
-</div></td>
-</tr>`).join("");
-
-}catch(e){
-table.innerHTML=`<tr><td colspan="6">${escapeHTML(e.message)}</td></tr>`;
-}
-}
-
-async function toggleMessage(id,status){
-try{
-await api("/api/messages/"+id,{
-method:"PUT",body:JSON.stringify({id,status})
-});
-await loadMessages();
-await loadDashboard();
-}catch(e){alert(e.message)}
-}
-
-async function deleteMessage(id){
-if(!confirm("Delete this message permanently?"))return;
-try{
-await api("/api/messages/"+id,{method:"DELETE"});
-await loadMessages();
-await loadDashboard();
-}catch(e){alert(e.message)}
-}
-
-/* WEBSITE SETTINGS */
-
-const SETTING_FIELDS={
-ministry_name:"settingName",
-description:"settingDescription",
-contact_email:"settingEmail",
-contact_phone:"settingPhone",
-whatsapp:"settingWhatsapp",
-address:"settingAddress",
-facebook:"settingFacebook",
-youtube:"settingYoutube"
-};
-
+const settingFields=[
+  "ministry_name","description","contact_email","contact_phone","whatsapp","address",
+  "facebook","youtube","bank_name","bank_account_name","bank_account_number",
+  "bank_branch","bank_swift","bank_currency","payment_link","payment_link_label",
+  "payhere_merchant_id","payhere_mode"
+];
 async function loadSettings(){
-try{
-const result=await api("/api/admin/settings");
-const settings=result.settings||{};
-
-Object.entries(SETTING_FIELDS).forEach(([key,id])=>{
-document.getElementById(id).value=settings[key]||"";
-});
-}catch(e){
-message("settingsStatus",e.message,"error");
+  try{
+    const data=await request("/api/settings");
+    settings=normalizeSettings(data);
+    settingFields.forEach(key=>setValue("s_"+key,settings[key]));
+    setChecked("s_bank_enabled",settings.bank_enabled);
+    setChecked("s_payment_enabled",settings.payment_enabled);
+    setChecked("s_payhere_enabled",settings.payhere_enabled);
+    if(!$("s_payment_link_label").value)$("s_payment_link_label").value="Donate Online";
+    if(!$("s_payhere_mode").value)$("s_payhere_mode").value="sandbox";
+    updateSettingsPreview();
+  }catch(error){
+    $("settingsMessage").textContent="Could not load settings: "+error.message;
+  }
 }
+function updateSettingsPreview(){
+  $("bankPreview").textContent=$("s_bank_enabled").checked?"Enabled":"Hidden";
+  const link=$("s_payment_link").value.trim();
+  let valid=false;
+  try{valid=new URL(link).protocol==="https:";}catch(e){}
+  $("paymentPreview").textContent=$("s_payment_enabled").checked&&valid?"Enabled":"Hidden";
 }
-
 async function saveSettings(){
-try{
-for(const [key,id] of Object.entries(SETTING_FIELDS)){
-await api("/api/admin/settings",{
-method:"POST",
-body:JSON.stringify({
-key,
-value:document.getElementById(id).value
-})
-});
-}
-message("settingsStatus","Website settings saved successfully.");
-}catch(e){
-message("settingsStatus",e.message,"error");
-}
-}
+  const message=$("settingsMessage");
+  message.textContent="Saving settings...";
+  const payload={};
+  settingFields.forEach(key=>payload[key]=$("s_"+key).value.trim());
+  payload.bank_enabled=$("s_bank_enabled").checked;
+  payload.payment_enabled=$("s_payment_enabled").checked;
+  payload.payhere_enabled=$("s_payhere_enabled").checked;
 
-/* BANK AND ONLINE DONATION SETTINGS */
+  // Keep compatibility with older public-site setting names.
+  payload.bank_account_holder=payload.bank_account_name;
+  payload.donation_url=payload.payment_link;
+  payload.donation_link_enabled=payload.payment_enabled;
 
-const PAYMENT_FIELDS={
-bank_enabled:"bankEnabled",
-bank_name:"payBankName",
-bank_account_holder:"payAccountHolder",
-bank_account_number:"payAccountNumber",
-bank_branch:"payBranch",
-bank_swift:"paySwift",
-bank_currency:"payCurrency",
-donation_link_enabled:"linkEnabled",
-donation_url:"payDonationUrl"
-};
-
-function setCheck(id,value){
-document.getElementById(id).checked=
-value===true||value===1||value==="1"||value==="true";
+  if(payload.payment_link){
+    try{
+      const u=new URL(payload.payment_link);
+      if(u.protocol!=="https:")throw new Error();
+    }catch(e){
+      message.textContent="Payment link must be a valid HTTPS URL.";
+      return;
+    }
+  }
+  if(payload.bank_enabled&&(!payload.bank_name||!payload.bank_account_name||!payload.bank_account_number)){
+    message.textContent="Please enter the bank name, account name and account number, or disable bank details.";
+    return;
+  }
+  try{
+    await request("/api/admin/settings",{
+      method:"PUT",body:JSON.stringify(payload)
+    });
+    settings=payload;
+    message.textContent="Settings saved successfully.";
+    updateSettingsPreview();
+    toast("Website settings updated.");
+  }catch(error){
+    message.textContent="Could not save settings: "+error.message;
+  }
 }
-
-async function loadPaymentSettings(){
-try{
-const result=await api("/api/admin/settings");
-const settings=result.settings||{};
-
-for(const [key,id] of Object.entries(PAYMENT_FIELDS)){
-const el=document.getElementById(id);
-
-if(el.type==="checkbox"){
-setCheck(id,settings[key]);
-}else if(settings[key]!==undefined){
-el.value=settings[key];
+async function loadDonations(){
+  try{
+    const data=await request("/api/admin/donations");
+    const rows=getArray(data);
+    $("donationsTable").innerHTML=rows.length?rows.map(d=>`
+      <tr>
+        <td>${escapeHTML(d.donor_name||d.name||"—")}</td>
+        <td>${escapeHTML(d.email||"—")}</td>
+        <td>${escapeHTML(d.amount??"—")} ${escapeHTML(d.currency||"")}</td>
+        <td>${escapeHTML(d.created_at||d.date||"—")}</td>
+        <td>${escapeHTML(d.project||d.purpose||"—")}</td>
+        <td>${escapeHTML(d.reference||"—")}</td>
+      </tr>`).join(""):'<tr><td colspan="6">No donation records found.</td></tr>';
+    $("statDonations").textContent=rows.length;
+  }catch(error){
+    $("donationsTable").innerHTML='<tr><td colspan="6">'+escapeHTML(error.message)+'</td></tr>';
+  }
 }
-}
-}catch(e){
-message("paymentStatus",e.message,"error");
-}
-}
-
-async function savePaymentSettings(){
-try{
-for(const [key,id] of Object.entries(PAYMENT_FIELDS)){
-const el=document.getElementById(id);
-const value=el.type==="checkbox"?(el.checked?"1":"0"):el.value;
-
-await api("/api/admin/settings",{
-method:"POST",
-body:JSON.stringify({key,value})
-});
-}
-
-message("paymentStatus","Bank transfer and online donation settings saved successfully. Check the public website to confirm the displayed details.");
-
-}catch(e){
-message("paymentStatus",e.message,"error");
-}
-}
-
-/* API TEST */
-
-async function checkAPI(){
-try{
-const result=await api("/api/health");
-message("apiStatus","Connected: "+(result.service||"GOH Ministries")+" — "+(result.status||"running"));
-}catch(e){
-message("apiStatus","Connection failed: "+e.message,"error");
-}
+async function loadMessages(){
+  try{
+    const data=await request("/api/messages");
+    const rows=getArray(data);
+    $("messagesList").innerHTML=rows.length?rows.map(m=>`
+      <div class="message">
+        <div class="section-head">
+          <strong>${escapeHTML(m.name||m.full_name||"Website visitor")}</strong>
+          <small class="muted">${escapeHTML(m.created_at||m.date||"")}</small>
+        </div>
+        <p class="muted">${escapeHTML(m.email||"")}</p>
+        <strong>${escapeHTML(m.subject||m.type||"Enquiry")}</strong>
+        <p>${escapeHTML(m.message||m.content||"")}</p>
+        ${m.phone?`<p class="muted">Phone: ${escapeHTML(m.phone)}</p>`:""}
+      </div>`).join(""):'<div class="panel">No messages found.</div>';
+    $("statMessages").textContent=rows.length;
+  }catch(error){
+    $("messagesList").innerHTML='<div class="panel">'+escapeHTML(error.message)+'</div>';
+  }
 }
 
-/* STARTUP */
-
-document.getElementById("donorDate").value=dateToday();
-document.getElementById("benDate").value=dateToday();
+$("s_bank_enabled").addEventListener("change",updateSettingsPreview);
+$("s_payment_enabled").addEventListener("change",updateSettingsPreview);
+$("s_payment_link").addEventListener("input",updateSettingsPreview);
 
 window.addEventListener("load",()=>{
-renderMinistryNav();
-initializeGoogle();
-checkSession();
+  const waitForGoogle=()=>{
+    if(window.google?.accounts?.id)initGoogle();
+    else setTimeout(waitForGoogle,300);
+  };
+  waitForGoogle();
+  checkAuth();
 });
 </script>
-
 </body>
 </html>
