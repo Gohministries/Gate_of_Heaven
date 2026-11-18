@@ -3,714 +3,515 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101d35">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#091426">
 <meta name="description" content="GOH Ministries — Sharing God's love through children’s ministry, humanitarian support, church construction and community projects.">
 <title>GOH Ministries | Sharing God's Love</title>
 
 <style>
 :root{
-  --bg:#f5f7fb;--navy:#101d35;--navy2:#192c4d;
-  --blue:#285da8;--gold:#e7b84b;--white:#fff;
-  --text:#1d2939;--muted:#697586;--line:#e5eaf1;
-  --radius:18px;--shadow:0 12px 35px rgba(16,29,53,.09)
+  --bg:#091426;
+  --panel:#12233b;
+  --panel2:#172b46;
+  --gold:#e7b84b;
+  --blue:#2458a6;
+  --text:#f5f7fb;
+  --muted:#aebbd0;
+  --line:rgba(255,255,255,.11);
+  --radius:18px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
-a{text-decoration:none;color:inherit}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-.container{width:min(1160px,92%);margin:auto}
-.topbar{background:var(--navy);color:#dce5f3;padding:8px 0;font-size:13px}
-.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 3px 16px rgba(0,0,0,.06)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy)}
-.brand-mark{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-size:23px}
-.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}
-.navlinks{display:flex;align-items:center;gap:19px;font-size:13px;font-weight:700}
-.navlinks a:hover{color:var(--blue)}
-.donate-btn,.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:12px 20px;background:var(--gold);color:var(--navy);font-weight:800}
-.btn.blue{background:var(--blue);color:white}
-.btn.outline{background:transparent;border:1px solid rgba(255,255,255,.6);color:white}
-.menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--navy)}
-.hero{background:linear-gradient(110deg,rgba(9,22,43,.94),rgba(15,39,72,.78)),url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1800&q=85") center/cover;color:white;padding:105px 0 95px;min-height:520px;display:flex;align-items:center}
-.hero-content{max-width:720px}
-.eyebrow{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:12px;text-transform:uppercase}
-.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.08;margin:16px 0}
-.hero p{font-size:18px;color:#e0e8f4;max-width:620px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:-38px;position:relative}
-.stat{background:white;padding:23px;border-radius:15px;text-align:center;box-shadow:var(--shadow)}
-.stat strong{display:block;font-size:27px;color:var(--blue)}
-.stat span{font-size:13px;color:var(--muted)}
-section{padding:78px 0}
-.section-head{text-align:center;max-width:720px;margin:0 auto 38px}
-.section-head h2{font-size:clamp(28px,4vw,39px);color:var(--navy);margin:8px 0}
-.section-head p{color:var(--muted);margin:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 20px rgba(16,29,53,.04)}
-.card img{width:100%;height:210px;object-fit:cover;display:block;background:#e8edf4}
-.card-body{padding:22px}
-.card h3{margin:0 0 9px;color:var(--navy);font-size:19px}
-.card p{margin:0 0 15px;color:var(--muted);font-size:14px}
-.card .date{font-size:12px;color:var(--blue);font-weight:800;margin-bottom:8px}
-.readmore{color:var(--blue);font-size:13px;font-weight:800}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
-.about-image{width:100%;height:410px;object-fit:cover;border-radius:22px}
-.about-copy h2{font-size:36px;line-height:1.2;color:var(--navy)}
-.about-copy p{color:var(--muted)}
-.checklist{padding:0;list-style:none}
-.checklist li{padding:7px 0}
-.checklist li:before{content:"✓";color:#21956a;font-weight:900;margin-right:10px}
-.dark-section{background:var(--navy);color:white}
-.dark-section .section-head h2{color:white}
-.dark-section .section-head p{color:#c5d0df}
-.ministry-card{background:#192c4d;border:1px solid #304765;color:white}
-.ministry-card h3{color:white}
-.ministry-card p{color:#c5d0df}
-.ministry-card .readmore{color:var(--gold)}
-.construction{background:linear-gradient(110deg,rgba(16,29,53,.94),rgba(16,29,53,.82)),url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=85") center/cover;color:white;border-radius:22px;padding:45px}
-.construction h2{font-size:34px;margin:8px 0}
-.construction p{max-width:650px;color:#e1e8f1}
-.progress-track{height:12px;border-radius:20px;background:#ffffff44;overflow:hidden;margin:22px 0}
-.progress-fill{height:100%;width:0;background:var(--gold);border-radius:20px}
-.donation-layout{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:27px;min-width:0}
-.panel h3{color:var(--navy);margin-top:0}
-.bank-row{padding:12px 0;border-bottom:1px solid var(--line)}
-.bank-row strong{display:block;font-size:12px;color:var(--muted)}
-.bank-row span{font-weight:700;overflow-wrap:anywhere}
-.notice{padding:15px;border-radius:12px;background:#fff7e5;border:1px solid #f0d99f;color:#624b18;font-size:13px;margin-top:16px}
-form{display:grid;gap:13px}
-input,textarea{width:100%;padding:13px 14px;border:1px solid #d8e0eb;border-radius:10px;background:white;color:var(--text)}
-textarea{min-height:125px;resize:vertical}
-input:focus,textarea:focus{outline:2px solid #b6cbea;border-color:var(--blue)}
-.form-status{font-size:13px;color:var(--blue);font-weight:700}
-.gallery-card img{height:235px}
-.empty{grid-column:1/-1;text-align:center;background:white;border:1px dashed #cbd5e1;border-radius:14px;padding:28px;color:var(--muted)}
-footer{background:#091426;color:#d4deec;padding:55px 0 20px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
-footer h3,footer h4{color:white}
-footer p,footer a{font-size:13px;color:#b8c6d8}
-footer a{display:block;margin:7px 0}
-.footer-bottom{border-top:1px solid #ffffff22;margin-top:35px;padding-top:18px;font-size:12px;color:#9eafc4}
-.whatsapp{position:fixed;right:20px;bottom:20px;z-index:90;background:#20b76b;color:white;border-radius:50px;padding:13px 18px;font-weight:800;box-shadow:var(--shadow)}
-.loading{color:var(--muted);text-align:center;padding:25px}
-.payment-link-wrap{margin-top:18px}
-.payment-link-wrap .btn{width:100%;text-align:center}
-.payment-unavailable{padding:15px;border-radius:12px;background:#f1f5f9;color:#526174;font-size:14px;margin-top:15px}
-.hidden{display:none!important}
-@media(max-width:900px){
-.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:20px 5%;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}
-.navlinks.open{display:flex}
-.menu-btn{display:block}
-.grid{grid-template-columns:repeat(2,1fr)}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.65
 }
-@media(max-width:650px){
-.hero{padding:75px 0;min-height:470px}
-.stats{grid-template-columns:1fr;margin-top:18px}
-section{padding:58px 0}
-.grid,.about-grid,.donation-layout,.footer-grid{grid-template-columns:1fr}
-.about-image{height:270px}
-.construction{padding:28px}
-.construction h2{font-size:28px}
-.topbar .container{justify-content:center;text-align:center}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(9,20,38,.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)
+}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-size:21px;font-weight:800}
+.logo{
+  width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;background:linear-gradient(135deg,#e7b84b,#a87920);
+  color:#101d35;font-size:23px
+}
+.navlinks{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.navlinks a{font-size:14px;color:var(--muted)}
+.navlinks a:hover{color:var(--gold)}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 12px}
+.hero{
+  min-height:570px;display:flex;align-items:center;
+  background:
+  linear-gradient(90deg,rgba(5,13,27,.96),rgba(5,13,27,.72),rgba(5,13,27,.45)),
+  url("https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1800&q=85") center/cover
+}
+.hero-content{max-width:720px;padding:90px 0}
+.eyebrow{color:var(--gold);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.08;margin:16px 0}
+h2{font-size:clamp(26px,4vw,38px);line-height:1.2;margin:0 0 15px}
+h3{margin:0 0 8px}
+p{color:var(--muted)}
+.hero p{font-size:18px;max-width:650px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border-radius:11px;border:1px solid transparent;
+  background:var(--gold);color:#101d35;font-weight:800;cursor:pointer
+}
+.btn:hover{filter:brightness(1.08)}
+.btn-outline{background:transparent;border-color:var(--gold);color:var(--gold)}
+.btn-blue{background:var(--blue);color:white}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+section{padding:76px 0}
+.section-head{max-width:720px;margin-bottom:30px}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden
+}
+.card-body{padding:22px}
+.card p{margin:8px 0}
+.card-img{width:100%;height:220px;object-fit:cover;display:block;background:#20334d}
+.placeholder{
+  height:170px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#172b46,#0d1b30);font-size:45px
+}
+.tag{display:inline-block;color:var(--gold);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.feature-box{padding:30px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
+.feature-box li{color:var(--muted);margin:9px 0}
+.dark-section{background:#0d1c31}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-grid img{width:100%;height:230px;object-fit:cover;border-radius:14px}
+.donation-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info-panel{padding:26px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
+.info-row{padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}
+.info-row span:first-child{color:var(--muted)}
+.copy-value{overflow-wrap:anywhere;text-align:right}
+form{display:grid;gap:13px}
+input,textarea,select{
+  width:100%;padding:13px 14px;border:1px solid var(--line);
+  border-radius:10px;background:#0b192c;color:white;outline:none
+}
+input:focus,textarea:focus{border-color:var(--gold)}
+textarea{min-height:130px;resize:vertical}
+.notice{padding:14px;border-radius:10px;background:rgba(231,184,75,.1);color:#f4d991;margin:14px 0}
+.status{font-size:14px;min-height:22px;color:var(--gold)}
+footer{padding:40px 0;background:#06101f;border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
+.footer-links{display:grid;gap:8px;color:var(--muted);font-size:14px}
+.social{display:flex;gap:12px;flex-wrap:wrap}
+.social a{color:var(--gold)}
+.hidden{display:none!important}
+@media(max-width:850px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .navlinks{display:none;position:absolute;left:0;right:0;top:76px;background:#091426;padding:18px 5%;border-bottom:1px solid var(--line)}
+  .navlinks.open{display:grid;gap:15px}
+  .menu-btn{display:block}
+}
+@media(max-width:600px){
+  section{padding:55px 0}
+  .grid,.split,.donation-grid,.footer-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid img{height:160px}
+  .hero{min-height:520px}
+  .hero-content{padding:70px 0}
+  .info-row{display:block}
+  .copy-value{text-align:left}
 }
 </style>
 </head>
 
 <body>
-
-<div class="topbar">
-  <div class="container">
-    <span>✝ Sharing God's love through faith, hope and service</span>
-    <span>GOH Ministries · Sri Lanka</span>
-  </div>
-</div>
-
 <header>
   <div class="container nav">
     <a class="brand" href="#home">
-      <div class="brand-mark">✝</div>
-      <div>
-        <div id="brandName">GOH MINISTRIES</div>
-        <small>FAITH · LOVE · SERVICE</small>
-      </div>
+      <span class="logo">✝</span>
+      <span id="brandName">GOH Ministries</span>
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     <nav class="navlinks" id="navLinks">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#ministries">Ministries</a>
       <a href="#projects">Projects</a>
-      <a href="#news">News</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#testimonies">Testimonies</a>
-      <a href="#events">Events</a>
+      <a href="#samaritan">Samaritan Club</a>
+      <a href="#donate">Donate</a>
       <a href="#contact">Contact</a>
-      <a class="donate-btn" href="#donate">Donate ♥</a>
     </nav>
+    <button class="menu-btn" id="menuBtn" type="button">☰ Menu</button>
   </div>
 </header>
 
 <main>
 <section class="hero" id="home">
-  <div class="container">
-    <div class="hero-content">
-      <div class="eyebrow" id="heroEyebrow">WELCOME TO GOH MINISTRIES</div>
-      <h1 id="heroTitle">Sharing God's Love. Bringing Hope. Changing Lives.</h1>
-      <p id="heroDescription">Serving communities, supporting children and families, and building a future rooted in the love and hope of Jesus Christ.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#ministries">Explore Our Ministries</a>
-        <a class="btn outline" href="#donate">Support Our Mission</a>
-      </div>
+  <div class="container hero-content">
+    <div class="eyebrow">Faith • Love • Service</div>
+    <h1>Sharing God's Love.<br><span style="color:var(--gold)">Changing Lives.</span></h1>
+    <p id="heroDescription">Serving communities through children's ministry, humanitarian support, church construction and practical expressions of God's love.</p>
+    <div class="actions">
+      <a class="btn" href="#ministries">Explore Our Ministries</a>
+      <a class="btn btn-outline" href="#donate">Support Our Work</a>
     </div>
   </div>
 </section>
 
-<div class="container">
-  <div class="stats">
-    <div class="stat"><strong>♥</strong><span>Serving with Love</span></div>
-    <div class="stat"><strong>✝</strong><span>Faith in Jesus Christ</span></div>
-    <div class="stat"><strong>🤝</strong><span>Hope for Communities</span></div>
-  </div>
-</div>
-
 <section id="about">
-  <div class="container about-grid">
-    <div><img class="about-image" id="aboutImage" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85" alt="Community people together"></div>
-    <div class="about-copy">
-      <div class="eyebrow">WHO WE ARE</div>
-      <h2 id="aboutTitle">A Ministry With a Heart for People</h2>
-      <p id="aboutDescription">GOH Ministries exists to share the love of God through practical service, encouragement, prayer and community support.</p>
-      <ul class="checklist">
-        <li>Sharing the love and hope of Jesus Christ</li>
-        <li>Supporting children and families</li>
+  <div class="container split">
+    <div>
+      <div class="eyebrow">Welcome to GOH Ministries</div>
+      <h2>Faith expressed through love and service</h2>
+      <p id="aboutDescription">GOH Ministries is committed to sharing God's love through practical care, Christian ministry, community support and projects that bring hope to people.</p>
+      <p>We believe every person deserves dignity, compassion, encouragement and the opportunity to experience hope.</p>
+      <a href="#contact" class="btn btn-outline">Connect With Us</a>
+    </div>
+    <div class="feature-box">
+      <h3>✝ Our Mission</h3>
+      <p>To share God's love through faith, compassion, service and practical support.</p>
+      <ul>
+        <li>Encouraging and supporting children and families</li>
         <li>Helping people facing difficult circumstances</li>
-        <li>Serving communities through meaningful projects</li>
+        <li>Supporting church construction and ministry projects</li>
+        <li>Building stronger and caring communities</li>
       </ul>
-      <a class="btn blue" href="#contact">Connect With Us</a>
     </div>
   </div>
 </section>
 
 <section class="dark-section" id="ministries">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">WHAT WE DO</div>
+    <div class="section-head center">
+      <div class="eyebrow">What We Do</div>
       <h2>Our Ministries</h2>
-      <p>Practical expressions of God's love, care and compassion.</p>
+      <p>Discover the different areas of ministry and service.</p>
     </div>
-    <div class="grid" id="ministryGrid">
-      <article class="card ministry-card"><div class="card-body"><h3>Children's Ministry</h3><p>Encouraging children through care, learning and Christian values.</p></div></article>
-      <article class="card ministry-card"><div class="card-body"><h3>Helping Families</h3><p>Supporting families experiencing hardship with practical assistance.</p></div></article>
-      <article class="card ministry-card"><div class="card-body"><h3>Church Construction</h3><p>Working together to establish a place for worship and fellowship.</p></div></article>
-    </div>
-  </div>
-</section>
-
-<section id="children">
-  <div class="container">
-    <div class="section-head"><div class="eyebrow">THE NEXT GENERATION</div><h2>Children's Ministry</h2><p>Creating opportunities for children to grow, learn and experience love and encouragement.</p></div>
-    <div class="grid" id="childrenGrid"><div class="loading">Loading children's ministry...</div></div>
-  </div>
-</section>
-
-<section id="assistance" style="background:#edf2f8">
-  <div class="container">
-    <div class="section-head"><div class="eyebrow">COMPASSION IN ACTION</div><h2>Helping Families in Need</h2><p>Standing alongside families and individuals during difficult times.</p></div>
-    <div class="grid" id="assistanceGrid"><div class="loading">Loading assistance updates...</div></div>
-  </div>
-</section>
-
-<section id="construction">
-  <div class="container">
-    <div class="construction">
-      <div class="eyebrow">BUILDING TOGETHER</div>
-      <h2 id="constructionTitle">Church Construction Project</h2>
-      <p id="constructionDescription">Join us in prayer and support as we work towards establishing a place for worship, fellowship and community.</p>
-      <div class="progress-track"><div class="progress-fill" id="constructionProgress"></div></div>
-      <p id="constructionProgressText">Construction progress updates will be shared here.</p>
-      <a class="btn" href="#donate">Support This Project</a>
-      <div class="grid" id="constructionGrid" style="margin-top:30px"></div>
+    <div class="grid" id="ministryCards">
+      <article class="card"><div class="placeholder">👧</div><div class="card-body"><h3>Children's Ministry</h3><p>Supporting and encouraging children through care, learning and faith.</p></div></article>
+      <article class="card"><div class="placeholder">🤝</div><div class="card-body"><h3>Humanitarian Assistance</h3><p>Practical support for individuals and families in need.</p></div></article>
+      <article class="card"><div class="placeholder">⛪</div><div class="card-body"><h3>Church Construction</h3><p>Supporting places of worship and community ministry.</p></div></article>
     </div>
   </div>
 </section>
 
 <section id="projects">
   <div class="container">
-    <div class="section-head"><div class="eyebrow">MAKING A DIFFERENCE</div><h2>Our Projects</h2><p>Discover the projects and activities supported by the ministry.</p></div>
-    <div class="grid" id="projectsGrid"><div class="loading">Loading projects...</div></div>
+    <div class="section-head">
+      <div class="eyebrow">Our Work</div>
+      <h2>Projects, Activities and Updates</h2>
+      <p>Follow the work and activities of GOH Ministries.</p>
+    </div>
+    <div class="grid" id="projectCards">
+      <p>Loading ministry updates...</p>
+    </div>
   </div>
 </section>
 
-<section id="news" style="background:#edf2f8">
-  <div class="container">
-    <div class="section-head"><div class="eyebrow">LATEST UPDATES</div><h2>News & Announcements</h2><p>Updates, announcements and stories from our ministry.</p></div>
-    <div class="grid" id="newsGrid"><div class="loading">Loading news...</div></div>
+<section class="dark-section" id="samaritan">
+  <div class="container split">
+    <div>
+      <div class="eyebrow">GOH Samaritan Club</div>
+      <h2>Compassion in action</h2>
+      <p>The GOH Samaritan Club supports people and families who need practical assistance. Through generosity and community partnership, we aim to bring encouragement and hope.</p>
+      <p>Support may include essential items, family assistance and other humanitarian needs.</p>
+      <a href="#donate" class="btn">Support the Samaritan Club</a>
+    </div>
+    <div class="feature-box">
+      <div style="font-size:48px">🤝</div>
+      <h3>Helping people in need</h3>
+      <p>Every act of kindness can make a meaningful difference in someone's life.</p>
+      <a href="#contact" class="btn btn-outline">Ask About Assistance</a>
+    </div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="container">
-    <div class="section-head"><div class="eyebrow">MOMENTS THAT MATTER</div><h2>Photo Gallery</h2><p>See moments from our ministry, activities and community projects.</p></div>
-    <div class="grid" id="galleryGrid"><div class="loading">Loading gallery...</div></div>
-  </div>
-</section>
-
-<section id="testimonies" style="background:#edf2f8">
-  <div class="container">
-    <div class="section-head"><div class="eyebrow">STORIES OF HOPE</div><h2>Testimonies</h2><p>Stories of faith, encouragement and transformation.</p></div>
-    <div class="grid" id="testimoniesGrid"><div class="loading">Loading testimonies...</div></div>
-  </div>
-</section>
-
-<section id="events">
-  <div class="container">
-    <div class="section-head"><div class="eyebrow">JOIN US</div><h2>Events & Activities</h2><p>Find out about upcoming ministry activities and community events.</p></div>
-    <div class="grid" id="eventsGrid"><div class="loading">Loading events...</div></div>
-  </div>
-</section>
-
-<section class="dark-section" id="donate">
+<section id="gallerySection" class="hidden">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">PARTNER WITH US</div>
-      <h2>Support the Ministry</h2>
-      <p>Your generosity can help support ministry activities and practical community needs.</p>
+      <div class="eyebrow">Moments and Memories</div>
+      <h2>Photo Gallery</h2>
     </div>
-
-    <div class="donation-layout">
-      <div class="panel" id="bankDonationPanel">
-        <h3>Bank Transfer Details</h3>
-        <div class="bank-row"><strong>Bank</strong><span id="bankName">Loading bank details...</span></div>
-        <div class="bank-row"><strong>Account Name</strong><span id="accountName"></span></div>
-        <div class="bank-row"><strong>Account Number</strong><span id="accountNumber"></span></div>
-        <div class="bank-row"><strong>Branch</strong><span id="bankBranch"></span></div>
-        <div class="bank-row hidden" id="swiftRow"><strong>SWIFT / Bank Code</strong><span id="bankSwift"></span></div>
-        <div class="bank-row"><strong>Currency</strong><span id="bankCurrency">LKR</span></div>
-        <div class="bank-row"><strong>Reference</strong><span>GOH Ministry Donation</span></div>
-        <div class="notice" id="donationNotice">
-          Please keep your bank confirmation for your records.
-        </div>
-      </div>
-
-      <div class="panel" id="donationContactPanel">
-        <h3>Support GOH Ministries</h3>
-        <p style="color:var(--muted);font-size:14px">
-          You can support our ministry through the available donation methods.
-          For assistance or to support a particular project, please contact us.
-        </p>
-
-        <div id="onlineDonationArea" class="payment-link-wrap hidden">
-          <a id="onlineDonationButton" class="btn blue" href="#" target="_blank" rel="noopener noreferrer">
-            Donate Online
-          </a>
-        </div>
-
-        <div id="noPaymentMethods" class="payment-unavailable hidden">
-          Donation payment details are currently unavailable. Please contact GOH Ministries for assistance.
-        </div>
-
-        <div class="notice">
-          Thank you for remembering GOH Ministries in your prayers and generosity.
-        </div>
-      </div>
-    </div>
-
-    <div class="panel" style="margin-top:25px">
-      <h3>Donation Enquiry</h3>
-      <p style="color:var(--muted);font-size:14px">
-        Contact us if you would like to support a particular ministry or project.
-      </p>
-      <form id="donationForm">
-        <input name="name" placeholder="Your name" required>
-        <input name="email" type="email" placeholder="Email address" required>
-        <input name="amount" type="number" min="1" placeholder="Donation amount (LKR)">
-        <input name="project" placeholder="Project or ministry (optional)">
-        <textarea name="message" placeholder="Your message (optional)"></textarea>
-        <button class="btn blue" type="submit">Send Donation Enquiry</button>
-        <div class="form-status" id="donationStatus"></div>
-      </form>
-    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
 
-<section id="contact" style="background:#edf2f8">
+<section id="donate" class="dark-section">
   <div class="container">
-    <div class="section-head"><div class="eyebrow">GET IN TOUCH</div><h2>Contact GOH Ministries</h2><p>We welcome your questions, messages, prayer requests and enquiries.</p></div>
-    <div class="donation-layout">
-      <div class="panel">
-        <h3>Contact Information</h3>
-        <div class="bank-row"><strong>Email</strong><span id="contactEmail">Please contact us through the form</span></div>
-        <div class="bank-row"><strong>Phone</strong><span id="contactPhone">Contact details coming soon</span></div>
-        <div class="bank-row"><strong>Location</strong><span id="contactAddress">Sri Lanka</span></div>
-        <p style="color:var(--muted);font-size:14px;margin-top:18px">We appreciate your prayers and encouragement.</p>
+    <div class="section-head center">
+      <div class="eyebrow">Partner With Us</div>
+      <h2>Support GOH Ministries</h2>
+      <p>Your generosity helps support ministry work, humanitarian assistance and community projects.</p>
+    </div>
+    <div class="donation-grid">
+      <div class="info-panel" id="bankPanel">
+        <h3>🏦 Bank Transfer</h3>
+        <p>Use the bank details below to make a donation.</p>
+        <div id="bankDetails">
+          <p>Bank details will be displayed here when available.</p>
+        </div>
       </div>
-      <div class="panel">
-        <h3>Send Us a Message</h3>
-        <form id="contactForm">
-          <input name="name" placeholder="Your name" required>
-          <input name="email" type="email" placeholder="Your email" required>
-          <input name="subject" placeholder="Subject">
-          <textarea name="message" placeholder="Write your message..." required></textarea>
-          <button class="btn blue" type="submit">Send Message</button>
-          <div class="form-status" id="contactStatus"></div>
-        </form>
+      <div class="info-panel" id="onlinePanel">
+        <h3>💳 Online Donation</h3>
+        <p>Use our secure online payment option.</p>
+        <div id="onlinePayment">
+          <p>Online payment information will be displayed here when available.</p>
+        </div>
       </div>
+    </div>
+    <p class="notice">Please contact us if you need donation confirmation or would like to support a specific ministry project.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container split">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Contact GOH Ministries</h2>
+      <p>Have a question, want to support a project, or need more information? Send us a message.</p>
+      <div class="info-panel">
+        <div class="info-row"><span>Email</span><strong id="contactEmail">gateofheavensl1@gmail.com</strong></div>
+        <div class="info-row"><span>Phone</span><strong id="contactPhone">—</strong></div>
+        <div class="info-row"><span>Address</span><strong id="contactAddress">—</strong></div>
+        <div class="social" style="margin-top:18px" id="socialLinks"></div>
+      </div>
+    </div>
+    <div class="info-panel">
+      <h3>Send a Message</h3>
+      <form id="contactForm">
+        <input name="name" placeholder="Your name" required maxlength="150">
+        <input name="email" type="email" placeholder="Email address" maxlength="200">
+        <input name="phone" placeholder="Phone number" maxlength="60">
+        <input name="subject" placeholder="Subject" maxlength="250">
+        <textarea name="message" placeholder="Write your message..." required maxlength="10000"></textarea>
+        <button class="btn" type="submit" id="sendBtn">Send Message</button>
+        <div class="status" id="formStatus" role="status"></div>
+      </form>
     </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h3 id="footerName">GOH Ministries</h3>
-        <p id="footerDescription">Sharing God's love through faith, compassion and practical service. Thank you for remembering our ministry in your prayers.</p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <a href="#about">About Us</a><a href="#ministries">Our Ministries</a><a href="#projects">Projects</a><a href="#news">News</a>
-      </div>
-      <div>
-        <h4>Connect</h4>
-        <a href="#gallery">Gallery</a><a href="#testimonies">Testimonies</a><a href="#events">Events</a><a href="#contact">Contact Us</a><a href="#donate">Donate</a>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand"><span class="logo">✝</span><span id="footerName">GOH Ministries</span></div>
+      <p>Sharing God's love through faith, compassion and service.</p>
+      <div class="social" id="footerSocial"></div>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <div class="footer-links">
+        <a href="#about">About Us</a>
+        <a href="#ministries">Our Ministries</a>
+        <a href="#projects">Projects</a>
+        <a href="#donate">Donate</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      © <span id="year"></span> GOH Ministries. All rights reserved.
-      <span style="float:right">Built with faith and love.</span>
+    <div>
+      <h3>Contact</h3>
+      <div class="footer-links">
+        <a href="#contact">Send a Message</a>
+        <a href="mailto:gateofheavensl1@gmail.com" id="footerEmail">gateofheavensl1@gmail.com</a>
+      </div>
     </div>
+  </div>
+  <div class="container" style="border-top:1px solid var(--line);margin-top:30px;padding-top:18px;color:var(--muted);font-size:13px">
+    © <span id="year"></span> GOH Ministries. All rights reserved.
   </div>
 </footer>
 
-<a class="whatsapp" id="whatsappLink" href="#contact" target="_blank" rel="noopener">✆ Contact Us</a>
-
 <script>
-"use strict";
+const API = "https://gohm.createlk.workers.dev";
 
-const API="https://gohm.createlk.workers.dev";
-
-const DEFAULTS={
-  site_name:"GOH Ministries",
-  hero_title:"Sharing God's Love. Bringing Hope. Changing Lives.",
-  hero_description:"Serving communities, supporting children and families, and building a future rooted in the love and hope of Jesus Christ.",
-  about_title:"A Ministry With a Heart for People",
-  about_description:"GOH Ministries exists to share the love of God through practical service, encouragement, prayer and community support.",
-  contact_address:"Sri Lanka",
-  construction_title:"Church Construction Project",
-  construction_description:"Join us in prayer and support as we work towards establishing a place for worship, fellowship and community.",
-  construction_progress:"0"
+const TYPE_ICONS = {
+  children:"👧",assistance:"🤝",construction:"⛪",projects:"🌱",
+  news:"📰",gallery:"📸",testimonies:"❤️",events:"📅",
+  youth:"🙌",women:"🌷",men:"👨",worship:"🎵",prayer:"🙏",
+  evangelism:"✝",missions:"🌍",pastoral:"📖",
+  "bible-study":"📚","sunday-school":"🧒",
+  "community-outreach":"🏡","samaritan-club":"🤝"
 };
 
-const $=id=>document.getElementById(id);
-
 function escapeHTML(value){
-  return String(value??"").replace(/[&<>"']/g,c=>({
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[c]);
 }
 
-function safeURL(value){
-  if(!value)return "";
-  try{
-    const url=new URL(value,API);
-    return ["http:","https:"].includes(url.protocol)?url.href:"";
-  }catch{return ""}
+function mediaURL(value){
+  if(!value) return "";
+  if(/^https?:\/\//i.test(value)) return value;
+  return API + (value.startsWith("/") ? value : "/" + value);
 }
 
-function isEnabled(value){
-  return value===true||value===1||value==="1"||value==="true";
-}
-
-async function request(path,options={}){
-  const response=await fetch(API+path,{
+async function api(path, options={}){
+  const response = await fetch(API + path,{
     ...options,
     headers:{
-      ...(options.body instanceof FormData?{}:{"Content-Type":"application/json"}),
-      ...(options.headers||{})
+      ...(options.body instanceof FormData ? {} : {"Content-Type":"application/json"}),
+      ...(options.headers || {})
     }
   });
-
-  const data=await response.json().catch(()=>({}));
-  if(!response.ok||data.success===false){
-    throw new Error(data.error||data.message||"Request failed. Please try again.");
+  const data = await response.json().catch(()=>({}));
+  if(!response.ok || data.success === false){
+    throw new Error(data.error || "Request failed");
   }
   return data;
 }
 
-function getArray(data){
-  if(Array.isArray(data))return data;
-  if(Array.isArray(data.items))return data.items;
-  if(Array.isArray(data.data))return data.data;
-  if(Array.isArray(data.results))return data.results;
-  return [];
-}
-
-function itemImage(item){
-  return safeURL(item.image_url||item.image||item.photo||item.url||"");
-}
-
-function cardHTML(item,options={}){
-  const image=itemImage(item);
-  const title=escapeHTML(item.title||item.name||"Ministry Update");
-  const description=escapeHTML(item.description||item.content||item.message||"");
-  const date=escapeHTML(item.date||item.event_date||item.created_at||"");
-  const imageHTML=image?`<img src="${escapeHTML(image)}" alt="${title}" loading="lazy">`:"";
-
-  return `
-    <article class="card ${options.gallery?"gallery-card":""}">
-      ${imageHTML}
-      <div class="card-body">
-        ${date?`<div class="date">${date}</div>`:""}
-        <h3>${title}</h3>
-        <p>${description}</p>
-      </div>
-    </article>`;
-}
-
-function showItems(containerId,items,emptyText,options={}){
-  const container=$(containerId);
-  if(!container)return;
-  if(!items.length){
-    container.innerHTML=`<div class="empty">${escapeHTML(emptyText)}</div>`;
-    return;
-  }
-  container.innerHTML=items.map(item=>cardHTML(item,options)).join("");
-}
-
-async function loadType(type,containerId,emptyText,options={}){
-  try{
-    const data=await request("/api/items?type="+encodeURIComponent(type));
-    showItems(containerId,getArray(data),emptyText,options);
-  }catch(error){
-    console.error("Could not load "+type,error);
-    showItems(containerId,[],"This section is temporarily unavailable.");
-  }
-}
-
-/* SETTINGS */
-
-function normalizeSettings(raw){
-  let settings={...DEFAULTS};
-
-  if(Array.isArray(raw)){
-    raw.forEach(row=>{
-      if(row&&row.key)settings[row.key]=row.value;
-    });
-  }else if(raw&&typeof raw==="object"){
-    if(raw.settings&&typeof raw.settings==="object"){
-      settings={...settings,...raw.settings};
-    }else{
-      settings={...settings,...raw};
-    }
-  }
-
-  // Support the settings names used by the Admin Dashboard and Worker.
-  if(!settings.site_name&&settings.ministry_name){
-    settings.site_name=settings.ministry_name;
-  }
-  if(!settings.footer_description&&settings.description){
-    settings.footer_description=settings.description;
-  }
-  if(!settings.contact_address&&settings.address){
-    settings.contact_address=settings.address;
-  }
-
-  // Canonical payment keys, with legacy-name fallbacks.
-  if(settings.bank_account_name===undefined){
-    settings.bank_account_name=settings.bank_account_holder||"";
-  }
-  if(settings.bank_enabled===undefined){
-    settings.bank_enabled="0";
-  }
-  if(settings.payment_enabled===undefined){
-    settings.payment_enabled=settings.donation_link_enabled??"0";
-  }
-  if(settings.payment_link===undefined){
-    settings.payment_link=settings.donation_url||"";
-  }
-
-  return settings;
-}
-
 function setText(id,value){
-  const element=$(id);
-  if(element&&value!==undefined&&value!==null&&String(value).trim()!==""){
-    element.textContent=String(value);
-  }
-}
-
-function applyPaymentSettings(settings){
-  const bankEnabled=isEnabled(settings.bank_enabled);
-  const onlineEnabled=isEnabled(settings.payment_enabled);
-
-  const bankPanel=$("bankDonationPanel");
-  const onlineArea=$("onlineDonationArea");
-  const onlineButton=$("onlineDonationButton");
-  const noMethods=$("noPaymentMethods");
-
-  const bankName=String(settings.bank_name||"").trim();
-  const accountName=String(settings.bank_account_name||"").trim();
-  const accountNumber=String(settings.bank_account_number||"").trim();
-  const branch=String(settings.bank_branch||"").trim();
-  const swift=String(settings.bank_swift||"").trim();
-  const currency=String(settings.bank_currency||"LKR").trim()||"LKR";
-
-  const hasBankDetails=bankEnabled&&(bankName||accountName||accountNumber||branch);
-
-  bankPanel.classList.toggle("hidden",!hasBankDetails);
-
-  if(hasBankDetails){
-    setText("bankName",bankName||"Not provided");
-    setText("accountName",accountName||"Not provided");
-    setText("accountNumber",accountNumber||"Not provided");
-    setText("bankBranch",branch||"Not provided");
-    setText("bankCurrency",currency);
-
-    $("swiftRow").classList.toggle("hidden",!swift);
-    if(swift)setText("bankSwift",swift);
-
-    if(settings.donation_notice){
-      setText("donationNotice",settings.donation_notice);
-    }else{
-      setText("donationNotice","Please keep your bank confirmation for your records.");
-    }
-  }
-
-  // Never display an online payment button for a missing or unsafe URL.
-  const paymentURL=onlineEnabled?safeURL(settings.payment_link):"";
-  const showOnline=Boolean(paymentURL);
-
-  onlineArea.classList.toggle("hidden",!showOnline);
-
-  if(showOnline){
-    onlineButton.href=paymentURL;
-    onlineButton.textContent=String(settings.payment_link_label||"Donate Online");
-  }else{
-    onlineButton.removeAttribute("href");
-  }
-
-  noMethods.classList.toggle("hidden",hasBankDetails||showOnline);
-}
-
-function applySettings(raw){
-  const settings=normalizeSettings(raw);
-
-  setText("brandName",settings.site_name);
-  setText("footerName",settings.site_name);
-  setText("heroTitle",settings.hero_title);
-  setText("heroDescription",settings.hero_description);
-  setText("aboutTitle",settings.about_title);
-  setText("aboutDescription",settings.about_description);
-  setText("constructionTitle",settings.construction_title);
-  setText("constructionDescription",settings.construction_description);
-  setText("contactEmail",settings.contact_email||"Please contact us through the form");
-  setText("contactPhone",settings.contact_phone||"Contact details coming soon");
-  setText("contactAddress",settings.contact_address||"Sri Lanka");
-  setText("footerDescription",settings.footer_description||"Sharing God's love through faith, compassion and practical service. Thank you for remembering our ministry in your prayers.");
-
-  const progress=Math.max(0,Math.min(100,Number(settings.construction_progress)||0));
-  $("constructionProgress").style.width=progress+"%";
-  $("constructionProgressText").textContent="Project progress: "+progress+"%";
-
-  if(settings.about_image){
-    const url=safeURL(settings.about_image);
-    if(url)$("aboutImage").src=url;
-  }
-
-  if(settings.whatsapp){
-    const number=String(settings.whatsapp).replace(/[^\d]/g,"");
-    if(number){
-      $("whatsappLink").href="https://wa.me/"+number;
-      $("whatsappLink").textContent="✆ WhatsApp Us";
-    }
-  }
-
-  applyPaymentSettings(settings);
+  const element=document.getElementById(id);
+  if(element && value) element.textContent=value;
 }
 
 async function loadSettings(){
   try{
-    const data=await request("/api/settings");
-    applySettings(data);
+    const data=await api("/api/settings");
+    const s=data.settings || {};
+    const name=s.ministry_name || "GOH Ministries";
+    setText("brandName",name);
+    setText("footerName",name);
+    setText("heroDescription",s.description || "");
+    setText("aboutDescription",s.description || "");
+    setText("contactEmail",s.contact_email || "");
+    setText("footerEmail",s.contact_email || "");
+    setText("contactPhone",s.contact_phone || "—");
+    setText("contactAddress",s.address || "—");
+
+    const bank=document.getElementById("bankPanel");
+    const bankDetails=document.getElementById("bankDetails");
+    if(s.bank_enabled === "1" && (s.bank_name || s.bank_account_number)){
+      bank.classList.remove("hidden");
+      const rows=[
+        ["Bank",s.bank_name],
+        ["Account Name",s.bank_account_name || s.bank_account_holder],
+        ["Account Number",s.bank_account_number],
+        ["Branch",s.bank_branch],
+        ["SWIFT Code",s.bank_swift],
+        ["Currency",s.bank_currency || "LKR"]
+      ];
+      bankDetails.innerHTML=rows.filter(r=>r[1]).map(r=>
+        `<div class="info-row"><span>${escapeHTML(r[0])}</span><strong class="copy-value">${escapeHTML(r[1])}</strong></div>`
+      ).join("");
+    }else{
+      bank.classList.add("hidden");
+    }
+
+    const online=document.getElementById("onlinePanel");
+    const onlinePayment=document.getElementById("onlinePayment");
+    const link=s.payment_link || s.donation_url || "";
+    const enabled=(s.payment_enabled || s.donation_link_enabled)==="1";
+    if(enabled && /^https:\/\//i.test(link)){
+      online.classList.remove("hidden");
+      onlinePayment.innerHTML=`<a class="btn" href="${escapeHTML(link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(s.payment_link_label || "Donate Online")}</a>`;
+    }else{
+      online.classList.add("hidden");
+    }
+
+    const socials=[];
+    if(s.facebook) socials.push(["Facebook",s.facebook]);
+    if(s.youtube) socials.push(["YouTube",s.youtube]);
+    if(s.whatsapp) socials.push(["WhatsApp","https://wa.me/"+String(s.whatsapp).replace(/\D/g,"")]);
+    const socialHTML=socials.map(x=>`<a href="${escapeHTML(x[1])}" target="_blank" rel="noopener noreferrer">${escapeHTML(x[0])}</a>`).join("");
+    document.getElementById("socialLinks").innerHTML=socialHTML;
+    document.getElementById("footerSocial").innerHTML=socialHTML;
   }catch(error){
-    console.error("Settings could not be loaded:",error);
-    applyPaymentSettings(normalizeSettings({}));
+    console.error("Settings:",error);
   }
 }
 
-/* CONTENT */
-
-async function loadAllSections(){
-  await Promise.all([
-    loadType("children","childrenGrid","Children's ministry updates will appear here."),
-    loadType("assistance","assistanceGrid","Community assistance updates will appear here."),
-    loadType("construction","constructionGrid","Construction updates will appear here."),
-    loadType("projects","projectsGrid","Project updates will appear here."),
-    loadType("news","newsGrid","News and announcements will appear here."),
-    loadType("gallery","galleryGrid","Photos will appear here.",{gallery:true}),
-    loadType("testimonies","testimoniesGrid","Testimonies will appear here."),
-    loadType("events","eventsGrid","Upcoming events will appear here.")
-  ]);
+async function loadMinistryTypes(){
+  try{
+    const data=await api("/api/ministry-types");
+    const types=data.types || [];
+    const target=document.getElementById("ministryCards");
+    target.innerHTML=types.map(item=>`
+      <article class="card">
+        <div class="placeholder">${TYPE_ICONS[item.type] || "✝"}</div>
+        <div class="card-body">
+          <span class="tag">GOH Ministries</span>
+          <h3>${escapeHTML(item.title)}</h3>
+          <p>Discover our work, activities and opportunities to serve in this ministry.</p>
+          <a class="btn btn-outline" href="#projects">Explore Updates</a>
+        </div>
+      </article>
+    `).join("");
+  }catch(error){
+    console.error("Ministry types:",error);
+  }
 }
 
-/* FORMS */
+function itemImages(item){
+  const metadata=item.metadata || {};
+  const images=Array.isArray(metadata.images) ? metadata.images : [];
+  const all=[...images];
+  if(item.image_url && !all.includes(item.image_url)) all.unshift(item.image_url);
+  return all.filter(Boolean);
+}
 
-async function submitForm(form,endpoint,statusId){
-  const status=$(statusId);
-  const button=form.querySelector("button[type=submit]");
-  status.textContent="Sending...";
-  button.disabled=true;
+function renderItem(item){
+  const images=itemImages(item);
+  const image=images[0] ? `<img class="card-img" src="${escapeHTML(mediaURL(images[0]))}" alt="${escapeHTML(item.title)}" loading="lazy">` : `<div class="placeholder">${TYPE_ICONS[item.type] || "✝"}</div>`;
+  const gallery=images.length>1 ? `<div class="social" style="padding:0 20px 15px">${images.slice(1).map(src=>`<a href="${escapeHTML(mediaURL(src))}" target="_blank" rel="noopener noreferrer">View photo</a>`).join("")}</div>` : "";
+  return `<article class="card">${image}<div class="card-body"><span class="tag">${escapeHTML(item.type || "Ministry")}</span><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description || item.content || "")}</p></div>${gallery}</article>`;
+}
 
-  const formData=Object.fromEntries(new FormData(form).entries());
-
+async function loadItems(){
   try{
-    await request(endpoint,{
-      method:"POST",
-      body:JSON.stringify(formData)
-    });
-    status.textContent="Thank you. Your message has been sent.";
-    form.reset();
+    const data=await api("/api/items");
+    const items=data.items || [];
+    const galleryItems=items.filter(x=>x.type==="gallery");
+    const projects=items.filter(x=>x.type!=="gallery");
+    document.getElementById("projectCards").innerHTML=projects.length
+      ? projects.map(renderItem).join("")
+      : `<div class="feature-box"><h3>Ministry updates coming soon</h3><p>We will share our latest activities and projects here.</p></div>`;
+
+    const gallery=document.getElementById("galleryGrid");
+    const photos=galleryItems.flatMap(itemImages);
+    if(photos.length){
+      document.getElementById("gallerySection").classList.remove("hidden");
+      gallery.innerHTML=photos.map(src=>`<a href="${escapeHTML(mediaURL(src))}" target="_blank" rel="noopener noreferrer"><img src="${escapeHTML(mediaURL(src))}" alt="GOH Ministries activity" loading="lazy"></a>`).join("");
+    }
   }catch(error){
-    status.textContent=error.message||"Unable to send. Please try again later.";
+    document.getElementById("projectCards").innerHTML="<p>Ministry updates are temporarily unavailable.</p>";
+    console.error("Items:",error);
+  }
+}
+
+document.getElementById("contactForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const form=event.currentTarget;
+  const button=document.getElementById("sendBtn");
+  const status=document.getElementById("formStatus");
+  const body=Object.fromEntries(new FormData(form).entries());
+  button.disabled=true;
+  button.textContent="Sending...";
+  status.textContent="";
+  try{
+    await api("/api/messages",{method:"POST",body:JSON.stringify(body)});
+    form.reset();
+    status.textContent="Thank you. Your message has been sent successfully.";
+  }catch(error){
+    status.textContent=error.message || "Unable to send your message. Please try again.";
   }finally{
     button.disabled=false;
+    button.textContent="Send Message";
   }
-}
-
-$("contactForm").addEventListener("submit",event=>{
-  event.preventDefault();
-  submitForm(event.currentTarget,"/api/messages","contactStatus");
 });
 
-$("donationForm").addEventListener("submit",event=>{
-  event.preventDefault();
-  submitForm(event.currentTarget,"/api/messages","donationStatus");
+document.getElementById("menuBtn").addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.toggle("open");
 });
+document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.remove("open");
+}));
+document.getElementById("year").textContent=new Date().getFullYear();
 
-/* MOBILE NAVIGATION */
-
-$("menuBtn").addEventListener("click",()=>{
-  $("navLinks").classList.toggle("open");
-});
-
-document.querySelectorAll("#navLinks a").forEach(link=>{
-  link.addEventListener("click",()=>$("navLinks").classList.remove("open"));
-});
-
-$("year").textContent=new Date().getFullYear();
-
-/* START WEBSITE */
-
-(async function startWebsite(){
-  await loadSettings();
-  await loadAllSections();
-})();
+Promise.allSettled([loadSettings(),loadMinistryTypes(),loadItems()]);
 </script>
 </body>
 </html>
