@@ -10,74 +10,39 @@
 
 <style>
 :root{
-  --bg:#f5f7fb;
-  --navy:#101d35;
-  --navy2:#192c4d;
-  --blue:#285da8;
-  --gold:#e7b84b;
-  --white:#fff;
-  --text:#1d2939;
-  --muted:#697586;
-  --line:#e5eaf1;
-  --radius:18px;
-  --shadow:0 12px 35px rgba(16,29,53,.09);
+  --bg:#f5f7fb;--navy:#101d35;--navy2:#192c4d;
+  --blue:#285da8;--gold:#e7b84b;--white:#fff;
+  --text:#1d2939;--muted:#697586;--line:#e5eaf1;
+  --radius:18px;--shadow:0 12px 35px rgba(16,29,53,.09)
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;line-height:1.65
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
 a{text-decoration:none;color:inherit}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 .container{width:min(1160px,92%);margin:auto}
-.topbar{
-  background:var(--navy);color:#dce5f3;
-  padding:8px 0;font-size:13px
-}
+.topbar{background:var(--navy);color:#dce5f3;padding:8px 0;font-size:13px}
 .topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-header{
-  background:#fff;position:sticky;top:0;z-index:100;
-  box-shadow:0 3px 16px rgba(0,0,0,.06)
-}
-.nav{
-  min-height:76px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px
-}
+header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 3px 16px rgba(0,0,0,.06)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy)}
-.brand-mark{
-  width:44px;height:44px;border-radius:13px;
-  display:grid;place-items:center;background:var(--navy);
-  color:var(--gold);font-size:23px
-}
+.brand-mark{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-size:23px}
 .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}
 .navlinks{display:flex;align-items:center;gap:19px;font-size:13px;font-weight:700}
 .navlinks a:hover{color:var(--blue)}
-.donate-btn,.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  border:0;border-radius:10px;padding:12px 20px;
-  background:var(--gold);color:var(--navy);font-weight:800
-}
+.donate-btn,.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:12px 20px;background:var(--gold);color:var(--navy);font-weight:800}
 .btn.blue{background:var(--blue);color:white}
 .btn.outline{background:transparent;border:1px solid rgba(255,255,255,.6);color:white}
 .menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--navy)}
-.hero{
-  background:linear-gradient(110deg,rgba(9,22,43,.94),rgba(15,39,72,.78)),
-  url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1800&q=85") center/cover;
-  color:white;padding:105px 0 95px;min-height:520px;
-  display:flex;align-items:center
-}
+.hero{background:linear-gradient(110deg,rgba(9,22,43,.94),rgba(15,39,72,.78)),url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1800&q=85") center/cover;color:white;padding:105px 0 95px;min-height:520px;display:flex;align-items:center}
 .hero-content{max-width:720px}
 .eyebrow{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:12px;text-transform:uppercase}
 .hero h1{font-size:clamp(38px,6vw,68px);line-height:1.08;margin:16px 0}
 .hero p{font-size:18px;color:#e0e8f4;max-width:620px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:-38px;position:relative}
-.stat{
-  background:white;padding:23px;border-radius:15px;
-  text-align:center;box-shadow:var(--shadow)
-}
+.stat{background:white;padding:23px;border-radius:15px;text-align:center;box-shadow:var(--shadow)}
 .stat strong{display:block;font-size:27px;color:var(--blue)}
 .stat span{font-size:13px;color:var(--muted)}
 section{padding:78px 0}
@@ -85,10 +50,7 @@ section{padding:78px 0}
 .section-head h2{font-size:clamp(28px,4vw,39px);color:var(--navy);margin:8px 0}
 .section-head p{color:var(--muted);margin:0}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{
-  background:white;border:1px solid var(--line);
-  border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 20px rgba(16,29,53,.04)
-}
+.card{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 20px rgba(16,29,53,.04)}
 .card img{width:100%;height:210px;object-fit:cover;display:block;background:#e8edf4}
 .card-body{padding:22px}
 .card h3{margin:0 0 9px;color:var(--navy);font-size:19px}
@@ -109,69 +71,52 @@ section{padding:78px 0}
 .ministry-card h3{color:white}
 .ministry-card p{color:#c5d0df}
 .ministry-card .readmore{color:var(--gold)}
-.construction{
-  background:linear-gradient(110deg,rgba(16,29,53,.94),rgba(16,29,53,.82)),
-  url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=85") center/cover;
-  color:white;border-radius:22px;padding:45px
-}
+.construction{background:linear-gradient(110deg,rgba(16,29,53,.94),rgba(16,29,53,.82)),url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=85") center/cover;color:white;border-radius:22px;padding:45px}
 .construction h2{font-size:34px;margin:8px 0}
 .construction p{max-width:650px;color:#e1e8f1}
 .progress-track{height:12px;border-radius:20px;background:#ffffff44;overflow:hidden;margin:22px 0}
 .progress-fill{height:100%;width:0;background:var(--gold);border-radius:20px}
 .donation-layout{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:27px}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:27px;min-width:0}
 .panel h3{color:var(--navy);margin-top:0}
 .bank-row{padding:12px 0;border-bottom:1px solid var(--line)}
 .bank-row strong{display:block;font-size:12px;color:var(--muted)}
 .bank-row span{font-weight:700;overflow-wrap:anywhere}
-.notice{
-  padding:15px;border-radius:12px;background:#fff7e5;
-  border:1px solid #f0d99f;color:#624b18;font-size:13px;margin-top:16px
-}
+.notice{padding:15px;border-radius:12px;background:#fff7e5;border:1px solid #f0d99f;color:#624b18;font-size:13px;margin-top:16px}
 form{display:grid;gap:13px}
-input,textarea{
-  width:100%;padding:13px 14px;border:1px solid #d8e0eb;
-  border-radius:10px;background:white;color:var(--text)
-}
+input,textarea{width:100%;padding:13px 14px;border:1px solid #d8e0eb;border-radius:10px;background:white;color:var(--text)}
 textarea{min-height:125px;resize:vertical}
 input:focus,textarea:focus{outline:2px solid #b6cbea;border-color:var(--blue)}
 .form-status{font-size:13px;color:var(--blue);font-weight:700}
 .gallery-card img{height:235px}
-.empty{
-  grid-column:1/-1;text-align:center;background:white;
-  border:1px dashed #cbd5e1;border-radius:14px;padding:28px;color:var(--muted)
-}
+.empty{grid-column:1/-1;text-align:center;background:white;border:1px dashed #cbd5e1;border-radius:14px;padding:28px;color:var(--muted)}
 footer{background:#091426;color:#d4deec;padding:55px 0 20px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
 footer h3,footer h4{color:white}
 footer p,footer a{font-size:13px;color:#b8c6d8}
 footer a{display:block;margin:7px 0}
 .footer-bottom{border-top:1px solid #ffffff22;margin-top:35px;padding-top:18px;font-size:12px;color:#9eafc4}
-.whatsapp{
-  position:fixed;right:20px;bottom:20px;z-index:90;
-  background:#20b76b;color:white;border-radius:50px;
-  padding:13px 18px;font-weight:800;box-shadow:var(--shadow)
-}
+.whatsapp{position:fixed;right:20px;bottom:20px;z-index:90;background:#20b76b;color:white;border-radius:50px;padding:13px 18px;font-weight:800;box-shadow:var(--shadow)}
 .loading{color:var(--muted);text-align:center;padding:25px}
+.payment-link-wrap{margin-top:18px}
+.payment-link-wrap .btn{width:100%;text-align:center}
+.payment-unavailable{padding:15px;border-radius:12px;background:#f1f5f9;color:#526174;font-size:14px;margin-top:15px}
+.hidden{display:none!important}
 @media(max-width:900px){
-  .navlinks{
-    display:none;position:absolute;top:76px;left:0;right:0;
-    background:white;padding:20px 5%;box-shadow:var(--shadow);
-    flex-direction:column;align-items:stretch
-  }
-  .navlinks.open{display:flex}
-  .menu-btn{display:block}
-  .grid{grid-template-columns:repeat(2,1fr)}
+.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:20px 5%;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}
+.navlinks.open{display:flex}
+.menu-btn{display:block}
+.grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:650px){
-  .hero{padding:75px 0;min-height:470px}
-  .stats{grid-template-columns:1fr;margin-top:18px}
-  section{padding:58px 0}
-  .grid,.about-grid,.donation-layout,.footer-grid{grid-template-columns:1fr}
-  .about-image{height:270px}
-  .construction{padding:28px}
-  .construction h2{font-size:28px}
-  .topbar .container{justify-content:center;text-align:center}
+.hero{padding:75px 0;min-height:470px}
+.stats{grid-template-columns:1fr;margin-top:18px}
+section{padding:58px 0}
+.grid,.about-grid,.donation-layout,.footer-grid{grid-template-columns:1fr}
+.about-image{height:270px}
+.construction{padding:28px}
+.construction h2{font-size:28px}
+.topbar .container{justify-content:center;text-align:center}
 }
 </style>
 </head>
@@ -194,9 +139,7 @@ footer a{display:block;margin:7px 0}
         <small>FAITH · LOVE · SERVICE</small>
       </div>
     </a>
-
     <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-
     <nav class="navlinks" id="navLinks">
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -218,10 +161,7 @@ footer a{display:block;margin:7px 0}
     <div class="hero-content">
       <div class="eyebrow" id="heroEyebrow">WELCOME TO GOH MINISTRIES</div>
       <h1 id="heroTitle">Sharing God's Love. Bringing Hope. Changing Lives.</h1>
-      <p id="heroDescription">
-        Serving communities, supporting children and families, and building a future
-        rooted in the love and hope of Jesus Christ.
-      </p>
+      <p id="heroDescription">Serving communities, supporting children and families, and building a future rooted in the love and hope of Jesus Christ.</p>
       <div class="hero-actions">
         <a class="btn" href="#ministries">Explore Our Ministries</a>
         <a class="btn outline" href="#donate">Support Our Mission</a>
@@ -240,18 +180,11 @@ footer a{display:block;margin:7px 0}
 
 <section id="about">
   <div class="container about-grid">
-    <div>
-      <img class="about-image" id="aboutImage"
-        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85"
-        alt="Community people together">
-    </div>
+    <div><img class="about-image" id="aboutImage" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85" alt="Community people together"></div>
     <div class="about-copy">
       <div class="eyebrow">WHO WE ARE</div>
       <h2 id="aboutTitle">A Ministry With a Heart for People</h2>
-      <p id="aboutDescription">
-        GOH Ministries exists to share the love of God through practical service,
-        encouragement, prayer and community support.
-      </p>
+      <p id="aboutDescription">GOH Ministries exists to share the love of God through practical service, encouragement, prayer and community support.</p>
       <ul class="checklist">
         <li>Sharing the love and hope of Jesus Christ</li>
         <li>Supporting children and families</li>
@@ -271,40 +204,23 @@ footer a{display:block;margin:7px 0}
       <p>Practical expressions of God's love, care and compassion.</p>
     </div>
     <div class="grid" id="ministryGrid">
-      <article class="card ministry-card">
-        <div class="card-body"><h3>Children's Ministry</h3>
-          <p>Encouraging children through care, learning and Christian values.</p></div>
-      </article>
-      <article class="card ministry-card">
-        <div class="card-body"><h3>Helping Families</h3>
-          <p>Supporting families experiencing hardship with practical assistance.</p></div>
-      </article>
-      <article class="card ministry-card">
-        <div class="card-body"><h3>Church Construction</h3>
-          <p>Working together to establish a place for worship and fellowship.</p></div>
-      </article>
+      <article class="card ministry-card"><div class="card-body"><h3>Children's Ministry</h3><p>Encouraging children through care, learning and Christian values.</p></div></article>
+      <article class="card ministry-card"><div class="card-body"><h3>Helping Families</h3><p>Supporting families experiencing hardship with practical assistance.</p></div></article>
+      <article class="card ministry-card"><div class="card-body"><h3>Church Construction</h3><p>Working together to establish a place for worship and fellowship.</p></div></article>
     </div>
   </div>
 </section>
 
 <section id="children">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">THE NEXT GENERATION</div>
-      <h2>Children's Ministry</h2>
-      <p>Creating opportunities for children to grow, learn and experience love and encouragement.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">THE NEXT GENERATION</div><h2>Children's Ministry</h2><p>Creating opportunities for children to grow, learn and experience love and encouragement.</p></div>
     <div class="grid" id="childrenGrid"><div class="loading">Loading children's ministry...</div></div>
   </div>
 </section>
 
 <section id="assistance" style="background:#edf2f8">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">COMPASSION IN ACTION</div>
-      <h2>Helping Families in Need</h2>
-      <p>Standing alongside families and individuals during difficult times.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">COMPASSION IN ACTION</div><h2>Helping Families in Need</h2><p>Standing alongside families and individuals during difficult times.</p></div>
     <div class="grid" id="assistanceGrid"><div class="loading">Loading assistance updates...</div></div>
   </div>
 </section>
@@ -314,10 +230,7 @@ footer a{display:block;margin:7px 0}
     <div class="construction">
       <div class="eyebrow">BUILDING TOGETHER</div>
       <h2 id="constructionTitle">Church Construction Project</h2>
-      <p id="constructionDescription">
-        Join us in prayer and support as we work towards establishing a place
-        for worship, fellowship and community.
-      </p>
+      <p id="constructionDescription">Join us in prayer and support as we work towards establishing a place for worship, fellowship and community.</p>
       <div class="progress-track"><div class="progress-fill" id="constructionProgress"></div></div>
       <p id="constructionProgressText">Construction progress updates will be shared here.</p>
       <a class="btn" href="#donate">Support This Project</a>
@@ -328,55 +241,35 @@ footer a{display:block;margin:7px 0}
 
 <section id="projects">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">MAKING A DIFFERENCE</div>
-      <h2>Our Projects</h2>
-      <p>Discover the projects and activities supported by the ministry.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">MAKING A DIFFERENCE</div><h2>Our Projects</h2><p>Discover the projects and activities supported by the ministry.</p></div>
     <div class="grid" id="projectsGrid"><div class="loading">Loading projects...</div></div>
   </div>
 </section>
 
 <section id="news" style="background:#edf2f8">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">LATEST UPDATES</div>
-      <h2>News & Announcements</h2>
-      <p>Updates, announcements and stories from our ministry.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">LATEST UPDATES</div><h2>News & Announcements</h2><p>Updates, announcements and stories from our ministry.</p></div>
     <div class="grid" id="newsGrid"><div class="loading">Loading news...</div></div>
   </div>
 </section>
 
 <section id="gallery">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">MOMENTS THAT MATTER</div>
-      <h2>Photo Gallery</h2>
-      <p>See moments from our ministry, activities and community projects.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">MOMENTS THAT MATTER</div><h2>Photo Gallery</h2><p>See moments from our ministry, activities and community projects.</p></div>
     <div class="grid" id="galleryGrid"><div class="loading">Loading gallery...</div></div>
   </div>
 </section>
 
 <section id="testimonies" style="background:#edf2f8">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">STORIES OF HOPE</div>
-      <h2>Testimonies</h2>
-      <p>Stories of faith, encouragement and transformation.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">STORIES OF HOPE</div><h2>Testimonies</h2><p>Stories of faith, encouragement and transformation.</p></div>
     <div class="grid" id="testimoniesGrid"><div class="loading">Loading testimonies...</div></div>
   </div>
 </section>
 
 <section id="events">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">JOIN US</div>
-      <h2>Events & Activities</h2>
-      <p>Find out about upcoming ministry activities and community events.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow">JOIN US</div><h2>Events & Activities</h2><p>Find out about upcoming ministry activities and community events.</p></div>
     <div class="grid" id="eventsGrid"><div class="loading">Loading events...</div></div>
   </div>
 </section>
@@ -390,55 +283,71 @@ footer a{display:block;margin:7px 0}
     </div>
 
     <div class="donation-layout">
-      <div class="panel">
+      <div class="panel" id="bankDonationPanel">
         <h3>Bank Transfer Details</h3>
-        <div class="bank-row"><strong>Bank</strong><span id="bankName">Please contact us for details</span></div>
-        <div class="bank-row"><strong>Account Name</strong><span id="accountName">Please contact us for details</span></div>
-        <div class="bank-row"><strong>Account Number</strong><span id="accountNumber">Please contact us for details</span></div>
-        <div class="bank-row"><strong>Branch</strong><span id="bankBranch">Please contact us for details</span></div>
+        <div class="bank-row"><strong>Bank</strong><span id="bankName">Loading bank details...</span></div>
+        <div class="bank-row"><strong>Account Name</strong><span id="accountName"></span></div>
+        <div class="bank-row"><strong>Account Number</strong><span id="accountNumber"></span></div>
+        <div class="bank-row"><strong>Branch</strong><span id="bankBranch"></span></div>
+        <div class="bank-row hidden" id="swiftRow"><strong>SWIFT / Bank Code</strong><span id="bankSwift"></span></div>
+        <div class="bank-row"><strong>Currency</strong><span id="bankCurrency">LKR</span></div>
         <div class="bank-row"><strong>Reference</strong><span>GOH Ministry Donation</span></div>
         <div class="notice" id="donationNotice">
-          Please contact the ministry to confirm the current donation arrangements
-          before making a transfer. Keep your bank confirmation for your records.
+          Please keep your bank confirmation for your records.
         </div>
       </div>
 
-      <div class="panel">
-        <h3>Donation Enquiry</h3>
+      <div class="panel" id="donationContactPanel">
+        <h3>Support GOH Ministries</h3>
         <p style="color:var(--muted);font-size:14px">
-          Contact us if you would like to support a particular ministry or project.
+          You can support our ministry through the available donation methods.
+          For assistance or to support a particular project, please contact us.
         </p>
-        <form id="donationForm">
-          <input name="name" placeholder="Your name" required>
-          <input name="email" type="email" placeholder="Email address" required>
-          <input name="amount" type="number" min="1" placeholder="Donation amount (LKR)">
-          <input name="project" placeholder="Project or ministry (optional)">
-          <textarea name="message" placeholder="Your message (optional)"></textarea>
-          <button class="btn blue" type="submit">Send Donation Enquiry</button>
-          <div class="form-status" id="donationStatus"></div>
-        </form>
+
+        <div id="onlineDonationArea" class="payment-link-wrap hidden">
+          <a id="onlineDonationButton" class="btn blue" href="#" target="_blank" rel="noopener noreferrer">
+            Donate Online
+          </a>
+        </div>
+
+        <div id="noPaymentMethods" class="payment-unavailable hidden">
+          Donation payment details are currently unavailable. Please contact GOH Ministries for assistance.
+        </div>
+
+        <div class="notice">
+          Thank you for remembering GOH Ministries in your prayers and generosity.
+        </div>
       </div>
+    </div>
+
+    <div class="panel" style="margin-top:25px">
+      <h3>Donation Enquiry</h3>
+      <p style="color:var(--muted);font-size:14px">
+        Contact us if you would like to support a particular ministry or project.
+      </p>
+      <form id="donationForm">
+        <input name="name" placeholder="Your name" required>
+        <input name="email" type="email" placeholder="Email address" required>
+        <input name="amount" type="number" min="1" placeholder="Donation amount (LKR)">
+        <input name="project" placeholder="Project or ministry (optional)">
+        <textarea name="message" placeholder="Your message (optional)"></textarea>
+        <button class="btn blue" type="submit">Send Donation Enquiry</button>
+        <div class="form-status" id="donationStatus"></div>
+      </form>
     </div>
   </div>
 </section>
 
 <section id="contact" style="background:#edf2f8">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">GET IN TOUCH</div>
-      <h2>Contact GOH Ministries</h2>
-      <p>We welcome your questions, messages, prayer requests and enquiries.</p>
-    </div>
-
+    <div class="section-head"><div class="eyebrow">GET IN TOUCH</div><h2>Contact GOH Ministries</h2><p>We welcome your questions, messages, prayer requests and enquiries.</p></div>
     <div class="donation-layout">
       <div class="panel">
         <h3>Contact Information</h3>
         <div class="bank-row"><strong>Email</strong><span id="contactEmail">Please contact us through the form</span></div>
         <div class="bank-row"><strong>Phone</strong><span id="contactPhone">Contact details coming soon</span></div>
         <div class="bank-row"><strong>Location</strong><span id="contactAddress">Sri Lanka</span></div>
-        <p style="color:var(--muted);font-size:14px;margin-top:18px">
-          We appreciate your prayers and encouragement.
-        </p>
+        <p style="color:var(--muted);font-size:14px;margin-top:18px">We appreciate your prayers and encouragement.</p>
       </div>
       <div class="panel">
         <h3>Send Us a Message</h3>
@@ -461,25 +370,15 @@ footer a{display:block;margin:7px 0}
     <div class="footer-grid">
       <div>
         <h3 id="footerName">GOH Ministries</h3>
-        <p id="footerDescription">
-          Sharing God's love through faith, compassion and practical service.
-          Thank you for remembering our ministry in your prayers.
-        </p>
+        <p id="footerDescription">Sharing God's love through faith, compassion and practical service. Thank you for remembering our ministry in your prayers.</p>
       </div>
       <div>
         <h4>Explore</h4>
-        <a href="#about">About Us</a>
-        <a href="#ministries">Our Ministries</a>
-        <a href="#projects">Projects</a>
-        <a href="#news">News</a>
+        <a href="#about">About Us</a><a href="#ministries">Our Ministries</a><a href="#projects">Projects</a><a href="#news">News</a>
       </div>
       <div>
         <h4>Connect</h4>
-        <a href="#gallery">Gallery</a>
-        <a href="#testimonies">Testimonies</a>
-        <a href="#events">Events</a>
-        <a href="#contact">Contact Us</a>
-        <a href="#donate">Donate</a>
+        <a href="#gallery">Gallery</a><a href="#testimonies">Testimonies</a><a href="#events">Events</a><a href="#contact">Contact Us</a><a href="#donate">Donate</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -492,184 +391,260 @@ footer a{display:block;margin:7px 0}
 <a class="whatsapp" id="whatsappLink" href="#contact" target="_blank" rel="noopener">✆ Contact Us</a>
 
 <script>
-/* =========================================================
-   GOH MINISTRIES PUBLIC WEBSITE
-   Backend API: Cloudflare Worker
-   ========================================================= */
+"use strict";
 
-const API = "https://gohm.createlk.workers.dev";
+const API="https://gohm.createlk.workers.dev";
 
-const DEFAULTS = {
-  site_name: "GOH Ministries",
-  hero_title: "Sharing God's Love. Bringing Hope. Changing Lives.",
-  hero_description: "Serving communities, supporting children and families, and building a future rooted in the love and hope of Jesus Christ.",
-  about_title: "A Ministry With a Heart for People",
-  about_description: "GOH Ministries exists to share the love of God through practical service, encouragement, prayer and community support.",
-  bank_name: "",
-  account_name: "",
-  account_number: "",
-  bank_branch: "",
-  donation_notice: "",
-  contact_email: "",
-  contact_phone: "",
-  contact_address: "Sri Lanka",
-  whatsapp: "",
-  construction_title: "Church Construction Project",
-  construction_description: "Join us in prayer and support as we work towards establishing a place for worship, fellowship and community.",
-  construction_progress: "0"
+const DEFAULTS={
+  site_name:"GOH Ministries",
+  hero_title:"Sharing God's Love. Bringing Hope. Changing Lives.",
+  hero_description:"Serving communities, supporting children and families, and building a future rooted in the love and hope of Jesus Christ.",
+  about_title:"A Ministry With a Heart for People",
+  about_description:"GOH Ministries exists to share the love of God through practical service, encouragement, prayer and community support.",
+  contact_address:"Sri Lanka",
+  construction_title:"Church Construction Project",
+  construction_description:"Join us in prayer and support as we work towards establishing a place for worship, fellowship and community.",
+  construction_progress:"0"
 };
 
-const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
 
 function escapeHTML(value){
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
+  return String(value??"").replace(/[&<>"']/g,c=>({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[char]);
+  })[c]);
 }
 
 function safeURL(value){
-  if(!value) return "";
+  if(!value)return "";
   try{
-    const url = new URL(value, API);
-    return ["http:","https:"].includes(url.protocol) ? url.href : "";
-  }catch{
-    return "";
-  }
+    const url=new URL(value,API);
+    return ["http:","https:"].includes(url.protocol)?url.href:"";
+  }catch{return ""}
 }
 
-async function request(path, options = {}){
-  const response = await fetch(API + path, {
+function isEnabled(value){
+  return value===true||value===1||value==="1"||value==="true";
+}
+
+async function request(path,options={}){
+  const response=await fetch(API+path,{
     ...options,
     headers:{
-      ...(options.body instanceof FormData ? {} : {"Content-Type":"application/json"}),
-      ...(options.headers || {})
+      ...(options.body instanceof FormData?{}:{"Content-Type":"application/json"}),
+      ...(options.headers||{})
     }
   });
 
-  const data = await response.json().catch(() => ({}));
-  if(!response.ok || data.success === false){
-    throw new Error(data.error || data.message || "Request failed. Please try again.");
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok||data.success===false){
+    throw new Error(data.error||data.message||"Request failed. Please try again.");
   }
   return data;
 }
 
 function getArray(data){
-  if(Array.isArray(data)) return data;
-  if(Array.isArray(data.items)) return data.items;
-  if(Array.isArray(data.data)) return data.data;
-  if(Array.isArray(data.results)) return data.results;
+  if(Array.isArray(data))return data;
+  if(Array.isArray(data.items))return data.items;
+  if(Array.isArray(data.data))return data.data;
+  if(Array.isArray(data.results))return data.results;
   return [];
 }
 
 function itemImage(item){
-  return safeURL(item.image_url || item.image || item.photo || item.url || "");
+  return safeURL(item.image_url||item.image||item.photo||item.url||"");
 }
 
-function cardHTML(item, options = {}){
-  const image = itemImage(item);
-  const title = escapeHTML(item.title || item.name || "Ministry Update");
-  const description = escapeHTML(item.description || item.content || item.message || "");
-  const date = escapeHTML(item.date || item.event_date || item.created_at || "");
-  const imageHTML = image
-    ? `<img src="${escapeHTML(image)}" alt="${title}" loading="lazy">`
-    : "";
+function cardHTML(item,options={}){
+  const image=itemImage(item);
+  const title=escapeHTML(item.title||item.name||"Ministry Update");
+  const description=escapeHTML(item.description||item.content||item.message||"");
+  const date=escapeHTML(item.date||item.event_date||item.created_at||"");
+  const imageHTML=image?`<img src="${escapeHTML(image)}" alt="${title}" loading="lazy">`:"";
 
   return `
-    <article class="card ${options.gallery ? "gallery-card" : ""}">
+    <article class="card ${options.gallery?"gallery-card":""}">
       ${imageHTML}
       <div class="card-body">
-        ${date ? `<div class="date">${date}</div>` : ""}
+        ${date?`<div class="date">${date}</div>`:""}
         <h3>${title}</h3>
         <p>${description}</p>
       </div>
     </article>`;
 }
 
-function showItems(containerId, items, emptyText, options = {}){
-  const container = $(containerId);
-  if(!container) return;
+function showItems(containerId,items,emptyText,options={}){
+  const container=$(containerId);
+  if(!container)return;
   if(!items.length){
-    container.innerHTML = `<div class="empty">${escapeHTML(emptyText)}</div>`;
+    container.innerHTML=`<div class="empty">${escapeHTML(emptyText)}</div>`;
     return;
   }
-  container.innerHTML = items.map(item => cardHTML(item, options)).join("");
+  container.innerHTML=items.map(item=>cardHTML(item,options)).join("");
 }
 
-async function loadType(type, containerId, emptyText, options = {}){
+async function loadType(type,containerId,emptyText,options={}){
   try{
-    const data = await request("/api/items?type=" + encodeURIComponent(type));
-    showItems(containerId, getArray(data), emptyText, options);
+    const data=await request("/api/items?type="+encodeURIComponent(type));
+    showItems(containerId,getArray(data),emptyText,options);
   }catch(error){
-    console.error("Could not load " + type, error);
-    showItems(containerId, [], "This section is temporarily unavailable.");
+    console.error("Could not load "+type,error);
+    showItems(containerId,[],"This section is temporarily unavailable.");
   }
+}
+
+/* SETTINGS */
+
+function normalizeSettings(raw){
+  let settings={...DEFAULTS};
+
+  if(Array.isArray(raw)){
+    raw.forEach(row=>{
+      if(row&&row.key)settings[row.key]=row.value;
+    });
+  }else if(raw&&typeof raw==="object"){
+    if(raw.settings&&typeof raw.settings==="object"){
+      settings={...settings,...raw.settings};
+    }else{
+      settings={...settings,...raw};
+    }
+  }
+
+  // Support the settings names used by the Admin Dashboard and Worker.
+  if(!settings.site_name&&settings.ministry_name){
+    settings.site_name=settings.ministry_name;
+  }
+  if(!settings.footer_description&&settings.description){
+    settings.footer_description=settings.description;
+  }
+  if(!settings.contact_address&&settings.address){
+    settings.contact_address=settings.address;
+  }
+
+  // Canonical payment keys, with legacy-name fallbacks.
+  if(settings.bank_account_name===undefined){
+    settings.bank_account_name=settings.bank_account_holder||"";
+  }
+  if(settings.bank_enabled===undefined){
+    settings.bank_enabled="0";
+  }
+  if(settings.payment_enabled===undefined){
+    settings.payment_enabled=settings.donation_link_enabled??"0";
+  }
+  if(settings.payment_link===undefined){
+    settings.payment_link=settings.donation_url||"";
+  }
+
+  return settings;
+}
+
+function setText(id,value){
+  const element=$(id);
+  if(element&&value!==undefined&&value!==null&&String(value).trim()!==""){
+    element.textContent=String(value);
+  }
+}
+
+function applyPaymentSettings(settings){
+  const bankEnabled=isEnabled(settings.bank_enabled);
+  const onlineEnabled=isEnabled(settings.payment_enabled);
+
+  const bankPanel=$("bankDonationPanel");
+  const onlineArea=$("onlineDonationArea");
+  const onlineButton=$("onlineDonationButton");
+  const noMethods=$("noPaymentMethods");
+
+  const bankName=String(settings.bank_name||"").trim();
+  const accountName=String(settings.bank_account_name||"").trim();
+  const accountNumber=String(settings.bank_account_number||"").trim();
+  const branch=String(settings.bank_branch||"").trim();
+  const swift=String(settings.bank_swift||"").trim();
+  const currency=String(settings.bank_currency||"LKR").trim()||"LKR";
+
+  const hasBankDetails=bankEnabled&&(bankName||accountName||accountNumber||branch);
+
+  bankPanel.classList.toggle("hidden",!hasBankDetails);
+
+  if(hasBankDetails){
+    setText("bankName",bankName||"Not provided");
+    setText("accountName",accountName||"Not provided");
+    setText("accountNumber",accountNumber||"Not provided");
+    setText("bankBranch",branch||"Not provided");
+    setText("bankCurrency",currency);
+
+    $("swiftRow").classList.toggle("hidden",!swift);
+    if(swift)setText("bankSwift",swift);
+
+    if(settings.donation_notice){
+      setText("donationNotice",settings.donation_notice);
+    }else{
+      setText("donationNotice","Please keep your bank confirmation for your records.");
+    }
+  }
+
+  // Never display an online payment button for a missing or unsafe URL.
+  const paymentURL=onlineEnabled?safeURL(settings.payment_link):"";
+  const showOnline=Boolean(paymentURL);
+
+  onlineArea.classList.toggle("hidden",!showOnline);
+
+  if(showOnline){
+    onlineButton.href=paymentURL;
+    onlineButton.textContent=String(settings.payment_link_label||"Donate Online");
+  }else{
+    onlineButton.removeAttribute("href");
+  }
+
+  noMethods.classList.toggle("hidden",hasBankDetails||showOnline);
 }
 
 function applySettings(raw){
-  let settings = {...DEFAULTS};
+  const settings=normalizeSettings(raw);
 
-  if(Array.isArray(raw)){
-    raw.forEach(row => {
-      if(row && row.key) settings[row.key] = row.value;
-    });
-  }else if(raw && typeof raw === "object"){
-    if(raw.settings && typeof raw.settings === "object"){
-      settings = {...settings, ...raw.settings};
-    }else{
-      settings = {...settings, ...raw};
-    }
-  }
+  setText("brandName",settings.site_name);
+  setText("footerName",settings.site_name);
+  setText("heroTitle",settings.hero_title);
+  setText("heroDescription",settings.hero_description);
+  setText("aboutTitle",settings.about_title);
+  setText("aboutDescription",settings.about_description);
+  setText("constructionTitle",settings.construction_title);
+  setText("constructionDescription",settings.construction_description);
+  setText("contactEmail",settings.contact_email||"Please contact us through the form");
+  setText("contactPhone",settings.contact_phone||"Contact details coming soon");
+  setText("contactAddress",settings.contact_address||"Sri Lanka");
+  setText("footerDescription",settings.footer_description||"Sharing God's love through faith, compassion and practical service. Thank you for remembering our ministry in your prayers.");
 
-  const setText = (id, key) => {
-    if($(id) && settings[key] !== undefined && settings[key] !== null && settings[key] !== ""){
-      $(id).textContent = settings[key];
-    }
-  };
-
-  setText("brandName","site_name");
-  setText("footerName","site_name");
-  setText("heroTitle","hero_title");
-  setText("heroDescription","hero_description");
-  setText("aboutTitle","about_title");
-  setText("aboutDescription","about_description");
-  setText("constructionTitle","construction_title");
-  setText("constructionDescription","construction_description");
-  setText("bankName","bank_name");
-  setText("accountName","account_name");
-  setText("accountNumber","account_number");
-  setText("bankBranch","bank_branch");
-  setText("donationNotice","donation_notice");
-  setText("contactEmail","contact_email");
-  setText("contactPhone","contact_phone");
-  setText("contactAddress","contact_address");
-  setText("footerDescription","footer_description");
-
-  const progress = Math.max(0,Math.min(100,Number(settings.construction_progress) || 0));
-  $("constructionProgress").style.width = progress + "%";
-  $("constructionProgressText").textContent = "Project progress: " + progress + "%";
+  const progress=Math.max(0,Math.min(100,Number(settings.construction_progress)||0));
+  $("constructionProgress").style.width=progress+"%";
+  $("constructionProgressText").textContent="Project progress: "+progress+"%";
 
   if(settings.about_image){
-    const url = safeURL(settings.about_image);
-    if(url) $("aboutImage").src = url;
+    const url=safeURL(settings.about_image);
+    if(url)$("aboutImage").src=url;
   }
 
   if(settings.whatsapp){
-    const number = String(settings.whatsapp).replace(/[^\d]/g,"");
+    const number=String(settings.whatsapp).replace(/[^\d]/g,"");
     if(number){
-      $("whatsappLink").href = "https://wa.me/" + number;
-      $("whatsappLink").textContent = "✆ WhatsApp Us";
+      $("whatsappLink").href="https://wa.me/"+number;
+      $("whatsappLink").textContent="✆ WhatsApp Us";
     }
   }
+
+  applyPaymentSettings(settings);
 }
 
 async function loadSettings(){
   try{
-    const data = await request("/api/settings");
+    const data=await request("/api/settings");
     applySettings(data);
   }catch(error){
     console.error("Settings could not be loaded:",error);
+    applyPaymentSettings(normalizeSettings({}));
   }
 }
+
+/* CONTENT */
 
 async function loadAllSections(){
   await Promise.all([
@@ -684,25 +659,27 @@ async function loadAllSections(){
   ]);
 }
 
-async function submitForm(form, endpoint, statusId){
-  const status = $(statusId);
-  const button = form.querySelector("button[type=submit]");
-  status.textContent = "Sending...";
-  button.disabled = true;
+/* FORMS */
 
-  const formData = Object.fromEntries(new FormData(form).entries());
+async function submitForm(form,endpoint,statusId){
+  const status=$(statusId);
+  const button=form.querySelector("button[type=submit]");
+  status.textContent="Sending...";
+  button.disabled=true;
+
+  const formData=Object.fromEntries(new FormData(form).entries());
 
   try{
     await request(endpoint,{
       method:"POST",
       body:JSON.stringify(formData)
     });
-    status.textContent = "Thank you. Your message has been sent.";
+    status.textContent="Thank you. Your message has been sent.";
     form.reset();
   }catch(error){
-    status.textContent = error.message || "Unable to send. Please try again later.";
+    status.textContent=error.message||"Unable to send. Please try again later.";
   }finally{
-    button.disabled = false;
+    button.disabled=false;
   }
 }
 
@@ -716,15 +693,19 @@ $("donationForm").addEventListener("submit",event=>{
   submitForm(event.currentTarget,"/api/messages","donationStatus");
 });
 
+/* MOBILE NAVIGATION */
+
 $("menuBtn").addEventListener("click",()=>{
   $("navLinks").classList.toggle("open");
 });
 
 document.querySelectorAll("#navLinks a").forEach(link=>{
-  link.addEventListener("click",()=> $("navLinks").classList.remove("open"));
+  link.addEventListener("click",()=>$("navLinks").classList.remove("open"));
 });
 
-$("year").textContent = new Date().getFullYear();
+$("year").textContent=new Date().getFullYear();
+
+/* START WEBSITE */
 
 (async function startWebsite(){
   await loadSettings();
